@@ -1,3 +1,15 @@
+[01-Introduction & Web Tech](#01-Introduction & Web Tech)
+
+[02-HTML & CSS](#02-HTML & CSS)
+
+[03-CSS & Sass](#03-CSS & Sass)
+
+[04-JavaScript](#04-JavaScript)
+
+[05-Git Introduction](#05-Git Introduction)
+
+
+
 ## 01-Introduction & Web Tech
 
 安装ssl证书的网站：certbot
@@ -185,7 +197,11 @@ getAttribute() setAttribute()
 
 一个html导入多个js文件，全局变量会互相污染，前几年用iife解决
 
-## 05-Git
+关于同步sync和异步async，建议看[一文看懂JS的异步](https://zhuanlan.zhihu.com/p/66593213)
+
+
+
+## 05-Git Introduction
 
 别让地铁站都比你努力！
 
