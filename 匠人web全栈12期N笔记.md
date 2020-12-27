@@ -1,16 +1,16 @@
-[01-Introduction & Web Tech](#01-Introduction & Web Tech)
+[01-Introduction & Web Tech](#01-Introduction&Web_Tech)
 
-[02-HTML & CSS](#02-HTML & CSS)
+[02-HTML & CSS](#02-HTML&CSS)
 
-[03-CSS & Sass](#03-CSS & Sass)
+[03-CSS & Sass](#03-CSS&Sass)
 
 [04-JavaScript](#04-JavaScript)
 
-[05-Git Introduction](#05-Git Introduction)
+[05-Git Introduction](#05-Git_Introduction)
 
 
 
-## 01-Introduction & Web Tech
+## 01-Introduction&Web_Tech
 
 安装ssl证书的网站：certbot
 
@@ -30,7 +30,7 @@ genymotion debug安卓设备
 
 
 
-## 02-HTML & CSS
+## 02-HTML&CSS
 
 margin重叠，哪个大用哪个
 
@@ -40,13 +40,13 @@ box-sizing: border-box (child加padding后能保持在parent里面)
 
 
 
-## 03-CSS & Sass
+## 03-CSS&Sass
 
 bootswatch 修改bootstrap默认变量
 
 sass: cat style compressed 等命令行指令
 
-多看sass文档：https://sass-lang.com/documentation（ctrl+左键打开）
+多看sass文档：https://sass-lang.com/documentation
 
 了解mixin
 
@@ -201,7 +201,7 @@ getAttribute() setAttribute()
 
 
 
-## 05-Git Introduction
+## 05-Git_Introduction
 
 别让地铁站都比你努力！
 
