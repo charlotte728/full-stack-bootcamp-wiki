@@ -1,14 +1,14 @@
 # JR_Web_FullStack12_Java_Note
 
-# 01 Introduction
-# 02 HTML and CSS
-# 03 CSS and SASS
-# 04 JavaScript
-# 05 Git
-# 06 JavaScript ES6
+[01 Introduction]()  
+[02 HTML and CSS]()  
+[03 CSS and SASS]()  
+[04 JavaScript]()  
+[05 Git](#05-Git)  
+[06 JavaScript ES6](#06-JavaScript-ES6-ECMAScript)
 
 
-## 05 Git
+## 05-Git
 A Distrbuted Version Control System.  
 尽量尝试使用command line来使用Git，但新手刚上手可以用Git GUI的一些软件来帮助做。(Github Desktop, SourceTree)  
 参考Git Cheat Sheet文件，把命令用熟  
@@ -71,7 +71,7 @@ Pull Request之前必须解决所有的conflicts
 如果遇到没有权限的repo，可以使用Fork加到自己的repo，做完修改之后可以apply a pull request against the original one
 
 
-## 06 JavaScript ES6 (ECMAScript)
+## 06-JavaScript-ES6-ECMAScript
 
 JavaScript (Vanilla, ES6)  
 JS课件基础知识要熟练掌握  
