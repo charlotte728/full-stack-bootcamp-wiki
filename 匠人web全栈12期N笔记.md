@@ -1,16 +1,7 @@
-[01-Introduction & Web Tech](#01-Introduction&Web_Tech)
+## 目录
+[toc]
 
-[02-HTML & CSS](#02-HTML&CSS)
-
-[03-CSS & Sass](#03-CSS&Sass)
-
-[04-JavaScript](#04-JavaScript)
-
-[05-Git Introduction](#05-Git_Introduction)
-
-
-
-## 01-Introduction&Web_Tech
+## 01-Introduction & Web Tech
 
 安装ssl证书的网站：certbot
 
@@ -28,9 +19,11 @@ shift + f5 清空cache刷新
 
 genymotion debug安卓设备
 
+[回到目录](#目录)
 
 
-## 02-HTML&CSS
+
+## 02-HTML & CSS
 
 margin重叠，哪个大用哪个
 
@@ -38,9 +31,11 @@ BEM命名
 
 box-sizing: border-box (child加padding后能保持在parent里面)
 
+[回到目录](#目录)
 
 
-## 03-CSS&Sass
+
+## 03-CSS & Sass
 
 bootswatch 修改bootstrap默认变量
 
@@ -78,9 +73,11 @@ sass: cat style compressed 等命令行指令
 
 ![specifishity](https://specifishity.com/specifishity.png)
 
+[回到目录](#目录)
+
+
+
 ## 04-JavaScript
-
-
 
 和js相关的技术：electron  nodejs  typescript
 
@@ -199,9 +196,11 @@ getAttribute() setAttribute()
 
 关于同步sync和异步async，建议看[一文看懂JS的异步](https://zhuanlan.zhihu.com/p/66593213)
 
+[回到目录](#目录)
 
 
-## 05-Git_Introduction
+
+## 05-Git Introduction
 
 别让地铁站都比你努力！
 
@@ -217,7 +216,7 @@ git pull是从git上拉取最新代码，可能会出现冲突合并覆盖的问
 
 使用ssh key来连接
 
-首先搞懂clone，git branch，commit push， rebase ，pull request merge，这几个就够了clone，git branch，commit push， rebase ，pull request merge
+首先搞懂clone，git branch，commit push， rebase ，pull request merge，这几个就够了
 
 rebase可以用到自己的branch上，不要用到public branch上
 
@@ -285,6 +284,159 @@ git push // 推送新的dev
 
 对命令行比较吃力和没理解git流程的同学建议看这两个视频（总共20分钟）
 
-[git教程入门](https://www.bilibili.com/video/BV1KD4y1S7FL)
-[git教程进阶]( https://www.bilibili.com/video/BV1hA411v7qX?spm_id_from=333.788.b_636f6d6d656e74.4)
+[git教程入门](https://www.bilibili.com/video/BV1KD4y1S7FL)   [git教程进阶]( https://www.bilibili.com/video/BV1hA411v7qX?spm_id_from=333.788.b_636f6d6d656e74.4)
 
+[回到目录](#目录)
+
+
+
+## 06-Node.js: Basics of Node.js
+
+**前端和服务端的区别**
+
+nodejs是一门服务端开发的语言和工具
+
+前端：用户能交互，看到，直接感知到的部分
+
+服务端（后端）：用来储存和管理数据，并且解决客户端无法完成的事情，比如分发。
+
+nodejs和koa虽然是js代码，但是跑在服务端上的，不能运行在浏览器上，注意和前端的js代码区分
+
+服务端代码量没那么多，对计算机基础知识较高
+
+找到一个适合自己的方向
+
+
+
+**BOM & DOM & Js Object**
+
+nodejs是一门用js语言的运行环境，由谷歌浏览器Chrome的V8引擎构建。
+
+浏览器中有三个大类的对象：BOM（Browser Object Model），DOM（Document Object Model），JavaScript Object。
+
+BOM对象在JavaScript引擎中是不存在的，只存在在浏览器里，不是可视化的元素，比如`navigator`, `document.location`, `windows.location`	。
+
+DOM是能够被选中和审查的。
+
+JavaScript Object有JavaScript引擎提供。
+
+BOM和DOM在nodejs中都不存在，BOM和DOM都由浏览器的渲染引擎提供，nodejs在js中引擎中通用的，但不在BOM和DOM中通用。
+
+
+
+**异步和事件驱动**
+
+​		nodejs是异步开发和事件驱动，以厨房为例，比如要烧汤，第一个步骤要烧水，第二个步骤要处理食材，洗菜，切菜。第一个做法，简单的做法，先洗菜，切菜，然后烧水，最后烧汤。第二个做法，先烧水（10分钟），在烧水的过程中洗菜切菜（15分钟），水烧好之后，等五分钟切好菜，再烧汤。
+
+​		一次只做一个事情，而且一个事情做不完就叫做同步（sync），有时候也成为阻塞（blocking）。不是由分配任务的人去执行，烧水是由炉子烧的，小明自己没有被占用，而是在等待炉子烧水，被称为阻塞。优点是简单，不容易出错。
+
+​		异步（async）是相对的概念，任务分发完了，自己没有事情做，小红去做别的事情了，可以把两件事情并行的做，可以节约资源。优点能省时间，缺点存在风险，操作复杂，容易乱套。
+
+​		事件驱动是解决容易乱套的一种方法，和闹钟类似。给第一锅汤旁边放一个闹钟，烧十分钟，第二锅汤旁边放一个闹钟，烧十分钟。分配任务的人不用记这些东西，只要被处罚(triggered)，由定时机制触发。定时机制比如闹钟或者让另一个人去做，做好了通知，称为事件驱动。
+
+​		nodejs是第一个把事件驱动作为编程开发的平台。
+
+
+
+**Nodejs非阻塞IO**
+
+stdin，stdout是标准的输入输出。
+
+操作系统在默认处理IO的时候是同步，也称为是阻塞的，如果磁盘的读写没有完成，操作系统会阻塞，不会去干别的事情。
+
+nodejs读取文件的时候会给操作系统发送读取文件的任务，然后nodejs本身被释放出来了。读取文件的工作由操作系统完成，操作系统读取完文件后给nodejs发送信号，告诉nodejs文件已经读取完了，nodejs接收结果。
+
+nodejs的异步和事件驱动解决了IO的问题，实现了异步IO，包括std的IO，网络的IO，磁盘的IO。
+
+总结：nodejs是用了谷歌chrome的V8引擎，配合了异步事件驱动引擎去解决非阻塞IO问题的开发平台。
+
+
+
+**浏览器中的非阻塞IO**
+
+浏览器里面解决非阻塞IO的方法是http。
+
+浏览器中有两个BOM对象`XMLHttpRequest`和`fetch`，是来做网络IO的，网络请求属于IO的一部分，一种是阻塞，一种是异步。
+
+浏览器里面绝大部分是异步的，写代码也最好写成异步的。如果写成同步的，DOM会被阻塞，比如用户点个按钮发一个请求，用户在整个网页就阻塞死了，不能再做别的事情了。
+
+while 1 和阻塞的概念不一样，while 1是很忙的意思，CPU高负荷运作，没空做之后的事情；阻塞是等着别人给一个结果（比如发送请求后等待服务器回应），其实不忙，CPU不转。
+
+
+
+**Nodejs的架构**
+
+开发者使用nodejs平台提供的API开发服务端的应用程序或者命令行脚手架
+
+nodejs没有权限管理，deno有权限管理
+
+Nodejs API由两方面提供，一方面是Nodejs bindings，另一方面是nodejs的C++的扩展
+
+如果想用一些nodejs平台没有提供的API，可以通过C或者C++编写扩展，比如买了个新鼠标，新鼠标的驱动程序是C语言写的，nodejs无法识别，可以用C语言结合的C语言写的驱动程序暴露给nodejs，使用户可以用js去操控鼠标。
+
+nodejs和V8是C语言和C++语言开发的。V8的职责是nodejs的runtime，没有别的作用，V8没有BOM的DOM，只有Js。
+
+libuv实现异步，事件驱动，和非阻塞IO，V8负责Js。两者结合共同实现JavaScript语言的异步驱动。
+
+c-ares 是用来做DNS解析的，http parser是用来解析HTTP请求的 ，OpenSSL是用来做加密解密的， zlib是压缩解压缩的库，这些库都是用C语言编写的。
+
+nodejs主要负责任务分发，整合了其他语言和其他引擎的功能，尽量让C和C++去做擅长的事情。如果某些功能能用C或者C++实现 ，少用js的模块去实现，尽量使用nodejs提供的原生的模块做事情。反面例子是，比如一个实现文件压缩功能的库，如果大部分语言使用js写的而不是C写的，就降低了效率。
+
+
+
+**Terminal和Shell**
+
+Terminal是提供可交互式命令行的窗口，让用户可以和计算机内核交互的操作界面。（和图形操作界面相对）
+
+shell是terminal的执行环境，比如bash，oh-my-zsh， sh
+
+shell section，每次运行shell有自己的section吧，比如可以临时切换成比如node的不同版本，好处是以前大家在同一台"大"的电脑上开发，大家可以使用不同的shell，都相对独立，版本不会互相干扰
+
+node的命令行环境叫[repl](https://nodejs.org/api/repl.html)
+
+
+
+**Nvm**
+
+[macOs和Linux安装](https://github.com/nvm-sh/nvm)   [Windows安装](https://github.com/coreybutler/nvm-windows)
+
+（用windows还没安装Linux的同学建议在系统自带的Microsoft store中安装[Ubuntu](https://www.microsoft.com/en-au/p/ubuntu-2004-lts/9n6svws3rx71?activetab=pivot:overviewtab)）
+
+nvm是nodejs的版本管理工具，可以让你在同一台机器上安装，切换和同时使用不同版本的nodejs的工具。
+
+常用指令
+
+```
+nvm 查看所有可以使用的nvm指令
+nvm version 查看当前的版本
+nvm ls-remote 列出所有可以安装的node版本号
+nvm install 14.15.3 安装指定版本号的node
+nvm current 查看当前node版本
+nvm ls 列出所有已经安装的node版本
+nvm use 14.15.0 切换node的版本，临时切换
+nvm alias default 14.15.3 永久切换node版本
+```
+
+
+
+**Web Server**
+
+TCP/HTTP  DNS
+
+Network Headers 底下全要掌握
+
+TCP协议通常和IP协议一起工作
+
+IP地址在互联网确定计算机的唯一地址，比如142.256.67.196:442，142.256.67.196是IP地址，442是端口号，端口号只能唯一，不能被多个程序所占用，所有通讯都要加端口，http默认端口是80，https默认端口是443
+
+TCP协议会用IP建立一个长连接，用建立的通道通信，http是一个比较高端的协议
+
+DNS全程是Domain Name Space Server，购买某个域名后比如example.com，解析到IP地址上，输入网址，回车，浏览器向最近的DNS server 请求，解析到IP地址
+
+提前预习http, 老师推荐书籍http权威百科和[http维基百科](https://en.wikipedia.org/wiki/Hypertext_Transfer_Protocol)
+
+完全没有HTTP基础的同学可以看看老板第一节课讲的http和两个入门视频[http入门视频1](https://www.youtube.com/watch?v=pHFWGN-upGM)  [http入门视频2](https://www.youtube.com/watch?v=iYM2zFP3Zn0)
+
+（注:入门视频2中的express是一个快速搭建web server的库，和之后要学的Koa接近）
+
+[回到目录](#目录)
