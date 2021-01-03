@@ -5,6 +5,7 @@
 - [04-JavaScript](#04-javascript)
 - [05-Git Introduction](#05-git-introduction)
 - [06-Node.js: Basics of Node.js](#06-nodejs-basics-of-nodejs)
+- [07-Node.js: Introduction to npm and Koa](#07-nodejs-introduction-to-npm-and-koa)
 
 
 ## 01-Introduction & Web Tech
@@ -444,5 +445,161 @@ DNS全程是Domain Name Space Server，购买某个域名后比如example.com，
 完全没有HTTP基础的同学可以看看老板第一节课讲的http和两个入门视频[http入门视频1](https://www.youtube.com/watch?v=pHFWGN-upGM)  [http入门视频2](https://www.youtube.com/watch?v=iYM2zFP3Zn0)
 
 （注:入门视频2中的express是一个快速搭建web server的库，和之后要学的Koa接近）
+
+[回到目录](#目录)
+
+
+
+## 07-Node.js: Introduction to npm and Koa
+
+Hypertext Transfer Protocol，http是建立在tcp/it和dns之上的协议。[http维基百科](https://en.wikipedia.org/wiki/Hypertext_Transfer_Protocol)
+
+达成协议的前提是至少有两个个体，两个个体之间进行通信，一方按照规定的格式编码，另一方按照约定的格式解码
+
+http是基于请求和响应的通信标准，一方是客户端发出一个请求，另一方是服务端回应一个响应。一去一回是一个完整的http请求。可数段发出请求，服务端接受进行解析，发回一个响应报文
+
+客户端请求（建议动手敲一遍）：
+
+```http
+GET / HTTP/1.1    // 注意方法，路径，协议号中间用空格
+Host: www.example.com    // 键值对的格式
+```
+
+服务端响应（建议动手敲一遍）：
+
+```http
+HTTP/1.1 200 OK
+Date: Mon, 23 May 2005 22:38:34 GMT
+Content-Type: text/html; charset=UTF-8
+Content-Length: 155
+Last-Modified: Wed, 08 Jan 2003 23:11:55 GMT
+Server: Apache/1.3.3.7 (Unix) (Red-Hat/Linux)
+ETag: "3f80f-1b6-3e1cb03b"
+Accept-Ranges: bytes
+Connection: close
+
+<html>
+  <head>
+    <title>An Example Page</title>
+  </head>
+  <body>
+    <p>Hello World, this is a very simple HTML document.</p>
+  </body>
+</html>
+```
+
+注意中间有一个空行用来区分header和body部分，空行上面是header部分，空行下面是body部分
+
+[telnet伪造HTTP请求](（建议动手敲一遍）)
+
+curl承担client的角色，类似一个命令行的浏览器，可以在服务器上的linux系统上运行，curl可自定义各种请求参数，擅长模拟web请求。
+
+能编码http请求并发出请求的工具都可以叫做client
+
+
+
+**Header中的method**
+
+GET：从服务器上获取数据
+
+POST：创建请求
+
+PUT：修改请求
+
+DELETE：删除数据
+
+对应crud（create, read, update and delete），增删改查
+
+
+
+**Header中的path**
+
+Nodejs官方文档 [讲解URL](https://nodejs.org/dist/latest-v14.x/docs/api/url.html#url_url_strings_and_url_objects)
+
+```
+http://user:pass@sub.example.com:8080/p/a/t/h?query=string#hash
+
+┌────────────────────────────────────────────────────────────────────────────────────────────────┐
+│                                              href                                              │
+├──────────┬──┬─────────────────────┬────────────────────────┬───────────────────────────┬───────┤
+│ protocol │  │        auth         │          host          │           path            │ hash  │
+│          │  │                     ├─────────────────┬──────┼──────────┬────────────────┤       │
+│          │  │                     │    hostname     │ port │ pathname │     search     │       │
+│          │  │                     │                 │      │          ├─┬──────────────┤       │
+│          │  │                     │                 │      │          │ │    query     │       │
+"  https:   //    user   :   pass   @ sub.example.com : 8080   /p/a/t/h  ?  query=string   #hash "
+│          │  │          │          │    hostname     │ port │          │                │       │
+│          │  │          │          ├─────────────────┴──────┤          │                │       │
+│ protocol │  │ username │ password │          host          │          │                │       │
+├──────────┴──┼──────────┴──────────┼────────────────────────┤          │                │       │
+│   origin    │                     │         origin         │ pathname │     search     │ hash  │
+├─────────────┴─────────────────────┴────────────────────────┴──────────┴────────────────┴───────┤
+│                                              href                                              │
+└────────────────────────────────────────────────────────────────────────────────────────────────┘
+(All spaces in the "" line should be ignored. They are purely for formatting.)
+```
+
+console中运行`condocument.location.href`可以得到`href`
+
+http默认端口是80，https默认端口是443
+
+#hash部分只在浏览器中使用，在request URL中没有，不会发送到服务器
+
+
+
+**Header中的http version**
+
+HTTP协议在1996年发布1.0版本，http是基于请求和响应的，TCP会建立一个长连接。1.0版本会先建立一个tcp连接，发送请求和响应，完成后切断tcp连接，缺点有速度慢，浪费资源。在1996年发布了1.1版本，在一定时间内会keep alive，不立马断开tcp连接。
+
+
+
+**Header中的optional header**
+
+option al**户自定义的header，不在http规范中，x是extend的缩写
+
+`Content-Length: 155`代表客户端读到固定长度后停止，Content-Length的计算式服务端的职责
+
+`Content-Type: text/html; charset=UTF-8` 告诉客户端是什么格式，浏览器接收到是html后渲染出html页面，text plain， application json， image/png， image/gif，webp。[MDN的ContentType文档](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Content-Type)
+
+cookie，浏览器会存储一小部分数据（不超过4kb），下次发送请求会一起带上，在开发者工具Application中可以查看，cookie是按照域名来储存的。http是基于请求和相应的，服务端不知道用户是谁。服务器可以通过cookie里的hash值识别出用户是谁。cookie是由服务端生成，只存储在同一台点的同一个浏览器里。
+
+
+
+**Status codes**  
+
+- Informational `1XX`
+- Successful `2XX`  200宽泛的成功
+- Redirection `3XX`  301永久重定向，302临时重定向
+- Client Error `4XX`  400宽泛的客户端问题，401未授权没登录了，402需要购买，403登录了没权限，404未查询到请求的资源
+- Server Error `5XX`  500宽泛的服务端问题，501未实现，502网关错误，503服务器挂了
+
+[List of HTTP status codes维基百科](https://en.wikipedia.org/wiki/List_of_HTTP_status_codes)
+
+
+
+**Npm（node packgage manager）**
+
+```
+npm init //初始化一个npm的项目，生成package.json配置文件
+npm install // 安装package.json中记录的依赖的包，简写是 npm i koa
+npm install koa //安装koa模块 
+npm info koa // 查询koa包的信息
+npm install mocha -D // 安装mocha到devDependencies
+npm prune --production // 删除devDependencies
+```
+
+dependencies记录该项目的依赖，devDependencies记录开发环境下需要的依赖，不会发布在production中
+
+包会尽量打平放到`node_modules`，如果出现版本冲突，后下载的版本会放在子目录的`node_modules`下
+
+包版本遵循Semantic version，包括三个数字`MAJOR.MINOR.PATCH`不兼容的改动要发一个新的MAJOR版本。MINOR代表是兼容的版本，比如性能优化或者增加新功能。PATCH修改了bug。
+
+- `^2.5.0 ` 表示MAJOR不变，MINOR和PATCH取最大数字，也就是最新的
+
+- `~2.5.3 ` 表示MAJOR和MINOR不变，PATCH取最新的
+
+- `2.5.0 ` 表示指定安装这个版本
+
+- `*` 表示选择latest的dist-tag下的版本，`*`等价于`latest`，`next`表示选择next的dist-tag下的版本
 
 [回到目录](#目录)
