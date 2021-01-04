@@ -1,16 +1,14 @@
-[01-Introduction & Web Tech](#01-Introduction&Web_Tech)
-
-[02-HTML & CSS](#02-HTML&CSS)
-
-[03-CSS & Sass](#03-CSS&Sass)
-
-[04-JavaScript](#04-JavaScript)
-
-[05-Git Introduction](#05-Git_Introduction)
-
+## 目录
+- [01-Introduction & Web Tech](#01-introduction--web-tech)
+- [02-HTML & CSS](#02-html--css)
+- [03-CSS & Sass](#03-css--sass)
+- [04-JavaScript](#04-javascript)
+- [05-Git Introduction](#05-git-introduction)
+- [06-Node.js: Basics of Node.js](#06-nodejs-basics-of-nodejs)
+- [07-Node.js: Introduction to npm and Koa](#07-nodejs-introduction-to-npm-and-koa)
 
 
-## 01-Introduction&Web_Tech
+## 01-Introduction & Web Tech
 
 安装ssl证书的网站：certbot
 
@@ -28,9 +26,11 @@ shift + f5 清空cache刷新
 
 genymotion debug安卓设备
 
+[回到目录](#目录)
 
 
-## 02-HTML&CSS
+
+## 02-HTML & CSS
 
 margin重叠，哪个大用哪个
 
@@ -38,9 +38,11 @@ BEM命名
 
 box-sizing: border-box (child加padding后能保持在parent里面)
 
+[回到目录](#目录)
 
 
-## 03-CSS&Sass
+
+## 03-CSS & Sass
 
 bootswatch 修改bootstrap默认变量
 
@@ -78,9 +80,11 @@ sass: cat style compressed 等命令行指令
 
 ![specifishity](https://specifishity.com/specifishity.png)
 
+[回到目录](#目录)
+
+
+
 ## 04-JavaScript
-
-
 
 和js相关的技术：electron  nodejs  typescript
 
@@ -199,9 +203,11 @@ getAttribute() setAttribute()
 
 关于同步sync和异步async，建议看[一文看懂JS的异步](https://zhuanlan.zhihu.com/p/66593213)
 
+[回到目录](#目录)
 
 
-## 05-Git_Introduction
+
+## 05-Git Introduction
 
 别让地铁站都比你努力！
 
@@ -217,7 +223,7 @@ git pull是从git上拉取最新代码，可能会出现冲突合并覆盖的问
 
 使用ssh key来连接
 
-首先搞懂clone，git branch，commit push， rebase ，pull request merge，这几个就够了clone，git branch，commit push， rebase ，pull request merge
+首先搞懂clone，git branch，commit push， rebase ，pull request merge，这几个就够了
 
 rebase可以用到自己的branch上，不要用到public branch上
 
@@ -285,6 +291,315 @@ git push // 推送新的dev
 
 对命令行比较吃力和没理解git流程的同学建议看这两个视频（总共20分钟）
 
-[git教程入门](https://www.bilibili.com/video/BV1KD4y1S7FL)
-[git教程进阶]( https://www.bilibili.com/video/BV1hA411v7qX?spm_id_from=333.788.b_636f6d6d656e74.4)
+[git教程入门](https://www.bilibili.com/video/BV1KD4y1S7FL)   [git教程进阶]( https://www.bilibili.com/video/BV1hA411v7qX?spm_id_from=333.788.b_636f6d6d656e74.4)
 
+[回到目录](#目录)
+
+
+
+## 06-Node.js: Basics of Node.js
+
+**前端和服务端的区别**
+
+nodejs是一门服务端开发的语言和工具
+
+前端：用户能交互，看到，直接感知到的部分
+
+服务端（后端）：用来储存和管理数据，并且解决客户端无法完成的事情，比如分发。
+
+nodejs和koa虽然是js代码，但是跑在服务端上的，不能运行在浏览器上，注意和前端的js代码区分
+
+服务端代码量没那么多，对计算机基础知识较高
+
+找到一个适合自己的方向
+
+
+
+**BOM & DOM & Js Object**
+
+nodejs是一门用js语言的运行环境，由谷歌浏览器Chrome的V8引擎构建。
+
+浏览器中有三个大类的对象：BOM（Browser Object Model），DOM（Document Object Model），JavaScript Object。
+
+BOM对象在JavaScript引擎中是不存在的，只存在在浏览器里，不是可视化的元素，比如`navigator`, `document.location`, `windows.location`	。
+
+DOM是能够被选中和审查的。
+
+JavaScript Object有JavaScript引擎提供。
+
+BOM和DOM在nodejs中都不存在，BOM和DOM都由浏览器的渲染引擎提供，nodejs在js中引擎中通用的，但不在BOM和DOM中通用。
+
+
+
+**异步和事件驱动**
+
+nodejs是异步开发和事件驱动，以厨房为例，比如要烧汤，第一个步骤要烧水，第二个步骤要处理食材，洗菜，切菜。第一个做法，简单的做法，先洗菜，切菜，然后烧水，最后烧汤。第二个做法，先烧水（10分钟），在烧水的过程中洗菜切菜（15分钟），水烧好之后，等五分钟切好菜，再烧汤。
+
+一次只做一个事情，而且一个事情做不完就叫做同步（sync），有时候也成为阻塞（blocking）。不是由分配任务的人去执行，烧水是由炉子烧的，小明自己没有被占用，而是在等待炉子烧水，被称为阻塞。优点是简单，不容易出错。
+
+异步（async）是相对的概念，任务分发完了，自己没有事情做，小红去做别的事情了，可以把两件事情并行的做，可以节约资源。优点能省时间，缺点存在风险，操作复杂，容易乱套。
+
+事件驱动是解决容易乱套的一种方法，和闹钟类似。给第一锅汤旁边放一个闹钟，烧十分钟，第二锅汤旁边放一个闹钟，烧十分钟。分配任务的人不用记这些东西，只要被处罚(triggered)，由定时机制触发。定时机制比如闹钟或者让另一个人去做，做好了通知，称为事件驱动。
+
+Nodejs是第一个把事件驱动作为编程开发的平台。
+
+
+
+**Nodejs非阻塞IO**
+
+stdin，stdout是标准的输入输出。
+
+操作系统在默认处理IO的时候是同步，也称为是阻塞的，如果磁盘的读写没有完成，操作系统会阻塞，不会去干别的事情。
+
+nodejs读取文件的时候会给操作系统发送读取文件的任务，然后nodejs本身被释放出来了。读取文件的工作由操作系统完成，操作系统读取完文件后给nodejs发送信号，告诉nodejs文件已经读取完了，nodejs接收结果。
+
+nodejs的异步和事件驱动解决了IO的问题，实现了异步IO，包括std的IO，网络的IO，磁盘的IO。
+
+总结：nodejs是用了谷歌chrome的V8引擎，配合了异步事件驱动引擎去解决非阻塞IO问题的开发平台。
+
+
+
+**浏览器中的非阻塞IO**
+
+浏览器里面解决非阻塞IO的方法是http。
+
+浏览器中有两个BOM对象`XMLHttpRequest`和`fetch`，是来做网络IO的，网络请求属于IO的一部分，一种是阻塞，一种是异步。
+
+浏览器里面绝大部分是异步的，写代码也最好写成异步的。如果写成同步的，DOM会被阻塞，比如用户点个按钮发一个请求，用户在整个网页就阻塞死了，不能再做别的事情了。
+
+while 1 和阻塞的概念不一样，while 1是很忙的意思，CPU高负荷运作，没空做之后的事情；阻塞是等着别人给一个结果（比如发送请求后等待服务器回应），其实不忙，CPU不转。
+
+
+
+**Nodejs的架构**
+
+开发者使用nodejs平台提供的API开发服务端的应用程序或者命令行脚手架
+
+nodejs没有权限管理，deno有权限管理
+
+Nodejs API由两方面提供，一方面是Nodejs bindings，另一方面是nodejs的C++的扩展
+
+如果想用一些nodejs平台没有提供的API，可以通过C或者C++编写扩展，比如买了个新鼠标，新鼠标的驱动程序是C语言写的，nodejs无法识别，可以用C语言结合的C语言写的驱动程序暴露给nodejs，使用户可以用js去操控鼠标。
+
+nodejs和V8是C语言和C++语言开发的。V8的职责是nodejs的runtime，没有别的作用，V8没有BOM的DOM，只有Js。
+
+libuv实现异步，事件驱动，和非阻塞IO，V8负责Js。两者结合共同实现JavaScript语言的异步驱动。
+
+c-ares 是用来做DNS解析的，http parser是用来解析HTTP请求的 ，OpenSSL是用来做加密解密的， zlib是压缩解压缩的库，这些库都是用C语言编写的。
+
+nodejs主要负责任务分发，整合了其他语言和其他引擎的功能，尽量让C和C++去做擅长的事情。如果某些功能能用C或者C++实现 ，少用js的模块去实现，尽量使用nodejs提供的原生的模块做事情。反面例子是，比如一个实现文件压缩功能的库，如果大部分语言使用js写的而不是C写的，就降低了效率。
+
+
+
+**Terminal和Shell**
+
+Terminal是提供可交互式命令行的窗口，让用户可以和计算机内核交互的操作界面。（和图形操作界面相对）
+
+shell是terminal的执行环境，比如bash，oh-my-zsh， sh
+
+shell section，每次运行shell有自己的section吧，比如可以临时切换成比如node的不同版本，好处是以前大家在同一台"大"的电脑上开发，大家可以使用不同的shell，都相对独立，版本不会互相干扰
+
+node的命令行环境叫[repl](https://nodejs.org/api/repl.html)
+
+
+
+**Nvm**
+
+[macOs和Linux安装](https://github.com/nvm-sh/nvm)   [Windows安装](https://github.com/coreybutler/nvm-windows)
+
+（用windows还没安装Linux的同学建议在系统自带的Microsoft store中安装[Ubuntu](https://www.microsoft.com/en-au/p/ubuntu-2004-lts/9n6svws3rx71?activetab=pivot:overviewtab)）
+
+nvm是nodejs的版本管理工具，可以让你在同一台机器上安装，切换和同时使用不同版本的nodejs的工具。
+
+常用指令
+
+```
+nvm 查看所有可以使用的nvm指令
+nvm version 查看当前的版本
+nvm ls-remote 列出所有可以安装的node版本号
+nvm install 14.15.3 安装指定版本号的node
+nvm current 查看当前node版本
+nvm ls 列出所有已经安装的node版本
+nvm use 14.15.0 切换node的版本，临时切换
+nvm alias default 14.15.3 永久切换node版本
+```
+
+
+
+**Web Server**
+
+TCP/HTTP  DNS
+
+Network Headers 底下全要掌握
+
+TCP协议通常和IP协议一起工作
+
+IP地址在互联网确定计算机的唯一地址，比如142.256.67.196:442，142.256.67.196是IP地址，442是端口号，端口号只能唯一，不能被多个程序所占用，所有通讯都要加端口，http默认端口是80，https默认端口是443
+
+TCP协议会用IP建立一个长连接，用建立的通道通信，http是一个比较高端的协议
+
+DNS全程是Domain Name Space Server，购买某个域名后比如example.com，解析到IP地址上，输入网址，回车，浏览器向最近的DNS server 请求，解析到IP地址
+
+提前预习http, 老师推荐书籍http权威百科和[http维基百科](https://en.wikipedia.org/wiki/Hypertext_Transfer_Protocol)
+
+完全没有HTTP基础的同学可以看看老板第一节课讲的http和两个入门视频[http入门视频1](https://www.youtube.com/watch?v=pHFWGN-upGM)  [http入门视频2](https://www.youtube.com/watch?v=iYM2zFP3Zn0)
+
+（注:入门视频2中的express是一个快速搭建web server的库，和之后要学的Koa接近）
+
+[回到目录](#目录)
+
+
+
+## 07-Node.js: Introduction to npm and Koa
+
+Hypertext Transfer Protocol，http是建立在tcp/it和dns之上的协议。[http维基百科](https://en.wikipedia.org/wiki/Hypertext_Transfer_Protocol)
+
+达成协议的前提是至少有两个个体，两个个体之间进行通信，一方按照规定的格式编码，另一方按照约定的格式解码
+
+http是基于请求和响应的通信标准，一方是客户端发出一个请求，另一方是服务端回应一个响应。一去一回是一个完整的http请求。可数段发出请求，服务端接受进行解析，发回一个响应报文
+
+客户端请求（建议动手敲一遍）：
+
+```http
+GET / HTTP/1.1    // 注意方法，路径，协议号中间用空格
+Host: www.example.com    // 键值对的格式
+```
+
+服务端响应（建议动手敲一遍）：
+
+```http
+HTTP/1.1 200 OK
+Date: Mon, 23 May 2005 22:38:34 GMT
+Content-Type: text/html; charset=UTF-8
+Content-Length: 155
+Last-Modified: Wed, 08 Jan 2003 23:11:55 GMT
+Server: Apache/1.3.3.7 (Unix) (Red-Hat/Linux)
+ETag: "3f80f-1b6-3e1cb03b"
+Accept-Ranges: bytes
+Connection: close
+
+<html>
+  <head>
+    <title>An Example Page</title>
+  </head>
+  <body>
+    <p>Hello World, this is a very simple HTML document.</p>
+  </body>
+</html>
+```
+
+注意中间有一个空行用来区分header和body部分，空行上面是header部分，空行下面是body部分
+
+[telnet伪造HTTP请求](（建议动手敲一遍）)
+
+curl承担client的角色，类似一个命令行的浏览器，可以在服务器上的linux系统上运行，curl可自定义各种请求参数，擅长模拟web请求。
+
+能编码http请求并发出请求的工具都可以叫做client
+
+
+
+**Header中的method**
+
+GET：从服务器上获取数据
+
+POST：创建请求
+
+PUT：修改请求
+
+DELETE：删除数据
+
+对应crud（create, read, update and delete），增删改查
+
+
+
+**Header中的path**
+
+Nodejs官方文档 [讲解URL](https://nodejs.org/dist/latest-v14.x/docs/api/url.html#url_url_strings_and_url_objects)
+
+```
+http://user:pass@sub.example.com:8080/p/a/t/h?query=string#hash
+
+┌────────────────────────────────────────────────────────────────────────────────────────────────┐
+│                                              href                                              │
+├──────────┬──┬─────────────────────┬────────────────────────┬───────────────────────────┬───────┤
+│ protocol │  │        auth         │          host          │           path            │ hash  │
+│          │  │                     ├─────────────────┬──────┼──────────┬────────────────┤       │
+│          │  │                     │    hostname     │ port │ pathname │     search     │       │
+│          │  │                     │                 │      │          ├─┬──────────────┤       │
+│          │  │                     │                 │      │          │ │    query     │       │
+"  https:   //    user   :   pass   @ sub.example.com : 8080   /p/a/t/h  ?  query=string   #hash "
+│          │  │          │          │    hostname     │ port │          │                │       │
+│          │  │          │          ├─────────────────┴──────┤          │                │       │
+│ protocol │  │ username │ password │          host          │          │                │       │
+├──────────┴──┼──────────┴──────────┼────────────────────────┤          │                │       │
+│   origin    │                     │         origin         │ pathname │     search     │ hash  │
+├─────────────┴─────────────────────┴────────────────────────┴──────────┴────────────────┴───────┤
+│                                              href                                              │
+└────────────────────────────────────────────────────────────────────────────────────────────────┘
+(All spaces in the "" line should be ignored. They are purely for formatting.)
+```
+
+console中运行`condocument.location.href`可以得到`href`
+
+http默认端口是80，https默认端口是443
+
+#hash部分只在浏览器中使用，在request URL中没有，不会发送到服务器
+
+
+
+**Header中的http version**
+
+HTTP协议在1996年发布1.0版本，http是基于请求和响应的，TCP会建立一个长连接。1.0版本会先建立一个tcp连接，发送请求和响应，完成后切断tcp连接，缺点有速度慢，浪费资源。在1996年发布了1.1版本，在一定时间内会keep alive，不立马断开tcp连接。
+
+
+
+**Header中的optional header**
+
+option al**户自定义的header，不在http规范中，x是extend的缩写
+
+`Content-Length: 155`代表客户端读到固定长度后停止，Content-Length的计算式服务端的职责
+
+`Content-Type: text/html; charset=UTF-8` 告诉客户端是什么格式，浏览器接收到是html后渲染出html页面，text plain， application json， image/png， image/gif，webp。[MDN的ContentType文档](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Content-Type)
+
+cookie，浏览器会存储一小部分数据（不超过4kb），下次发送请求会一起带上，在开发者工具Application中可以查看，cookie是按照域名来储存的。http是基于请求和相应的，服务端不知道用户是谁。服务器可以通过cookie里的hash值识别出用户是谁。cookie是由服务端生成，只存储在同一台点的同一个浏览器里。
+
+
+
+**Status codes**  
+
+- Informational `1XX`
+- Successful `2XX`  200宽泛的成功
+- Redirection `3XX`  301永久重定向，302临时重定向
+- Client Error `4XX`  400宽泛的客户端问题，401未授权没登录了，402需要购买，403登录了没权限，404未查询到请求的资源
+- Server Error `5XX`  500宽泛的服务端问题，501未实现，502网关错误，503服务器挂了
+
+[List of HTTP status codes维基百科](https://en.wikipedia.org/wiki/List_of_HTTP_status_codes)
+
+
+
+**Npm（node packgage manager）**
+
+```
+npm init //初始化一个npm的项目，生成package.json配置文件
+npm install // 安装package.json中记录的依赖的包，简写是 npm i koa
+npm install koa //安装koa模块 
+npm info koa // 查询koa包的信息
+npm install mocha -D // 安装mocha到devDependencies
+npm prune --production // 删除devDependencies
+```
+
+dependencies记录该项目的依赖，devDependencies记录开发环境下需要的依赖，不会发布在production中
+
+包会尽量打平放到`node_modules`，如果出现版本冲突，后下载的版本会放在子目录的`node_modules`下
+
+包版本遵循Semantic version，包括三个数字`MAJOR.MINOR.PATCH`不兼容的改动要发一个新的MAJOR版本。MINOR代表是兼容的版本，比如性能优化或者增加新功能。PATCH修改了bug。
+
+- `^2.5.0 ` 表示MAJOR不变，MINOR和PATCH取最大数字，也就是最新的
+
+- `~2.5.3 ` 表示MAJOR和MINOR不变，PATCH取最新的
+
+- `2.5.0 ` 表示指定安装这个版本
+
+- `*` 表示选择latest的dist-tag下的版本，`*`等价于`latest`，`next`表示选择next的dist-tag下的版本
+
+[回到目录](#目录)
