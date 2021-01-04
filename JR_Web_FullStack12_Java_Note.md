@@ -5,8 +5,8 @@
 [03 CSS and SASS]()  
 [04 JavaScript]()  
 [05 Git](#05-Git)  
-[06 JavaScript ES6](#06-JavaScript-ES6-ECMAScript)
-
+[06 JavaScript ES6](#06-JavaScript-ES6-ECMAScript)  
+[07 React JS Introduction](#07-ReactJS-Introduction)
 
 ## 05-Git
 A Distrbuted Version Control System.  
@@ -251,3 +251,142 @@ const [a, ...abc] = items;
 -> const {绿码， ...其余的} = 人;
 check(绿码);
 ```
+
+
+## 07-ReactJS-Introduction
+
+逻辑计算中不要使用三元表达式并进行嵌套
+```
+const sp = {
+  1: 'Direct',
+  2: '1 Stop',
+  36: 'DreamLine',
+};
+
+const default = (n) => `${n - 1} stops`;
+const getStops = (flights) => {
+  const { length } = flights;\
+  const spexpress = sp[length];
+
+  if (spexpress) {
+    return sp;
+  }
+  return default[length];
+}
+
+```
+
+### 短路计算
+a......b  
+&&短路计算中  
+a是决定值，b是显示值  
+a = true  
+b = 'Alice'  
+a && b => 'Alice'  
+
+a = false  
+b = 'Alice'  
+a && b => false
+
+
+||短路计算中  
+a同时是决定值和显示值， b是备选显示值  
+a || b  
+只要a是true，显示a的值  
+只要a是false，显示b的值  
+
+
+## Readable, Maintainable, Reusable!!!
+
+正常人的思维去写代码  
+写其他人可以看懂的代码！！  
+千万不要为了写代码而写代码，注意打草稿的重要性。  
+不停自我质疑，我的代码是否readable，若不是怎么写更加readable。
+
+```
+| Income thresholds  | Rate  | Tax payable on this income |
+| ------------------ | ------ | -------------------------- |
+| $0 – $18,200       | 0%    | Nil |
+| $18,201 – $37,000  | 19%   | 19c for each $1 over $18,200 |
+| $37,001 – $90,000  | 32.5% | $3,572 plus 32.5% of amounts over $37,000 |
+| $90,001 – $180,000 | 37%   | $20,797 plus 37% of amounts over $90,000 |
+| $180,001 and over  | 45%   | $54,096 plus 45% of amounts over $180,000 |
+```
+
+```
+const caulculatetax = (salary) => {
+  const taxTable = {
+    { min: 0, max: 18200, accumulate: 0, rate: 0 },
+    { min: 18200, max: 37000, accumulate: 0, rate: 0.19 },
+    { min: 37000, max: 90000, accumulate: 3572, rate: 0.325 },
+    { min: 90000, max: 120000, accumulate: 20797, rate: 0.37 },
+    { min: 120000, max: 180000, accumulate: 22311, rate: 0.39 },
+    { min: 180000, max: Number.POSITIVE_INFINITY, accumulate: 54097, rate: 0.45 },
+  };
+  const result = taxTable.find((row) => salary > row.min && salary < row.max);
+  const { accumulate, rate, min } = result;
+  const tax = (salary - min) * rate + accumulate;
+  return tax;
+}
+```
+
+### SOLID原则（代码理论黄金原则）
+面向对象设计
+1. 单一职责 (Single Responsibility) 每个代码块的职责是单一的
+2. 开闭原则 (Open Close) 对拓展开发，对修改关闭
+3. 里氏替换 (Liskov Substitution)
+4. 接口隔离 (Interface-Segregation)
+5. 依赖注入 (Dependency Injection) 对代码块的依赖不应该在代码块里面，由外部注入
+
+单一职责、开关原则、依赖注入（半本秘籍走天下）高内聚、低耦合
+
+```
+const Tax_Table = {
+  { min: 0, max: 18200, accumulate: 0, rate: 0 },
+  { min: 18200, max: 37000, accumulate: 0, rate: 0.19 },
+  { min: 37000, max: 90000, accumulate: 3572, rate: 0.325 },
+  { min: 90000, max: 120000, accumulate: 20797, rate: 0.37 },
+  { min: 120000, max: 180000, accumulate: 22311, rate: 0.39 },
+  { min: 180000, max: Number.POSITIVE_INFINITY, accumulate: 54097, rate: 0.45 },
+};
+
+const calculateTax = (salary, taxTable) => {
+
+  const result = taxTable.find((row) => salary > row.min && salary < row.max);
+  const { accumulate, rate, min } = result;
+  const tax = (salary - min) * rate + accumulate;
+  return tax;
+}
+
+calculateTax(150000, Tax_Table);
+calculateTax(150000, Tax_Table);
+calculateTax(150000, Tax_Table);
+
+```
+
+### Project 1
+
+HTML, CSS 天生不能复用  
+JS和HTML没有联动性
+
+## ReactJS (A JavaScript Library for building user interfaces)
+
+Declarative  
+Component-Based  
+Learn once, write anywhere  
+### Declarative
+声明式  
+不要写命令式的代码
+
+### Component-based
+组件化 Single Responsibility  
+组件化 （查看React课件3.b）
+
+### Learn once, write anywhere
+React + ReactDOM = Web application  
+React + ReactNative = Mobile application  
+React + ReactVR = VR application  
+React + ReactTV = TV application  
+
+Thinking in React  
+https://reactjs.org/docs/thinking-in-react.html
