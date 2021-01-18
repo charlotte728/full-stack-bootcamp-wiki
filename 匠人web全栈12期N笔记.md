@@ -7,6 +7,8 @@
 - [06-Node.js: Basics of Node.js](#06-nodejs-basics-of-nodejs)
 - [07-Node.js: Introduction to npm and Koa](#07-nodejs-introduction-to-npm-and-koa)
 - [08-Agile](#08-Agile)
+- [09-Node.js: Documents](#09-nodejs-documents)
+- [10-Interview and CV Linkedin CV](#10-interview-and-cv-linkedin-cv)
 
 
 ## 01-Introduction & Web Tech
@@ -695,3 +697,200 @@ Task 把任务分成小的过程
 
 [回到目录](#目录)
 
+
+
+## 09-Node.js: Documents
+
+[Node.js文档](https://nodejs.org/dist/latest-v14.x/docs/api/)
+
+内置nodejs的东西主要分为两大类，模块和全局对象。
+
+模块需要使用`require()`引入，比如`const fs = require('fs')`
+
+全局对象可以直接使用，在nodejs repl中敲`globe`可查看
+
+用node运行js文件，在终端中输入`node fileName.js`，不是在repl下运行。
+
+尽量使用const 和 let，不用var，如果一个变量不会被重新赋值，用const，如果会被修改，用let。
+
+
+
+**Assertion概念**
+
+Assertion 软件测试，类似产品出厂前的测试。软件测试分为黑盒测试和白盒测试。黑盒测试指，对于测试者，不了解内部代码是如何实现的，只看表面能使用就可以，黑盒的软件测试工程师技术含量低，逐渐被取代。白盒测试指，对于测试者，不关心外部结果，只关心内部组件的正确性，只要内部功能组件是正确的，组合起来也应该是正确，白盒测试对测试者技术要求高。
+
+Assertion（断言）属于白盒测试中的一种方法，被测试的人对预期结果有一定的答案。比如测试1+1，结果断言是2，如果结果不是2表示不通过测试。
+
+`assert.ok(value[, message])`第一个值是肯定要传的，中括号内的值为optional，可填可不填。`assert.ok(1)`如果传入的值为真，不会有任何事发生，`assert.ok(0)`程序会退出
+
+`assert.strictEqual()`类似`===`
+
+
+
+**Process**
+
+`Child processes`子进程，process从属于操作系统，线程从属于进程。第一次被启动的进程叫做`Parent process`，启动parent进程之后再启动的是子进程。kill用来给进程发信号
+
+process.env是系统的环境变量，[维基百科](https://en.wikipedia.org/wiki/Environment_variable)，process.env是一个json文本，里面的键值对都是字符串，可以用于配置和加密。在操作系统里面，每一个进程都是相对隔离的，不会互相干扰。
+
+process.argv 可用于编写命令行工具
+
+一个进程和现成都只能占用一个CPU，V8是单线程单进程，chrome是多进程架构，每个tap页算一个进程，不会浪费CPU多核资源
+
+cluster集群，根据CPU的核心数自动创建多进程，先判断CPU核心数量，创建主进程，再创建子进程。
+
+
+
+**Event**
+
+设计模式[维基百科](https://en.wikipedia.org/wiki/Software_design_pattern)，设计模式是在软件开发中被总结出来的最佳实践，通常认为是高效的方式，推荐这么去写代码。
+
+观察者模式是设计模式中的一种，观察者模式有一个主体和一个观察者，当观察者观察到一些现象后会做出一些动作。在技术上被称为事件驱动模型。
+
+Event模块提供EventEmitter这个库，基本用法：
+
+```js
+const myEmitter = new MyEmitter();
+let m = 0;
+myEmitter.on('event', () => {
+  console.log(++m);
+});
+myEmitter.emit('event');
+// Prints: 1
+myEmitter.emit('event');
+// Prints: 2
+```
+
+需要很好地掌握，虽然EventEmitter也被大多数封装了，但是这个API被保留下来了，掌握了可以更好地理解很多代码。
+
+
+
+**Global Objects**
+
+V8只认识一长串js代码，没有文件和模块的概念
+
+Nodejs把代码包装在一个function再传给V8，类似下面的代码
+
+```js
+function (__dirname, __filename, require, export, module) {
+    const assert = require('assert')
+}
+```
+
+
+
+**Path**
+
+Path解决不同操作系统下的路径问题，处理相对路径，拼接路径等等
+
+比如拼接路径用`path.join` ，不同系统下的`path.sep`可能不一样
+
+
+
+**Querystring**
+
+```js
+// a=1&b=2&c=3 是一条querystring，?a=1&b=2&c=3 是 search
+> querystring.parse("a=1&b=2&c=3")  // 将querystring转换为object
+{ a: '1', b: '2', c: '3'}
+> querystring.stringify({ a: '1', b: '2', c: '3'}) // 将object转换为querystring
+'a=1&b=2&c=3'
+```
+
+
+
+**Timer**
+
+setTimeout() 延时执行
+
+setInterval() 间隔执行 clearInterval()停止
+
+setImmediate() 在下一个eventloop中执行，尽快去执行
+
+setTimeout(func，0) 不等于 setImmediate()
+
+
+
+**Nodejs需要掌握的模块**
+
+需要重点掌握的（仔细看一遍文档）: **Events** (design pattern的一种), **File system** (熟练掌握readfile和writefile)，**Globals**，**CommonJS**, **Path**, **Process**, **Timer**, **URL**
+
+轻度了解的: Child processes, Cluster, Crypto, Errors, Utilities, WASI, Worker threads, Zlib
+
+进阶掌握的: Buffer, HTTP (协议要了解)
+
+
+
+## 10-Interview and CV Linkedin CV
+
+推荐使用匠人LMS内的简历系统，在LMS内左侧导航栏选择“我的简历”
+
+在澳洲找工作更不看重实习经验，主要看实际的工作经验。在国内找工作看重实习经验，最好有多份实习。
+
+澳洲实习不算正式employee，不会给交税，国内实习一般不允许毕业生。
+
+Graduate Program对于IT专业一般不要PR。
+
+
+
+Entry level一般不要求工作经验，有工作经验的能加分。
+
+Junior level一般需要1-2年工作经验。
+
+在澳洲第一份工作一般不挑，有offer可以直接去。
+
+推荐匠人能力强的同学申请Mid level，因为申请的人较少。
+
+
+
+国内找工作注意校招时间，注重第一学历，群面容易遇到名校大佬，想清楚自己的优势，实习经验能加分。
+
+同时注重硬实力和软实力的培养，强调沟通能力（包括理解能力），在BA提完需求后，可以复述询问确认一遍。平时多积累英文的专业名词。
+
+澳洲产品型公司注重人才，人才贡献的价值可能大于小时数，经常出现工资高，活少的情况，对代码水平高。咨询服务类公司需要时间积累，做到高级别后工资高。
+
+国内互联网大厂Tier1校招看重学历背景，社招不看重学历，而看重过去的工作经验和技术能力。国有企业看重政治面貌，籍贯，硕士学历，建议去平安，不建议去四大银行。国内咨询类公司能混到partner薪水高。回国签合同要看清楚竞业条款。
+
+
+
+ribit有很多初级岗位的工作，seek上猎头和中大型多，Linkedin找到工作概率高，简历质量高。indeed中小型公司多。
+
+澳洲找工作不太看重算法，国内注重算法，要去刷牛客网等。
+
+谈薪水的时候不要让公司开，建议第一份工作要7w-7w5的工资。
+
+如果公司在犹豫，主动降薪可以提高offer率。
+
+glassdoor可以查看薪水和公司评价
+
+
+
+Linkedin 注重SEO和Readaility
+
+先加很多open networker，目标加到500好友以上。
+
+about me里面把所有知道的和不知道到的skill都写上，提高SEO用。
+
+转行前的工作经验可以放，尽量相关度高。政府机关类企业的工作经验不建议放。、
+
+
+
+简历内文本可被搜索，第一面简历很重要。
+
+注意岗位技术栈匹配，技术要有深度，项目要上线，专业，能商业。
+
+简历别用明度的颜色，黑白打印会看不清。
+
+project经验和工作经验都放在experience里，不做区分。
+
+家庭住址不精确到门牌号，写到区就好。
+
+邮箱别用QQ邮箱，要用专业名字命名的邮箱，尽量不要出现数字，不要出现生日年月。
+
+Summary部分要突出亮点，不要写自己是学生，从哪里毕业。
+
+Skills写清楚版本号和更具体的服务，体现专业性。
+
+STAR method
+
+认真对照老板的PPT和录屏修改简历，给老师review的时候不要出现说过的问题。
