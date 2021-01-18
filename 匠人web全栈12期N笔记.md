@@ -33,6 +33,8 @@ genymotion debug安卓设备
 
 
 
+
+
 ## 02-HTML & CSS
 
 margin重叠，哪个大用哪个
@@ -42,6 +44,8 @@ BEM命名
 box-sizing: border-box (child加padding后能保持在parent里面)
 
 [回到目录](#目录)
+
+
 
 
 
@@ -84,6 +88,8 @@ sass: cat style compressed 等命令行指令
 ![specifishity](https://specifishity.com/specifishity.png)
 
 [回到目录](#目录)
+
+
 
 
 
@@ -210,6 +216,8 @@ getAttribute() setAttribute()
 
 
 
+
+
 ## 05-Git Introduction
 
 别让地铁站都比你努力！
@@ -297,6 +305,8 @@ git push // 推送新的dev
 [git教程入门](https://www.bilibili.com/video/BV1KD4y1S7FL)   [git教程进阶]( https://www.bilibili.com/video/BV1hA411v7qX?spm_id_from=333.788.b_636f6d6d656e74.4)
 
 [回到目录](#目录)
+
+
 
 
 
@@ -450,6 +460,8 @@ DNS全程是Domain Name Space Server，购买某个域名后比如example.com，
 （注:入门视频2中的express是一个快速搭建web server的库，和之后要学的Koa接近）
 
 [回到目录](#目录)
+
+
 
 
 
@@ -609,6 +621,8 @@ dependencies记录该项目的依赖，devDependencies记录开发环境下需�
 
 
 
+
+
 ## 08-Agile
 
 Software Development Life cycle (SDLC)
@@ -696,6 +710,8 @@ Acceptance Criteria 重点在提出符合规范的结果
 Task 把任务分成小的过程
 
 [回到目录](#目录)
+
+
 
 
 
@@ -819,6 +835,10 @@ setTimeout(func，0) 不等于 setImmediate()
 
 进阶掌握的: Buffer, HTTP (协议要了解)
 
+[回到目录](#目录)
+
+
+
 
 
 ## 10-Interview and CV Linkedin CV
@@ -894,3 +914,5 @@ Skills写清楚版本号和更具体的服务，体现专业性。
 STAR method
 
 认真对照老板的PPT和录屏修改简历，给老师review的时候不要出现说过的问题。
+
+[回到目录](#目录)
