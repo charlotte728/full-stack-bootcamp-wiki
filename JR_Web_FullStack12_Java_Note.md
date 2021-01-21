@@ -7,6 +7,7 @@
 [05 Git](#05-Git)  
 [06 JavaScript ES6](#06-JavaScript-ES6-ECMAScript)  
 [07 React JS Introduction](#07-ReactJS-Introduction)
+[08 React 哲学](#08-React哲学)
 
 ## 05-Git
 A Distrbuted Version Control System.  
@@ -296,7 +297,7 @@ a || b
 只要a是false，显示b的值  
 
 
-## Readable, Maintainable, Reusable!!!
+### Readable, Maintainable, Reusable!!!
 
 正常人的思维去写代码  
 写其他人可以看懂的代码！！  
@@ -369,7 +370,7 @@ calculateTax(150000, Tax_Table);
 HTML, CSS 天生不能复用  
 JS和HTML没有联动性
 
-## ReactJS (A JavaScript Library for building user interfaces)
+### ReactJS (A JavaScript Library for building user interfaces)
 
 Declarative  
 Component-Based  
@@ -390,3 +391,79 @@ React + ReactTV = TV application
 
 Thinking in React  
 https://reactjs.org/docs/thinking-in-react.html
+
+
+## 08-React哲学
+
+结合React PDF学习
+
+### Declarative
+SQL: Declarative // 背API  
+大餐厅小作坊
+
+### Component-Based
+
+https://zh-hans.reactjs.org/docs/thinking-in-react.html
+
+
+活用复用  
+求同存异  
+
+每次写代码的时候:  
+自我否定  
+自我怀疑  
+
+Homepage 职责是什么？  
+依赖， Page  
+职责是负责组装页面  
+依赖是Header Content  
+HomePage
+  - Header
+  - Content
+
+Component 划分 - 按责任划分 Component
+HomePage
+  Page
+    - Header
+      - Avatar
+      - Navbar
+    - Main
+      - HomePage
+      - AboutPage
+      - ResumePage
+    - Footer
+
+在ReactJS中
+class -> className
+for -> htmlFor
+
+SocialMedia 按照复用拆分
+
+
+pass by value
+pass by reference
+
+Create React
+1. * 通过JavaScript去写HTML
+2. ? 需要划分 Component
+3. ? 模块化代码
+4. -> Webpack (entry -> output)
+5. * JSX
+6. ? 引入 Babel
+7. -> Webpack + Babel -> loader
+8. * css
+9. -> Webpack loader
+10. * Image
+11. -> Webpack loader
+12. * index.html 引用问题
+13. -> Webpack plugin
+14. * dist 目录混乱问题
+15. -> webpack plugin
+16. * 每次更改都需要手动build
+17. ? Dev server ->  实时检测更改，自动build，并反映到浏览器上
+18. -> Webpack dev server (refresh)
+
+需求 -> 理解需求 -> 设计实践 -> 反思 -> 实践
+解构赋值中key与value相同时只需要写key的值
+
+React state 用来保存可更改的数据，替换掉obj这种reference更新
