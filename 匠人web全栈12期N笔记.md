@@ -9,6 +9,7 @@
 - [08-Agile](#08-Agile)
 - [09-Node.js: Documents](#09-nodejs-documents)
 - [10-Interview and CV Linkedin CV](#10-interview-and-cv-linkedin-cv)
+- [11-REACT: Make it stateful](#11-REACT-Make-it-stateful)
 
 
 ## 01-Introduction & Web Tech
@@ -914,5 +915,198 @@ Skills写清楚版本号和更具体的服务，体现专业性。
 STAR method
 
 认真对照老板的PPT和录屏修改简历，给老师review的时候不要出现说过的问题。
+
+[回到目录](#目录)
+
+
+
+## 11-REACT: Make it stateful
+
+[Jackie老师的演示代码lesson1](https://github.com/jackietian/jr-lesson1/tree/master/src)
+
+**Js**
+
+强类型语言 强类型语言是一种强制类型定义的语言，一旦某一个变量被定义类型,如果不经过强制转换，则它永远就是该数据类型了，强类型语言包括Java、.net 、Python、C++等语言。
+
+弱类型语言是一种弱类型定义的语言，某一个变量被定义类型，该变量可以根据环境变化自动进行转换，不需要经过显性强制转换。弱类型语言包括vb 、PHP、javascript等语言。
+
+js可以跑在前端上，也可以跑在服务端上。
+
+js里的 function是一个object，object可以赋值给变量。
+
+了解scope，包括function scope，block scope [拓展阅读scope](https://dmitripavlutin.com/javascript-scope/)
+
+**React**
+
+React build UI components（组件），组件可以小到是一个icon或者按钮。前端像搭积木一样，由小的组件搭建而成。
+
+React组件分有状态组件和无状态组件。高级的代码会尽量拆分出小的组建，方便后期复用。
+
+一个component里面不要超过100行代码
+
+创建和运行React
+
+```
+npx create-react-app my-app
+cd my-app
+npm start
+```
+
+package-lock.json用来固定版本号，确保团队使用一个版本。
+
+index.js是一个入口文件，index.js导入APP.js，渲染在html里的root div下
+
+JSX是用js写html的语言，JSX里的class要改成className，不要使用inline style。
+
+```jsx
+// 显示时间例子
+function cb() {
+   ReactDOM.render(
+     <div>
+       <h1>It is {new Date().toLocaleTimeString()}.</h1>
+     </div>,
+     document.getElementById('root')
+   );
+ }
+ setInterval(cb, 1000)
+```
+
+**React DOM**
+
+virtual dom是运行在内存中的，render一个很是的dom是很费时间的。virtual dom会比较哪个节点发生改变，只对改变的节点改变，不用重新渲染整个页面。[What is the Virtual DOM(课后作业)](https://reactjs.org/docs/faq-internals.html)，[DOM and Virtual DOM(课后作业)](https://reactkungfu.com/2015/10/the-difference-between-virtual-dom-and-dom/)
+
+dom使用树形结构，dom需要频繁地增删改查，使用树形结构进行增删改查是最快的，树形结构也能清晰地表达元素间的关系，比如父子，爷孙，兄弟等，遍历时间更快。
+
+**React props**
+
+props可以传多种参数包括：
+`<MyComponent foo={JavaScript expression} />`， JavaScript expressions include but not limited to:
+● Number -  `<Component number={12} />`
+● String - ` <Component str="Hello world" />`
+● Boolean -  `<Component liked={false} /> <Component liked />`
+● Array -  `<Component array={[1, 2, 3, 4]} />`
+● Object -  `<Component style={{ fontWeight: 'bold' }} />`
+● Operators -  `<Component sum={1 + 2 + 3} />`
+● Function -  `<Component onClick={() => alert('clicked')} />`
+
+[React文档Components and Props](https://reactjs.org/docs/components-and-props.html#gatsby-focus-wrapper)
+
+**Pure function & Impure function**
+
+pure function不改变input的值，而且产生side effects。尽量使用pure function，方便函数的复用或者项目的重构等等。
+
+```jsx
+//Pure - doesn’t change the input (i.e. a and b)
+function sum(a, b) {
+	return a + b;
+}
+//Impure - input (account) is mutated
+function withdraw(account, amount) {
+	account.total -= amount;
+}
+```
+
+**ES6**
+
+const是常量，一旦被声明，就不可以被改变，如果是object可以改变里面的值，let是变量，可以被改变。
+
+var和let的life scope不一样，var是function scope ，const和let是block scope
+
+[Jackie老师es6例子](https://github.com/jackietian/jr-lesson1/blob/master/src/es6.js)
+
+```jsx
+//================= const ==========
+ const pi = 3.14
+ // WRONG，const不能二次赋值
+ pi = 4
+
+ //============ template string ====
+ const name = 1
+ const age = 12
+ const str = name + '' + age
+ const str2 = `${name}${age}` // backtick符号在esc键下面，数字1键左边
+ console.log(str2)
+
+ // ============ let ============
+ for (var i = 0; i < 3; i++) { // var为 function scope
+     console.log(i);
+ }
+ console.log(i) // 3
+
+ for (let j = 0; j < 3; j++) { // let为 block scope
+     console.log(j);
+ }
+ console.log(j); // undefined
+
+ // ============ arrow function ============
+// 注意区分function和箭头函数的this区别
+ function sayHello(name) {
+     console.log('******', this)
+     console.log(`hello, ${name}!`);
+ }
+
+ const sayHello1 = (name) => {  
+     console.log('=====', this)
+     console.log(`hello, ${name}!`);
+ }
+
+ sayHello('foo')
+ sayHello1('foo')
+
+ // ============ destructuring =======
+ const student = { school: 'UNSW', gender: 'F', name: 'foo' };
+ // const school = student.school;
+ // const gender = student.gender;
+
+ const { school, gender } = student;
+ console.log(school, gender)
+
+ // ============ spread =======
+ const computerScienceStudent = {
+     major: 'Computer Science',
+     language: 'English',  // 注意这里的'English'被下面的'Chinese'覆盖了
+     university: 'UNSW'
+ };
+ const mary = {
+     ...computerScienceStudent,
+     language: 'Chinese',  // 注意这里的'Chinese'覆盖了上面的'English'
+     age: 25
+ };
+ console.log(mary) // mary = { major: 'Computer Science', language: 'Chinese', university = 'UNSW', age: 25 }
+
+// ============ class =======
+class Student {
+  constructor(name, gender) {
+    this.name = name;
+    this.gender = gender;
+    this.university = 'UNSW';
+  }
+  greeting() {
+    console.log(`Hello, I'm ${this.name} from ${this.university}`);
+  }
+}
+const jane = new Student('Jane', 'F');
+jane.greeting(); // Hello, I’m Jane from UNSW
+```
+
+强烈建议多看即便Jackie老师推荐的[ES6文章(课后作业)](https://medium.com/the-andela-way/a-beginners-guide-to-react-with-es6-a2ed0b5c977e)
+
+看完后反思是否掌握了一下知识点？不熟悉的一定要回去查阅
+
+- Const and let 
+
+- The spread operator
+
+- Template literals
+
+- Default function parameters
+
+- Destructuring
+
+- Object literal Shorthand
+
+- Arrow functions
+
+- Classes
 
 [回到目录](#目录)
