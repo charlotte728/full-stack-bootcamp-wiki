@@ -6,8 +6,9 @@
 [04 JavaScript]()  
 [05 Git](#05-Git)  
 [06 JavaScript ES6](#06-JavaScript-ES6-ECMAScript)  
-[07 React JS Introduction](#07-ReactJS-Introduction)
-[08 React 哲学](#08-React哲学)
+[07 React JS Introduction](#07-ReactJS-Introduction)  
+[08 React 哲学](#08-React哲学)  
+[09 Agile](#09-Agile)
 
 ## 05-Git
 A Distrbuted Version Control System.  
@@ -433,15 +434,14 @@ HomePage
       - ResumePage
     - Footer
 
-在ReactJS中
-class -> className
-for -> htmlFor
+在ReactJS中  
+class -> className  
+for -> htmlFor  
 
 SocialMedia 按照复用拆分
 
-
-pass by value
-pass by reference
+pass by value  
+pass by reference  
 
 Create React
 1. * 通过JavaScript去写HTML
@@ -467,3 +467,143 @@ Create React
 解构赋值中key与value相同时只需要写key的值
 
 React state 用来保存可更改的数据，替换掉obj这种reference更新
+
+
+## Code Review
+在做P3的时候，希望同组所有的developer都要review代码，然后看看代码有什么问题么。个人觉得代码可以通过就点approval。  
+所有的pull request应该根据代码规范来做，pull request后，你们可以有至少两个人approval后，才能merge，然后先要review代，comments问题的地方，改完之后reviewer有两个人点了approval，之后才能merge  
+不是review整个项目的代码，所有的代码都是在pull request阶段review代码，如果已经merge到master了，相当于代码已经属于 production级别的代码了  
+review代码是要在pull request阶段review，不要一上来就merge，到时候代码问题会很大，然后没有人能够提高。pull request阶段可能能持续续2-5天没有办法merge。然后branch代码要每天至少一次commit，和要让branch在rebase on master，保持你们的branch是最新的代码  
+
+以上内容from -老板以及各位老师
+
+## 09-Agile
+
+Agile希望Denvelopers从全局的角度来看整个项目，不单单关注到自己份内的事，更是应该关注但没有关注的  
+需求和实现之间的gap现今依然存在。Developers需要不仅关注自己的代码，还需关注具体的需求  
+做项目不单单是写代码，communication也是一个需要关注的点。好的、有效的communication需要get到customer真正需要的东西。  
+不要以自己的common sense想当然看问题。  
+目的是为了解决问题，而不是争论对错，减少沟通中的gap
+
+### Waterfall模型
+自上而下，按序进行  
+缺点是难回头，出现问题后很难回去改
+
+What is a successful project  
+好的项目取决于三点：
+1. Scope
+2. Budget
+3. Schedule
+
+更重要考虑的是Stakeholders
+
+- Customer (End User)
+- User (Client)
+- Develop Team
+
+Waterfall模型架构下，失败的项目是超过50%，客户很难理解到底开发了什么样的产品  
+
+### 敏捷模型
+
+敏捷软件开发宣言  
+Manifesto for Agile Software Development  
+(17位大佬滑雪的时候想出来的👌)  
+https://agilemanifesto.org/ 英文版  
+https://agilemanifesto.org/iso/zhchs/manifesto.html 中文版  
+敏捷原则：  
+https://www.scrumcn.com/agile/scrum-knowledge-library/agilevalues.html 中文版  
+https://www.agilealliance.org/agile101/12-principles-behind-the-agile-manifesto/ 英文版  
+- 我们最重要的目标，是通过及早和持续不断地交付有价值的软件使客户满意。
+- 欣然面对需求变化，即使在开发后期也一样。为了客户的竞争优势，敏捷过程掌控变化。
+- 经常地交付可工作的软件，相隔几星期或一两个月，倾向于采取较短的周期。
+- 业务人员和开发人员必须相互合作，项目中的每一天都不例外。
+- 激发个体的斗志，以他们为核心搭建项目。提供所需的环境和支援，辅以信任，从而达成目标。
+- 不论团队内外，传递信息效果最好效率也最高的方式是面对面的交谈。
+- 可工作的软件是进度的首要度量标准。
+- 敏捷过程倡导可持续开发。责任人、开发人员和用户要能够共同维持其步调稳定延续。
+- 坚持不懈地追求技术卓越和良好设计，敏捷能力由此增强。
+- 以简洁为本，它是极力减少不必要工作量的艺术。
+- 最好的架构、需求和设计出自自组织团队。
+- 团队定期地反思如何能提高成效，并依此调整自身的行为表现。
+
+#### Agile
+- 快速反馈  
+- 交付价值  （Focus挑优先级高的来做）
+- 迭代开发  (Agile第二次迭代可能会修改第一个迭代的内容)
+
+Agile Tree
+- Kanban  
+- Scrum  
+- Lean  
+- FDD  
+- XP
+
+#### Scrum框架
+Scrum Sprint Cycle (1-4 weeks, preferred 2 weeks)
+
+Product Owner / Business Analyst (Feature) -> Project Backlog -> Sprint Planning -> Sprint Backlog ( Feature -> Technical Task) -> Sprint Execution (Daily Scrum: Daily Standup meeting) -> Potentially Shippable Product Increment -> Sprint Review (Inspect / Adapt) -> Sprint Retrospective (Inspect / Adapt) -> Next Scrum  
+
+Scrum方法论 “3355”  
+- 3个角色 (Scrum Master: 协助管理3个物件、5个会议)
+- 3个物件 (产品列表、迭代列表、产品增量)
+- 5个会议
+
+BA / 产品负责人： 管理好产品列表
+团队成员：跨组织
+
+##### 3个物件
+产品列表满足DEEP原则
+Detailed Appropriately
+Emergent 涌现成的
+Estimated 有估算的
+Prioritized 排好优先级的
+
+P3的第一个commit可能就是一个空的project，作为user story，基于此之后大家能递交
+
+##### User Story 用户角度
+- Who: As a User
+- What: I want to login to the website
+- Why: so that I can achieve
+
+A/C: Acceptance Criteria (验收标准)
+
+##### Tips
+- 3C 了解细节：Card, Conversation, Confirmation
+- MoSCow & Kano: 优先级模型
+- INVEST准则：Independent 独立的, Negotiable 可讨论的, Valuable 有价值的, Estimatable 可估计的, Size Appropriately 小的, Testable 可测试的
+
+##### 故事估算
+不是commitment
+
+##### Sprint Retrospective Meeting
+
+回顾这个sprint发生了什么，回顾以及总结  
+最后要有action plan，其中的action items需要有人去做。  
+Action items需要具体，知道如何去具体地改进
+
+Lead Time vs Cycle Time  
+目标是减少Cycle Time  
+有dependency就会有等待时间，减少dependency从而能更好提高效率  
+新木桶理论  
+T型人才  
+创新   
+
+##### Kanban
+
+Kanban board  
+- Visualisation
+- Working in progress limit
+- 只能从下游往上游移动 pull
+- Improve collabrately
+更着重于整体流程的优化，而不是具体个体
+
+##### 极限编程(eXtreme Programming)
+
+- Pair Programming
+- Test Driven Development
+- Continuous Integration Workflow
+
+##### 实际使用
+
+Kanban 和 Scrum结合使用  
+整合极限编程实践：TDD
