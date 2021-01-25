@@ -24,4 +24,7 @@
 
 **Lightman：** 建议api部分和前端部分都要写unit testing，尤其是API部分。最后项目快做完的时候，就要开始用aws，后端放ec2，前端放s3，如果可以用CI/CD的话推荐build起来。最后项目deliver需要在route 53再买个域名。
 
-**锤姐：** Pull Request 之后dev分头去review这是一种方式。还有另一种方式可以是大家一起开个会，专门做code review，这样做几次，大家就能够对code review的标准有个统一的认知。
+**锤姐：** Pull Request 之后dev分头去review这是一种方式。还有另一种方式可以是大家一起开个会，专门做code review，这样做几次，大家就能够对code review的标准有个统一的认知。一般刚开始的可以试试一起review，毕竟review meeting也是成本很高的（对一个公司而言）
+
+**锤姐: ** https://codereviewchecklist.com/  给大家参考。按照checklist做的时候，tips是，每次只看一个点，看完一遍code，再进行第二个点。如果逻辑错误，单元测试都不能通过，就不要commit。注意别把名字和路径写错，typo是非常常见的错误，而且有的时候真的不那么容易发现，如果自己测试不过，就有PR的话，这种typo的问题在code review的时候也不能很容易的就发现了，只有大家一起debug才能解决问题。
+
