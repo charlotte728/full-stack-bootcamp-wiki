@@ -24,3 +24,4 @@
 
 **Lightman：** 建议api部分和前端部分都要写unit testing，尤其是API部分。最后项目快做完的时候，就要开始用aws，后端放ec2，前端放s3，如果可以用CI/CD的话推荐build起来。最后项目deliver需要在route 53再买个域名。
 
+**锤姐：** Pull Request 之后dev分头去review这是一种方式。还有另一种方式可以是大家一起开个会，专门做code review，这样做几次，大家就能够对code review的标准有个统一的认知。
