@@ -8,7 +8,8 @@
 [06 JavaScript ES6](#06-JavaScript-ES6-ECMAScript)  
 [07 React JS Introduction](#07-ReactJS-Introduction)  
 [08 React 哲学](#08-React哲学)  
-[09 Agile](#09-Agile)
+[09 Agile](#09-Agile)  
+[10 Java Basics](#10-Java-Basics)
 
 ## 05-Git
 A Distrbuted Version Control System.  
@@ -607,3 +608,71 @@ Kanban board
 
 Kanban 和 Scrum结合使用  
 整合极限编程实践：TDD
+
+## 10-Java-Basics
+
+Server端：Server上的数据直接呈现，不会传入client使用的系统平台  
+Client端：下载到client系统、平台运行  
+Java作为后端有一个非常庞大、完整的生态，可针对任何情况  
+课件两本推荐的书很不错，可以找渠道看  
+
+- 高可用
+- 高性能
+- 易扩展：系统不足可以进行扩大、扩展
+- 可伸缩：Scaling，多余的系统可以进行缩减
+- 且安全：前端程序用的是https，server端需要加密。（用户如果需要了解系统得有专门的有时效性的token验证）JWS Token
+
+应用服务器需要CPU速度非常快  
+数据库服务器需要数据读取速度足够快
+文件服务器需要容量足够大
+
+- 当访问量越来越大时  
+需要在应用服务器上作出改变  
+增加本地缓存，并建立多个分布式缓存服务器  
+目标是建立stateless app  
+
+- 当访问量进一步增大时  
+Distributed System with Load Balancer (负载均衡调度)  
+横向扩展：scale out  
+纵向扩展：scale up  
+应用服务器的伸缩以auto scaling进行控制  
+在任何应用中不应该使用sticky session，这是非常糟糕的设计，会导致非常差的用户体验
+
+- 当访问量再次增大时
+增加从数据库（主从分离、读写分离），能极大减小数据库的负担  
+从数据库可以有多个
+AWS中使用的是RDS Relational Database Service
+DR: Disaster Recovery
+P3会使用Postgres的数据库
+
+- 如果还是有进一步扩展的需求
+CDN 服务器：AWS中有CloudFront
+增加反向代理服务器：可以屏蔽外界
+P3中会使用ECS、Docker、AWS codebuild codedeploy code pipeline
+
+### CI/CD (Continuous Integration/ Continuous Delivery)
+- A key to deliver the product reliably  
+
+### Serverless
+作为使用者，不需要关心server是什么，AWS会帮忙管理  
+Message System是异步的  
+RESTful API是同步的
+
+NoSQL Server: AWS DynamoDB + Lambda  
+
+CRUD
+
+Microservice都是独立的，每个Microservice后面必然跟着一个独立的database
+
+### CAP原则
+- Consistency
+- Availability
+- Partition Tolenrece
+
+### Github Flow
+1. Master branch deployable
+2. Branch off master as feature branch
+3. Always commit & push to feature branch
+4. Open a pull request once it's ready
+5. Get review and update the feature branch
+6. Merge to master
