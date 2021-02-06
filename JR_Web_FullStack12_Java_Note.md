@@ -676,3 +676,8 @@ Microservice都是独立的，每个Microservice后面必然跟着一个独立�
 4. Open a pull request once it's ready
 5. Get review and update the feature branch
 6. Merge to master
+
+### Git Flow
+
+- Create a bug_fixing branch each time you want to fix a bug, unless the two bugs are quite small.
+- Deploy feature branch to release branch first, then to the master branch
