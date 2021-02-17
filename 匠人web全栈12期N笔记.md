@@ -9,7 +9,8 @@
 - [08-Agile](#08-Agile)
 - [09-Node.js: Documents](#09-nodejs-documents)
 - [10-Interview and CV Linkedin CV](#10-interview-and-cv-linkedin-cv)
-- [11-REACT: Make it stateful](#11-REACT-Make-it-stateful)
+- [11-REACT: React with Modern JavaScript](#11-react-react-with-modern-javascript)
+- [12-REACT: Make it stateful](#12-react-make-it-stateful)
 
 
 ## 01-Introduction & Web Tech
@@ -920,7 +921,7 @@ STAR method
 
 
 
-## 11-REACT: Make it stateful
+## 11-REACT: React with Modern JavaScript
 
 [Jackie老师的演示代码lesson1](https://github.com/jackietian/jr-lesson1/tree/master/src)
 
@@ -1110,3 +1111,363 @@ jane.greeting(); // Hello, I’m Jane from UNSW
 - Classes
 
 [回到目录](#目录)
+
+
+
+## 12-REACT: Make it stateful
+
+SPA概念
+
+[安装node-sass](https://create-react-app.dev/docs/adding-a-sass-stylesheet/)，注意目前要安装4开头的版本
+
+```
+npm install node-sass@4.14.1 --save
+```
+
+try catch 可以捕获错误以及handle error
+
+[var hoisting](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/var) 声明会被提升，初始化不会被提升。
+
+
+
+closure A function return a B function，B function has access to A function
+
+
+
+**Class component**
+
+React的props不能修改
+
+
+
+## 13 React
+
+闭包表述
+
+A function A return a function B which access a variable in function A
+
+```
+function A() {
+   let C
+  return function B() {
+    C++
+   }
+}
+```
+
+this.action执行环境
+
+[arrow function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/Arrow_functions)
+
+man speak 补充
+
+传参
+
+onClick默认给的参数是e，比如e.target.name
+
+
+
+## 14 React
+
+call ,apply ,bind
+
+
+
+Conditional Rendering三种写法
+
+```jsx
+const Status = ({ isOnline }) => {
+  //写 法一：if写法
+  if (isOnline) return <OnLine />;
+  return <OffLine />;
+
+  // 写法二：三目运算符写法
+  return <>{isOnline ? <OnLine /> : <OffLine />}</>;
+
+  // 写法三：短路运算符写法
+  return (
+    <>
+      {isOnline && <OnLine />}
+      {!isOnline && <OffLine />}
+    </>
+  );
+};
+```
+
+
+
+props.Children是一个集合体，里面内容都会显示出来
+
+APi
+restful APi, http method: POST, GET, DELETE, PUT
+
+GraphQL
+
+Promise.all()
+
+Promise.race()
+
+
+
+## 15 Node.js: Rest API
+
+两台计算机用端口通信，任何服务器都有端口号，一定要指定端口号。一般指定1000以上的端口号
+
+http默认80，https默认443
+
+context上下文，在特定的语境下，囊括了一切
+
+koa1.0 版本时 async和await还没诞生
+
+https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Generator
+
+generator在当时解决了callback hell 的问题
+
+
+
+```js
+// 所有模块引入要用const，载入进来的如果是class，首字母要大写，require里面的koa首字母不能大写
+const Koa = require("koa"); // 标准写法
+```
+
+localhost和127.0.0.1代表本机的回环地址
+
+
+
+`Ctrl + C `可以给进程发送一个退出的信号
+
+`curl -i 127.0.0.1:3000`可以在命令行里发送请求或者-v
+
+```http
+HTTP/1.1 200 OK
+Content-Type: text/plain; charset=utf-8 // 浏览器根据content-type来确定使用哪个渲染引擎
+Content-Length: 12  // koa会自动计算生成content-length
+Date: Sun, 07 Feb 2021 08:56:10 GMT  // 也是koa自动生成等等
+Connection: keep-alive
+Keep-Alive: timeout=5 // 让客户端的等待时间
+```
+
+```js
+app.use((ctx) => {
+  ctx.body = "JR <H1>Hello World!</H1>";
+  ctx.type = 'html';  // 使用koa内置的API快捷设置
+  ctx.set("Content-Type","text/html"); // 或者直接设置报文，注意不能直接写"html"
+  ctx.length = 23;  // 改小字符串会被截断，改大会让客户端等待超时，必须设置对
+})
+```
+
+
+
+```
+JSON.stringfy({ age: 23, name: "小明" }) // 22
+Buffer.byteLength(JSON.stringfy({ age: 23, name: "小明" })) // 26，一个中文字符占3个字节
+```
+
+每一个ctx都是新的，执行完一次http后，ctx会被js的垃圾回收销毁。
+
+```
+ctx.request.method
+ctx.request.path
+ctx.request.headers
+ctx.get("host") // get是读取request的报文，set是设置response的报文
+```
+
+
+
+post请求里有body，需要安装`koa-bodyparser`
+
+```js
+const bodyParser = require('koa-bodyparser');
+app.use(bodyParser());
+```
+
+```js
+app.use(bodyParser({ enableTypes: ["text"] }));
+
+app.use((ctx) => {
+  // echo
+  ctx.body = ctx.request.body;
+})
+```
+
+
+
+koa中间件的洋葱模型，request进来是从外往里，response出去是从里往外。最早use是在越外面的一层，越迟use是在越外面的一层
+
+```js
+app.use(async (ctx, next) => {
+  ctx.startTime = Date.now();
+  await next();  // next() 等于下一个中间件
+  console.log(Date.now() - ctx.startTime)
+})
+
+app.use((ctx) => {
+  console.log(`request: ${ctx.startTime} `)
+})
+```
+
+面向对象https://en.wikipedia.org/wiki/Object-oriented_programming
+
+能够抽象出来的概念叫模型，在REST中叫state，Representational是能表真的状态转移，transfer是对模型进行改变的意思，比如创建一个模型，修改一个模型，删除一个模型和查询一个模型。有些抽象不出来的模型就无法写成REST。能不能用REST来写，取决于能不能抽象出模型。
+
+![](https://i.imgur.com/E9VmTUa.jpg)
+
+## 16 MongoDB
+
+API 概念
+
+
+
+全栈历史：
+
+第一阶段只有html，把html放在web server上，用http协议通信，网页没有任何交互能力。XML是可扩展的标记语言，HTML里面的内容是固定的。XML在早期被用于数据传输，类似现在的Json。
+
+第二阶段新加了XMLHttpRequest，用于发送http请求，此时web已经具备动态扩展的能力，比如google maps。SOAP（Simple Object Access Protocol）在过去的项目中经常用，现已淘汰。
+
+第三阶段为了更好的体验，XML体积比较大，并且写起来不方便，逐渐使用Json来传输数据。之前需要一个功能就写一个API，现在抽象出来了RESTful。
+
+
+
+Monolith VS Microservices
+
+Monolith：在早期把所有的代码包括前端后端都在一个代码仓库里。 Microservices：把不同的代码分开到不同的仓库管理，利用API通信，把大的项目拆成不同的服务，让专门的团队去管理和维护，不同团队之间用API交互。好处是团队不需要关系过多其他的事情，可以专精把一件事做好，责任划分也更清晰
+
+
+
+REST Squencial chart 时序图
+
+看的顺序，从左到右，从上到下。GET成功会返回200，失败会返回404等
+
+![时序图](https://i.imgur.com/SoOKvip.jpg)
+
+API 权限检查 & 授权
+
+Authentication权限检查，需要登录，注册账号，没登录会redirect到登录界面。
+
+Authorization 授权，基于不同角色分配不同的权限，比如学生账号不能对课程进行增删改查
+
+有两个web server
+
+登录的token会放在cookie中（补充），微服务可以被不同的产品复用。WebApp是指具体的产品，具体的功能代码被拆到其他的服务仓库里。
+
+![时序图](https://i.imgur.com/SkNie0U.jpg)
+
+JWT（JSON Web Token）
+
+补充图片，第三方授权
+
+```js
+"use strict";
+
+const Koa = require("koa");
+const bodyParser = require("koa-bodyparser");
+const Router = require("koa-router");
+const uuid = require("uuid");
+
+const User = {
+  hello: {
+    age: 23,
+    gender: "male",
+  },
+}; // Fake database
+
+const app = new Koa();
+const router = new Router();
+app.use(bodyParser());
+
+// GET
+// `user/123`和`user/abc`会被匹配到，`user/123/abc`不会被匹配
+// path里要用合法的url字符，'/'用于分隔，userId里也不能出现'?','#'等url特殊字符
+router.get("/user/:id", async (ctx) => {
+  const { id } = ctx.params;
+  if (User[id]) {
+    ctx.body = User[id];
+  } else {
+    ctx.body = {
+      message: `User: ${id} not found.`,
+    };
+    // 设置了ctx.body会把status code改成200，所以需要手动修改成404
+    ctx.status = 404;
+  }
+});
+
+// POST
+router.post("/user", (ctx) => {
+  const { body } = ctx.request;
+  const id = uuid.v4();
+  User[id] = body;
+  ctx.body = {
+    id,
+    message: `User ${id} created`,
+  };
+  ctx.status = 201;
+});
+
+// PUT
+router.put("/user/:id", async (ctx) => {
+  const { body } = ctx.request;
+  const { id } = ctx.params;
+  if (User[id]) {
+    Object.assign(User[id], body);
+    ctx.body = {
+      message: `User ${id} updated.`,
+    };
+  } else {
+    ctx.body = {
+      message: `User: ${id} not found.`,
+    };
+    ctx.status = 404;
+  }
+});
+
+// DELETE
+router.delete("/user/:id", async (ctx) => {
+  const { id } = ctx.params;
+  if (User[id]) {
+    delete User[id];
+    ctx.body = {
+      message: `User ${id} deleted.`,
+    };
+  } else {
+    ctx.body = {
+      message: `User: ${id} not found.`,
+    };
+    ctx.status = 404;
+  }
+});
+
+app.use(router.routes());
+
+app.listen(5000, () => {
+  console.log("Server is on 5000");
+});
+
+```
+
+
+
+
+
+
+
+Database server 访问的时候要启动，关掉就访问不了
+
+SQLite 存在本地磁盘上
+
+Database像一个大池子，是最大的概念
+
+Collection 在一个特定的产品下，对数据有不用的划分，类似sql数据库里的table，比如一个购物网站，有user data， sales data， product data等等。
+
+Document相当于数据库的多条记录
+
+Fields 是指定字段
+
+```
+db
+show dbs
+db.user.insertOne({"name": "Jack", age: 23, gender: "male"})
+show collections
+db.users.find()
+db.users.insertMany([{message: "hello"},{error: "this is a error"}])
+```
+
