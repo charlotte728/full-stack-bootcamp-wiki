@@ -1446,28 +1446,139 @@ app.listen(5000, () => {
 
 
 
-
-
-
-
 Database server 访问的时候要启动，关掉就访问不了
 
-SQLite 存在本地磁盘上
+SQLite 没有database server，数据存在本地磁盘上
 
-Database像一个大池子，是最大的概念
+Database是数据的容器，是对数据抽象的划分，像一个大池子，是最大的概念
 
-Collection 在一个特定的产品下，对数据有不用的划分，类似sql数据库里的table，比如一个购物网站，有user data， sales data， product data等等。
+Collection 在一个特定的产品下，对数据有不用的划分，类似sql数据库里的table，比如一个购物网站，有user data， sales data， product data等等。命名是尽量用单词的复数
 
 Document相当于数据库的多条记录
 
 Fields 是指定字段
 
-```
-db
-show dbs
-db.user.insertOne({"name": "Jack", age: 23, gender: "male"})
+## 17 Interview
+
+
+
+Phone Interview 一般处于早期阶段，可以准备资料在接电话的时候查看。
+
+
+
+Current situation：问身份状况，是否毕业，有无工作经验，能否全职，确认地点，有过什么经历，为什么要投我们公司，知道我们的产品是什么吗，对未来有什么计划，想做什么方向等等。
+
+Behavioural: 是不是对工作充满热情，是否有创造，优化上的想法，是否有很强的自学能力，是否喜欢追求新技术，是否有团队合作的经历，有没和不同专业的人合作过，确保你进公司后能和同时相处融洽。
+
+Salary: 之前呆过什么公司，对之前的工资觉得怎么样，对工资要求是多少。
+
+
+
+投简历可能是海投，尽量记住投过的公司的名字，接到电话如果没有听清，要确认清楚公司名字，有时候是Recruitor，HR，Hiring Manager 打电话过来，预知会问什么问题。
+
+自我介绍要熟练，大概3-5分钟，准备好CV，投了不同岗位的话要注意区分，intro别说废话，说的东西要和工作岗位高度相关。
+
+注意打电话时候的语速和停顿，倾听面试官，投的少可以提前先做research，准备好自己的"cheat sheet"。
+
+example要说的很详细，开发周期是多久，使用了agile开发，使用了什么language, framework, library，部署到哪里，解决了哪些问题，帮别人解决了哪些问题，学到了什么
+
+为什么要来我们公司？个人的兴趣爱是什么样，对什么有热情，对行业的认识是怎么样，对你们从产品很感兴趣，我有听说过，看朋友用过，想用自己的knowledge让产品变得更好，你人用了什么技术，这些技术对我的职业发展很有帮助，我个人的发展目标和这个岗位有很高的匹配度。
+
+你的长处是什么？一般是hard skill，不要说自己是expert。
+
+你有什么缺点？要说可以解决的hard skill的问题，比如我之前只用react，但是看到有些公司用angular，我只是看过没用过，如果有机会，我会在未来的三个月之内认真学习。我的知识和经验都是从学校里学到的，但是缺乏大型企业级的开发项目经验，我进入工作后会认真去学习，去阅读代码库，了解核心的算法，多和同时沟通，学习怎么处理大量用户的问题等等，要提出合理的解决方法。
+
+
+
+## 18 MongoDB
+
+ MongoDB储存的不是json，二是类似json的数据。MongoDB储存的是BSON，二进制的Json，重点考虑数据存储的高性能。
+
+`_id`是BSON有，而json没有的数据类型。
+
+MongoDB是schemaless，好处非常灵活，坏处是缺乏约束，容易造成混乱。
+
+```js
+db // 显示当前数据库名称
+show dbs // 显示所有数据库
 show collections
-db.users.find()
-db.users.insertMany([{message: "hello"},{error: "this is a error"}])
+use xxx // 切换到xxx数据库
+
+db.xx.yy() // 分为三段式，xx是collection，yy()是function
+db.user.insertOne({name: "Jack", age: 23, gender: "male"}) // 插入单个参数
+db.users.insertMany([{message: "hello"},{error: "this is a error"}]) // 插入多个参数
+
+db.users.find() // 查询多条记录
+db.users.findOne() // 查询一条记录，默认返回第一条
+db.users.find({age:3}) // 按条件查询，从上往下遍历，直到查询到结果，
+
+db.users.updateOne({_id: new ObjectId("60321a0133bc923840fe2468")},{$set: {age: 30}}) // update是查询和创建的结合体
+db.users.updateMany() // 更新多个数据
+db.users.replaceOne() // 替换一个数据
+
+db.users.drop() // 删除collection下所有数据
+db.users.deleteOne() // 很多公司不提供删除功能
+db.users.deleteMany()
+db.users.findOne({$and: [{_id: new ObjectId("60321a0133bc923840fe2468")}, {deleted: false}]}) // soft delete
 ```
+
+db.users.find({age:3}) // 按条件查询，从上往下遍历，直到查询到结果，复杂度为O(n)，n代表数据的量，遍历的性能很低，优化数据库性能用index查询。
+
+`_id`是自动创建的index，是由数据库内部维护的独立的数据结构，不会使用线性地一条条查询，用id来查询可以大幅提高查询速度
+
+`db.users.findOne({_id: new ObjectId("60321a0133bc923840fe2468")})`
+
+[db.collection.createIndex()](https://docs.mongodb.com/manual/reference/method/db.collection.createIndex/) 给字段创建索引，不能加太多索引，如果给每个字段都增加了索引，每次插入数据都要更新所有索引，数据库管理成本增大，实际性能反而降低。能不用索引尽量不要建立索引，一般情况下不用。
+
+[operator](https://docs.mongodb.com/manual/reference/operator/query/)
+
+```js
+// 设置到30岁
+db.users.updateOne({_id: new ObjectId("60321a0133bc923840fe2468")},{$set: {age: 30}})
+// 增加1岁
+db.users.updateOne({_id: new ObjectId("60321a0133bc923840fe2468")},{$inc: {age: 1}})
+// 减少5岁
+db.users.updateOne({_id: new ObjectId("60321a0133bc923840fe2468")},{$inc: {age: -5}})
+// 删除age，json需要有键值对，value可以任意
+db.users.updateOne({_id: new ObjectId("60321a0133bc923840fe2468")},{$unset: {age: -5}})
+
+// {$exists: true} 查询存在age的数据，{$exists: false} 查询不存在age的数据, true和false可以换成1和0
+db.users.find({age: {$exists: true}})
+// 给所有age加1
+db.users.updateMany({age: {$exists: true}}, {$inc: {age: 1}})
+```
+
+需要按条件查询和高级搜索可以用[lucene](https://lucene.apache.org/core/)等查询引擎，关注查询速度，MongoDB重点优化数据的储存性能，插入性能等等，有简单的查询功能。
+
+
+
+Query selector: `$eq,$gt`
+
+
+
+Projection operator
+
+
+
+update operator
+
+
+
+Relations
+
+一对多的关系使用最多，比如一个用户有好几个收货地址
+
+1 to 1可以用Embedded或者Reference，1 to many和many to many 只能用Reference
+
+Embedded的查询速度非常快，Reference需要做两次查询，Embedded的插入性能更好，只要插入一次，Reference要插入两次。（补充）数据重复量很大的时候，用Reference可以避免重复，减少磁盘占用空间。具体的优缺点要结合实际场景去分析。
+
+![](https://i.imgur.com/Itk6j9a.jpg)
+
+Bi-directional referencing 双向引用, 比如student 下引用address， address下也引用student
+
+[Normalization vs Denormalization](https://dev.to/damcosset/mongodb-normalization-vs-denormalization)
+
+1 to million 的情况用Reference可以极大减小存储空间
+
+[立即执行语句](https://flaviocopes.com/javascript-iife/)
 
