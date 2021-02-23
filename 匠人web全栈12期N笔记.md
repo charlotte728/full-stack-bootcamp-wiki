@@ -11,7 +11,10 @@
 - [10-Interview and CV Linkedin CV](#10-interview-and-cv-linkedin-cv)
 - [11-REACT: React with Modern JavaScript](#11-react-react-with-modern-javascript)
 - [12-REACT: Make it stateful](#12-react-make-it-stateful)
-
+- [15-Node.js: Rest API](#15-nodejs-rest-api)
+- [16-Node.js: Restful in Koa & MongoDB Database](#16-nodejs-restful-in-koa--mongodb-database)
+- [17-Interview 1](#17-interview-1)
+- [18-Node.js: Mongoose](#18-nodejs-mongoose)
 
 ## 01-Introduction & Web Tech
 
@@ -1209,7 +1212,7 @@ Promise.race()
 
 
 
-## 15 Node.js: Rest API
+## 15-Node.js: Rest API
 
 两台计算机用端口通信，任何服务器都有端口号，一定要指定端口号。一般指定1000以上的端口号
 
@@ -1312,7 +1315,7 @@ app.use((ctx) => {
 
 ![](https://i.imgur.com/E9VmTUa.jpg)
 
-## 16 MongoDB
+## 16-Node.js: Restful in Koa & MongoDB Database
 
 API 概念
 
@@ -1352,9 +1355,11 @@ Authorization 授权，基于不同角色分配不同的权限，比如学生账
 
 ![时序图](https://i.imgur.com/SkNie0U.jpg)
 
-JWT（JSON Web Token）
+JWT（JSON Web Token）第三方授权
 
-补充图片，第三方授权
+![JWT](https://i.imgur.com/vKB12Xs.jpg)
+
+
 
 ```js
 "use strict";
@@ -1458,9 +1463,9 @@ Document相当于数据库的多条记录
 
 Fields 是指定字段
 
-## 17 Interview
 
 
+## 17-Interview 1
 
 Phone Interview 一般处于早期阶段，可以准备资料在接电话的时候查看。
 
@@ -1490,7 +1495,7 @@ example要说的很详细，开发周期是多久，使用了agile开发，使�
 
 
 
-## 18 MongoDB
+## 18-Node.js: Mongoose
 
  MongoDB储存的不是json，二是类似json的数据。MongoDB储存的是BSON，二进制的Json，重点考虑数据存储的高性能。
 
@@ -1530,7 +1535,7 @@ db.users.find({age:3}) // 按条件查询，从上往下遍历，直到查询到
 
 [db.collection.createIndex()](https://docs.mongodb.com/manual/reference/method/db.collection.createIndex/) 给字段创建索引，不能加太多索引，如果给每个字段都增加了索引，每次插入数据都要更新所有索引，数据库管理成本增大，实际性能反而降低。能不用索引尽量不要建立索引，一般情况下不用。
 
-[operator](https://docs.mongodb.com/manual/reference/operator/query/)
+
 
 ```js
 // 设置到30岁
@@ -1552,15 +1557,7 @@ db.users.updateMany({age: {$exists: true}}, {$inc: {age: 1}})
 
 
 
-Query selector: `$eq,$gt`
-
-
-
-Projection operator
-
-
-
-update operator
+MongoDB中的operator有Query selector: `$eq,$gt...`，Projection operator，update operator，详见[MongoDB Operators](https://docs.mongodb.com/manual/reference/operator/query/)
 
 
 
@@ -1572,7 +1569,7 @@ Relations
 
 Embedded的查询速度非常快，Reference需要做两次查询，Embedded的插入性能更好，只要插入一次，Reference要插入两次。（补充）数据重复量很大的时候，用Reference可以避免重复，减少磁盘占用空间。具体的优缺点要结合实际场景去分析。
 
-![](https://i.imgur.com/Itk6j9a.jpg)
+![](https://i.imgur.com/MR04nLJ.jpg)
 
 Bi-directional referencing 双向引用, 比如student 下引用address， address下也引用student
 
@@ -1580,5 +1577,5 @@ Bi-directional referencing 双向引用, 比如student 下引用address， addre
 
 1 to million 的情况用Reference可以极大减小存储空间
 
-[立即执行语句](https://flaviocopes.com/javascript-iife/)
+[立即执行语句IIFE](https://flaviocopes.com/javascript-iife/)
 
