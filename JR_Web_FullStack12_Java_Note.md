@@ -10,6 +10,7 @@
 [08 React 哲学](#08-React哲学)  
 [09 Agile](#09-Agile)  
 [10 Java Basics](#10-Java-Basics)
+[11 Interview](#11-Interview)
 
 ## 05-Git
 A Distrbuted Version Control System.  
@@ -681,3 +682,65 @@ Microservice都是独立的，每个Microservice后面必然跟着一个独立�
 
 - Create a bug_fixing branch each time you want to fix a bug, unless the two bugs are quite small.
 - Deploy feature branch to release branch first, then to the master branch
+
+
+## 11-Interview
+
+If you think you are not good at interview, the only reason is that you did not prepare well.  
+
+### Skill sets
+
+#### Hard Skills
+
+- Technology
+- Experience
+
+#### Soft Skills
+
+- Good communicator
+- Team player
+- Open-minded
+- Love to share
+- Ability to learn
+
+### Employability
+
+#### Technical Experience
+
+- Github
+- Internship
+- Freelancer
+- User Groups
+- Projects
+- Blogging
+
+做Commercial Projects，不是一遍遍去刷教学视频和tutorials。
+
+#### Research
+
+- You
+- Interviewer(s)
+- The position
+- LinkedIn: Alumni, Friends
+- Company
+- Industry and Competitors
+- Products and Services
+
+1. Curriculum
+2. Initial Interview
+  - Online Assessment (HackerRank & LeetCode)
+  - Telephone interview
+    - Personal Information
+    - Visa
+3. First-Round Interview
+4. Code Test
+5. Second-Round Interview
+6. Reference Check
+7. Offer Selection and Decision
+
+### How to prepare
+
+Write down your answers
+- Self-introduction
+- Team culture you want to
+- Expected salary range
