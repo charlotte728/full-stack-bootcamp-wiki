@@ -93,6 +93,8 @@ Open Source 开发中，没人愿意去设置一个central repository, 于是就
     才能将文件从working directory上传到repository  
     `commit`命令后，系统会跳出窗口要求添加信息，如果想跳过editor编辑，可以直接使用命令  
     ```git commit -m "add a new file"```
+    - 撤销之前的commit或者comment：  
+     ```git commit --amend ```  
 - 查看Git状态的命令：  
 ```git status```  
 - 将文件从stage中移除的命令：   
@@ -155,6 +157,8 @@ Open Source 开发中，没人愿意去设置一个central repository, 于是就
    - 删除当前branch前，需先switch到master下  
    - 遇到权限问题，如果要强制删除，需要加`-D`，例如  
    ```git branch -D feat3``` 
+   - 重命名branch，可用：  
+    ```git branch -m <旧名字> <新的名字> 重命名分支```   
 - branch的命名：名字要具有意义，格式一般为  
 ```<type>/<ticket number> - <title>```  
 例如  `feat/JR-101-create-header-for-home-page`  
@@ -191,6 +195,8 @@ Open Source 开发中，没人愿意去设置一个central repository, 于是就
 - Github中，拉取请求`pull request`  
    - 一般情况下，master branch是一定不可能被直接`commit`上去的
    - 每个developer会有自己的一个working branch，但是并没有管理master branch的权限
+   - `pull request`之前必须解决所有的conflicts,解决冲突，谁后提交谁解决冲突，一般在自己的代码上解决冲突，未经允许不要改别人的
+   - 如果遇到没有权限的repo，可以使用Fork加到自己的repo，做完修改之后可以apply a pull request against the original one
    - 在经过审核后，developer可以将已经完成的branch通过发送pull request， 来将自己的branch合并到master branch里
    - master branch owner端会看到pull request,并自动监测conflict情况，来最后批准merge
    - 在完成merge操作后，一般会把working branch删除掉
@@ -200,7 +206,26 @@ Open Source 开发中，没人愿意去设置一个central repository, 于是就
 > 在merge过程后，因为一般都会把working branch删除，所以会丢失working branch中的记录，因此，很多公司避免使用`merge`，而转用`rebase`
 - rebase会在merge后，将working branch的记录一起带过来，所以开发的历史记录会一直保留，同时使master branch一直保持单线结构
 - 如果使用`merge`来合并操作，在不删除working branch的情况下，一般都会有很复杂的commit历史结构
+- 与`merge`相同，用`rebase`前需要先`check out`到on receiving branch
 - 通过网站进行git练习：http://git-school.github.io/visualizing-git/
 > 一般没有人会去做force push, `git push -f`，因为会强行覆盖，很危险
 - Cherry Pick:从git的history中，拉取某一个commit,把它apply到哪里
 - VS code中可以直接clone remote
+> 首先搞懂clone，git branch，commit push， rebase ，pull request merge，这几个就够了  
+- 对命令行比较吃力和没理解git流程的同学建议看这两个视频（总共20分钟)  
+[git教程入门](https://www.bilibili.com/video/BV1KD4y1S7FL)   [git教程进阶]( https://www.bilibili.com/video/BV1hA411v7qX?spm_id_from=333.788.b_636f6d6d656e74.4)  
+- How to set personal token  
+  https://docs.github.com/en/free-pro-team@latest/github/authenticating-to-github/creating-a-personal-access-token  
+- Set up SSH key   
+  https://docs.github.com/en/free-pro-team@latest/github/authenticating-to-github/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent
+- 例子一：开发分支（dev）上的代码达到上线的标准后，要合并到 master 分支
+```
+git checkout dev // 切换到dev分支
+git pull // 拉取dev分支下最新的内容，同事可能修改了，有冲突的话要解决
+git checkout master // 切换回master分支
+git merge dev // 在master分支上合并dev分支，有冲突的话要解决，用rebase也行
+git push // 推送新的master
+(注意：如果有多个主机push要用 git push -u origin master，-u orign指定origin为默认主机)
+```
+
+
