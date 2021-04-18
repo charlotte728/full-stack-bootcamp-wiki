@@ -155,6 +155,7 @@ Open Source 开发中，没人愿意去设置一个central repository, 于是就
 - 删除branch的命令：  
 ```git branch -d <branch name>```  
    - 删除当前branch前，需先switch到master下  
+  ```git swith master```  
    - 遇到权限问题，如果要强制删除，需要加`-D`，例如  
    ```git branch -D feat3``` 
    - 重命名branch，可用：  
@@ -184,9 +185,9 @@ Open Source 开发中，没人愿意去设置一个central repository, 于是就
 ```git pull```
 - 将本地文件一次性更新到remote中：   
 ```git push```   
-   - 在`push`前，需要先确认是否已经使用命令，配置好了remote repository：
+   - 在将本地一个新的branch`push`到remote repositor前，需要先确认是否已经使用命令，配置好了remote repository：
    ```git remote add <name> <url>```
-   - 如果是本地新建的branch，更新到remote时，需要加入完整的参数，例如  
+   - 然后对于本地新建的branch，更新到remote时，需要加入完整的参数，例如  
    ```git push --set-upstream origin feat1```
 - 在不使用命令的情况下，VS Code中完全可以使用图形化界面完成以上各种操作（stage, commit, push, pull...）  
    - 具体可看课程视频(13期web full stack: Lesson 05Git Introduction 2:55:48~2:58:22)
@@ -207,6 +208,11 @@ Open Source 开发中，没人愿意去设置一个central repository, 于是就
 - rebase会在merge后，将working branch的记录一起带过来，所以开发的历史记录会一直保留，同时使master branch一直保持单线结构
 - 如果使用`merge`来合并操作，在不删除working branch的情况下，一般都会有很复杂的commit历史结构
 - 与`merge`相同，用`rebase`前需要先`check out`到on receiving branch
+- 如果`rebase`过程中出现conflict  
+   - 需要先解决conflict,然后使用  
+     ```git add/rm <conflicted_files>```
+   - 然后继续使用命令，完成`rebase`   
+     ```git rebase --continue```   
 - 通过网站进行git练习：http://git-school.github.io/visualizing-git/
 > 一般没有人会去做force push, `git push -f`，因为会强行覆盖，很危险
 - Cherry Pick:从git的history中，拉取某一个commit,把它apply到哪里
@@ -227,5 +233,9 @@ git merge dev // 在master分支上合并dev分支，有冲突的话要解决，
 git push // 推送新的master
 (注意：如果有多个主机push要用 git push -u origin master，-u orign指定origin为默认主机)
 ```
+### 9.其他
+- 基本Terminal命令：
+   - 创建文件：  
+     ```touch term-paper.txt```
 
-
+- 在`clone`一个branch后，往往要先进入这个branch，再进行操作
