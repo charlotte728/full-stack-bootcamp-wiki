@@ -1,15 +1,15 @@
 # Class-04 JavaScript
 ## 主要知识点
-  - [1. HTML + CSS + JS](#1-html--css--js)
+  - [1. 重温网页三剑客](#1-html--css--js)
   - [2.什么是JavaScript](#2什么是javascript)
   - [3.变量Variable](#3变量variable)
   - [4.数据类型](#4数据类型)
   - [5.条件语句 Condition](#5条件语句-condition)
   - [6.循环语句 Loop](#6循环语句-Loop)
   - [7.函数 Function](#7函数-Function)
-  - [8.object 对象：最重要的数据类型](#8object-对象：最重要的数据类型)
-  - [9.DOM:javaScript操作网页的接口](#9DOM:javaScript操作网页的接口)
-  - [10.课上练习：写一个clock的网页](#10课上练习：写一个clock的网页)
+  - [8.object 对象: 最重要的数据类型](#8object-对象:最重要的数据类型)
+  - [9.DOM: javaScript操作网页的接口](#9DOM:javaScript操作网页的接口)
+  - [10.课上练习: 写一个clock的网页](#10课上练习:写一个clock的网页)
   - [11.JS异步加载](#11JS异步加载)
 
 
@@ -59,7 +59,7 @@
 - 声明：
   - `var + <变量名>`, 例如  
    `var name;`
-  - ES6中推荐`const`/`let`
+  - ES6中使用`let\const`
 - 赋值：
   - `<变量名> = '<变量值>'`,例如  
     `name = 'Gary';`
@@ -68,11 +68,11 @@
   - `undefined`: 声明了，却没有赋值；或者(该变量)不存在
   - `null`:存在，但没有赋值（实际系统已分配内存给该变量）
   >`null`可以理解为，人为定义该变量没有（赋空值），`undefined`可以理解为，JavaScript认为该变量不存在 
-- 变量提升（hoisting）：编译器会自动把声明提升到 赋值前面去
+- 变量提升(hoisting）：编译器会自动把声明提升到 赋值前面去
   - 变量声明如果在`function`里, 它会自动提升到`function`的头部
   - 变量声明如果不在`function`里, 它会自动提升到文件的头部
-  - ES6之后，开始使用`let`, `let`变量将不再做变量提升
-- 动态类型：
+  - ES6之后，开始使用`let\const`, `let\const`变量将不再做变量提升
+- 动态类型(dynamic)：
   - JavaScript并不会绑定一个变量的类型，例如  
     ```
     var name = 'Gary';
@@ -96,7 +96,7 @@
     - 因为JavaScript没有float类型，在小数计算的时候要特别注意，容易出问题，例如  
   `0.1 + 0.2`  
   结果为`0.30000000000000004`  
-  因此JavaScript做数据计算的时候需要用到额外的库，比如`numbers - npm`
+  因此JavaScript做数据计算的时候需要用到额外的库，比如`numbers - npm`   
   >JavaScript很少用来做数据计算，数据计算基本被python垄断了
   - 字符串（string）:字符串
   - 布尔值（boolean）:`true`和`false`
@@ -113,7 +113,7 @@
     ``` 
     `person`存的是值组合的引用地址（reference），假如有    
     `var person2 = person;`  
-    那`person2`将同样指向`person`的值组合,即`person2`赋值了`person`的引用地址
+    那`person2`将同样指向`person`的值组合,即`person2`赋值了`person`的引用地址  
     如果只要copy object的值，需要使用  
     ```var person2 = Object.assign({},person1);```  
     或者
@@ -156,7 +156,7 @@
     - `1 + undefined`
       - NaN(not a number)
 > JavaScript里`'`和`"`没有区别，现在使用中(ES6)，如果要输出双引号，会用到  
-> ``` var description = `"a" is a criminal` ```
+> ``` const description = `"a" is a criminal` ```
 
 > 关于JavaScript的三套书推荐：  
 > JavaScript: The Definitive Guide, 7th Edition  
@@ -172,7 +172,7 @@
 ### 5.条件语句 Condition
 - `if` conditon:
    ```
-    if(<condition> ) {
+    if(<condition>) {
        
     } else {
     }
@@ -181,7 +181,7 @@
     - `(conditon) ? expr1:expr2`  
     等同于  
      ```
-    if(<condition> ) {
+    if(<condition>) {
        expr1
     } else {
         expr2
@@ -189,7 +189,7 @@
     ```
      例如：  ```const name = isMale ? 'Gary' : 'Sylvia';```   
     - 什么是expression:
-        - 只要是能返回一个值，这行代码就可以是一个expression
+        - 只要是能返回一个值，这部分代码就可以是一个expression
 
 ### 6.循环语句 Loop
 - `for`循环
@@ -254,7 +254,7 @@
     两个`间即为输出字符串
 - `while`循环
     - 比较少用的一个循坏，容易造成死循环
->工作中不会用到，因为会容易出问题，不是个小事
+>`while` 在工作中不会用到，因为会容易出问题，不是个小事
 
 ### 7.函数 Function
 - 一般写法：
@@ -333,7 +333,7 @@
     ``` 
     >只有`function`才能拦住 `var`的变量提升,其他都拦不住
 
-### 8.object 对象：最重要的数据类型
+### 8.object 对象:最重要的数据类型
 - `object`是一组无序数据组成的集合，表达一个复杂的数据类型   
    例如， 
     ```
@@ -421,7 +421,7 @@
 - `setAttribute`: 给HTML element添加一个新的属性
 >以上方法，在REACT中，都被包裹起来，然后提供了对应更宜用的方法，而避免让你直接操作DOM   
 
-### 10.课上练习：写一个clock的网页
+### 10.课上练习:写一个clock的网页
 >想获得更多时间显示效果，可以使用moment.js
 https://momentjs.com
 - 第一步，先把element找出来；然后再更改element
@@ -460,7 +460,6 @@ https://momentjs.com
     setInterval(setTimeToDiv, 1000);
 </script>
 
-<script src1></script>
 </html>
 ```
 
@@ -470,7 +469,7 @@ https://momentjs.com
 放在`<body>`中，则可以充分保证网页在渲染完成后，执行js代码
 如果是放在外部引入，如`<script src = "http://"></script>`，同样也可能遇到延迟问题；  
 因为原理上如下图，Html parsing完会等待scripti下载与执行，再做渲染
-- 现在有`<script defer>`:则会在html parsing的同时，在js下载完成，再执行，类似于把js放在`<body>`里，是比较安全的方式
+- 现在有`<script defer>`:则会在html parsing的同时，完成js下载，在html parsing结束后，再执行js，类似于把js放在`<body>`里，是比较安全的方式
 - 还有`<script async>`:则会在html parsing未完成时，执行已经下载好的js，因为html parsing未完成，也会产生问题
 - `defer` VS `async`
 ```
