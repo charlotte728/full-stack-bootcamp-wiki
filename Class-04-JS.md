@@ -469,6 +469,7 @@ https://momentjs.com
 放在`<body>`中，则可以充分保证网页在渲染完成后，执行js代码
 如果是放在外部引入，如`<script src = "http://"></script>`，同样也可能遇到延迟问题；  
 因为原理上如下图，Html parsing完会等待scripti下载与执行，再做渲染
+![script defer async](https://i0.wp.com/www.sertmedia.com/wp-content/uploads/2018/08/95ba8eb4-aa59-4dab-992e-adcb38cf9d8c.jpg)
 - 现在有`<script defer>`:则会在html parsing的同时，完成js下载，在html parsing结束后，再执行js，类似于把js放在`<body>`里，是比较安全的方式
 - 还有`<script async>`:则会在html parsing未完成时，执行已经下载好的js，因为html parsing未完成，也会产生问题
 - `defer` VS `async`
