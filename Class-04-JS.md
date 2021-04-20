@@ -7,7 +7,7 @@
   - [5.条件语句 Condition](#5条件语句-condition)
   - [6.循环语句 Loop](#6循环语句-Loop)
   - [7.函数 Function](#7函数-Function)
-  - [8.object 对象: 最重要的数据类型](#8object-对象最重要的数据类型)
+  - [8.Object 对象: 最重要的数据类型](#8Object-对象最重要的数据类型)
   - [9.DOM: javaScript操作网页的接口](#9DOMjavaScript操作网页的接口)
   - [10.课上练习: 写一个clock的网页](#10课上练习写一个clock的网页)
   - [11.JS异步加载](#11JS异步加载)
