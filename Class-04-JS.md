@@ -118,7 +118,7 @@
     ```var person2 = Object.assign({},person1);```  
     或者
     ```const person2 = { ...person};```
-  - Array：存储多个值在一个引用里
+  - Array(隶属于object)：存储多个值在一个引用里
     - 声明：`var ages`
     - 赋值：`ages = [];`
       - 可以赋值不同类型的数值，例如 `ages = [12,'12',{}];`
@@ -144,7 +144,7 @@
     - `===`：会加入类型判断
     > 工作中常会判断是否object的值(内容)相等，会比较复杂，可以用到额外的库，比如`lodash`(https://lodash.com)
   - 逻辑非：`!`
-  > JavaScript中哪些是false的(falsey value)  
+  > JavaScript中哪些是false的(falsy value)  
     > `false`, 空string（""），0，负数，`null`，`undefined`
   - 特殊的数字练习： 
     - `4 + 3 + "3"`
