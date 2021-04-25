@@ -10,4 +10,4 @@
 ## Web全栈班13期笔记：   
 [Web全栈第4节课 JavaScript初讲](Class-04-JS.md)  
 [Web全栈第5节课 Git](Class-05%20Git.md)  
-
+[Web全栈第6节课 JavaScript ES6 Part1](Class-06-JS.md)  
