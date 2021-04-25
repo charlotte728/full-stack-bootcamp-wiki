@@ -10,7 +10,7 @@
     - [4.1 怎样在JavaScript(ES6之前)中实现Object Oriented Programing](#41-怎样在javascriptes6之前中实现object-oriented-programing)
     - [4.2 prototype 在JavaScript中的使用](#42-prototype-在javascript中的使用)
   - [5.ES6引入的新功能](#5es6引入的新功能)
-    - [5.1 Class 在ES6中的使用](#51-class-在es6中的使用)
+    - [5.1 class 在ES6中的使用](#51-class-在es6中的使用)
     - [5.2 let/const 在ES6中的使用](#52-letconst-在es6中的使用)
     - [5.3 Template String 模板字符串（反引号）在ES6中的使用](#53-template-string-模板字符串反引号在es6中的使用)
     - [5.4 函数参数的默认值](#54-函数参数的默认值)
@@ -27,7 +27,7 @@
     - [6.2 this代码题目分析](#62-this代码题目分析)
     - [6.3 字节跳动面试原题](#63-字节跳动面试原题)
   
-  
+
 # 课堂笔记
 
 ## 1.课前课间小讨论
@@ -71,12 +71,12 @@
 - 大部分高级语言，都是有大公司在维护，不断更新的，比如JAVA已经到了8(稳定版)/14，Python到了3.7，php到了8，CSS3，HTML5...
 - 对于大公司维护一门高级语言，是一件名利双收的事情
 - 对于JavaScript，从来没有版本号这个讲法，属于社区维护
-- 维护JavaScript的社区叫做ECMA(European Computer Manufacturers Association,欧洲计算机制造协会);在欧洲，JavaScript更愿被称之为ECMAScript(ES)
+- 维护JavaScript的社区叫做ECMA(European Computer Manufacturers Association，欧洲计算机制造协会)；在欧洲，JavaScript更愿被称之为ECMAScript(ES)
 - JavaScript ES6：在ES6标准下执行的JavaScript
 - 解释性语言 VS 编译型语言 
   - 解释性语言：源码->解释 ->解释成C ->编译 -> 010101
   - 编译型语言：源码->编译->010101
-- 关于解释环境（我在哪里解释，谁来解释）
+- 关于解释环境（代码在哪里解释，谁来解释）
   - 浏览器来负责解释JavaScript
   > Q: JS是在哪里运行  
   A: 在（浏览器的）网页环境里  
@@ -92,15 +92,15 @@
     |FireFox|性能好||
     |Edge|性能更好|基于windows，高效解释js|
     |IE11|老电脑多||
-    |360|标榜安全|更安全解释的解释js|
+    |360|标榜安全|更安全的解释js|
     |Safari|省电|基于apple底层硬件，高效解释js|
 - 引入一个概念Immutable(无懈可击的，永恒的)
   - 意味着 唯一的输出，产生唯一的结果
-  - 比如你编程输出`hello world`，那个不论你怎么编译，它只会输出一个结果
+  - 比如你要编程输出`hello world`，那个不论你怎么编译，它只会输出一个结果
   - 比如你翻译一句英文，同样的输入，但是翻译的不同，结果不同，那就不是immutable
   - 对于JavaScript在浏览器中的解释，不同的浏览器有不同的解释倾向；例如JavaScript引入一个新功能，Safari可能处于功耗考虑，而不去使用（解释）；这就造成了，不同的JavaScript版本，浏览器的支持度是不一样的。
   > 我们写的JavaScript，不同的浏览器可能在认定合法性和解释上，表现不同；因次，JavaScript对不同浏览器的兼容，要永远刻在脑子里
-  - 前端程序员最大的敌人：IE11，对es5以上不支持
+  - 前端程序员最大的敌人：IE11，对ES5以上不支持
   - ES7只是基于ES5开发的，跨过了ES6
 
 ## 4.Object Oriented Programing
@@ -149,7 +149,7 @@
   alice.greeting();
   ```
   又但是，这不是一个readable，maintainable，reuseable的代码，而且存在内存泄漏的风险
-  每次`new`一个Person,js在运行到`this.greeting = function()`时，都会帮你生成一个新的function，每生成一个新的function就会占用一块新的内存
+  每次`new`一个Person，JS在运行到`this.greeting = function()`时，都会帮你生成一个新的function，每生成一个新的function就会占用一块新的内存
 ### 4.2 prototype 在JavaScript中的使用
 - 大神说，想解决上面这个问题，可以引入`prototype`(但是ES6中不推荐使用)，将上面代码改造为
    ```js
@@ -167,8 +167,8 @@
    这样每次new function的过程中，就不会再创建一个新的function，只会执行name的赋值，而相应的function会使用prototype挂载，内存应用会更好 
 
 ## 5.ES6引入的新功能
-### 5.1 Class 在ES6中的使用
-- 在ES6中，更可以通过新引入的`Class`来实现，通过class可以定义类，比如
+### 5.1 class 在ES6中的使用
+- 在ES6中，更可以通过新引入的`class`来实现，通过class可以定义类，比如
    ```js
    class Person { 
     constructor(name) {
@@ -255,13 +255,13 @@
  
 所以上面三行代码，通过ES6中的解构赋值，可以一行搞定
 ```js
-    //从student中取name, age, courses
+    //从student中取name, age, courses,分别赋值给新的变量name, age, courses
     const { name, age, courses } = student;
 ```
 以上，按照一定模式，从数组和对象中提取值，对变量进行赋值，这被称为解构(Destructuring)
 
 ### 5.5.1 Array的解构赋值
-Array可以理解成js帮我们处理过的特殊过的object，比如
+Array可以理解成JS帮我们处理过的特殊过的object，比如
 ```js
     const arr = ['a','b','c'];
 ```
@@ -363,13 +363,13 @@ Array可以理解成js帮我们处理过的特殊过的object，比如
     console.log(其他行李); // 小箱子 电脑包
 ```
 ## 6.JavaScript中的 this (最重要最无聊又最没用)
-最重要：JavaScript的核心理论；有时候有莫名其妙的错误，可能就是`this`的导向造成的
+最重要：JavaScript的核心理论；有时候有莫名其妙的错误，可能就是`this`的导向造成的  
 最没用：太过于高级，以至于现在没人愿意去用它了
 ### 6.0 函数是一等公民
 Pure function is the one and only first-class citizen 函数是一等公民，   
 有翻译问题，中文听起来感觉好像函数很高大上，有特权的样子，实际上英文中的`first-class citizen`是最普通，最基本，最没有特权的老百姓，龙哥的翻译是
 `函数也就是个平头老百姓`。  
-为什么这么说呢，因为函数的本质是`object`，
+为什么这么说呢，因为函数的本质是`object`，它
 - 可以在程序执行时动态创建函数（就像在函数里创建一个变量一样） 
 - 可以将函数赋值给变量（就像你可以把一个值赋值给函数里的变量一样）
 - 可以将函数作为参数传给例外一个函数，例如下面代码 
@@ -405,7 +405,8 @@ this 的指向，是在调用函数时根据上下文所动态确定的
 - 一般构造函数 new 调用，绑定到新创建的对象上;
 - 一般由上下文对象调用，绑定在该对象上;
 - 一般由 call/apply/bind 方法显式调用，绑定到指定参数的对象上;
-> 能不写`this`就不写`this`是现在主流核心思想
+> 能不写`this`就不写`this`是现在主流核心思想  
+> 
 怎么具体理解`this`呢，让我们看下面这个题：
 ```js
   var alice = {
@@ -480,7 +481,7 @@ this 的指向，是在调用函数时根据上下文所动态确定的
 答案为：
 ```js
   Tifa //caller为sister
-  Bob //caller为brother,如果没有'name: Bob'这句，结果为 undefined
+  Bob //caller为brother; 如果没有'name: Bob'这句，结果为 undefined
   undefined //caller为undefined 
 ```
 如果加入下面两行：
@@ -540,4 +541,5 @@ this 的指向，是在调用函数时根据上下文所动态确定的
   o2 
   undefined 
 ```
+逻辑原理同6.2部分
 
