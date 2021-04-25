@@ -1,6 +1,6 @@
 # Class-04 JavaScript
 ## 主要知识点
-  - [1. 重温网页三剑客](#1-html--css--js)
+  - [1.重温网页三剑客](#1-html--css--js)
   - [2.什么是JavaScript](#2什么是javascript)
   - [3.变量Variable](#3变量variable)
   - [4.数据类型](#4数据类型)
@@ -15,7 +15,7 @@
 
 ## 课堂笔记
 
-### 1. HTML + CSS + JS
+### 1.HTML + CSS + JS
 - HTML: 做content structure
 - CSS: 做layout design，styling
 - JS: 与user交互的桥梁，捕捉用户的操作，用户data（给backend）的传递
@@ -171,7 +171,7 @@
 
 ### 5.条件语句 Condition
 - `if` conditon:
-   ```
+   ```js
     if(<condition>) {
        
     } else {
@@ -180,7 +180,7 @@
 - 三元运算符：`?`
     - `(conditon) ? expr1:expr2`  
     等同于  
-     ```
+     ```js
     if(<condition>) {
        expr1
     } else {
@@ -194,33 +194,33 @@
 ### 6.循环语句 Loop
 - `for`循环
     - 基本写法，例如
-     ```
+     ```js
      var ages = [12, 32, 33];
      for (let index = 0; index < ages.length; index ++) {
          console.log(ages[index]);
      }
     ```  
     以上代码等同于  
-    ```
+    ```js
      ages.forEach((age) => {
          console.log(age);
      })
     ```
     或
-    ```
+    ```js
      ages.map((age) => {
          console.log(age);
      })
     ```
     以上，`forEach`与`map`都对ages中的元素进行了遍历，但是`map`的本意是遍历ages中的每一项，修改每一项，让他们都满足一个东西。例如：
-    ```
+    ```js
      const newAges = ages.map((age) => {
          return age + 1;
      })
      console.log(newAges);
     ```
     即
-     ```
+     ```js
      const newAges = ages.map((age) => age + 1）;
      console.log(newAges);
     ```
@@ -228,7 +228,7 @@
          - `continue`：跳过本次循环，进入下次循环
          - `break`:跳出循环
     - 嵌套循环（nested loop）：例如
-     ```
+     ```js
      var ages = [12, 32, 33];
      var index;
      for (index = 0; index < ages.length; index ++) {
@@ -238,7 +238,7 @@
      }
     ``` 
     - 课堂练习：写一个9*9乘法口诀
-    ```
+    ```js
      for (let row = 1; row < 10; row++) {
          var rowText = '';
          for(let col = row; col < 10; col++) {
@@ -248,7 +248,7 @@
      }
     ``` 
     ES6中，`特别好用，比如以上
-    ```
+    ```js
     `${row} * ${col} = ${row * col}\t`
     ```
     两个`间即为输出字符串
@@ -258,7 +258,7 @@
 
 ### 7.函数 Function
 - 一般写法：
-    ```
+    ```js
      function printPerson(name,age)) {
          console.log(name,age);    
      }
@@ -272,7 +272,7 @@
 - 理解`function`的参数是怎么传的，`function`里面可以定义`function`,`function`也可以被传递出去，`function` 也可以指定给别的varibale, 该varible还可以被运行
 - `function`在JavaScript中是一等公民，可以传递，也可以嵌套
     - 例如：
-    ```
+    ```js
     function outsideFunc()) {
          var temp = 1;
          function insideFunc() {
@@ -287,7 +287,7 @@
     >是context传递和保留的概念  
     比如以上代码，传统语言中，在运行outsideFunc后，一般其中的变量等都会被系统回收；但是在JavaScript中，当insideFunc再次被运行时，它还是可以拿到在context中的temp值；可以理解为一种内部访问外部data的机制。
     - 闭包的扩展示例：
-     ```
+     ```js
     function delayPrint(data)) {
          setTimeout(() => {
             console.log(data);  
@@ -300,7 +300,7 @@
 - 变量只能`function`内部引用外部，不能外部使用内部
 - `function`内部也存在变量提升，不管变量声明在什么位置，都会被提升到函数体头部
     - 例如
-     ```
+     ```js
     function foo(x) {
         if(x > 100){
             var localVar = 1000;
@@ -308,7 +308,7 @@
     }
     ``` 
     在编译器实际运行时，等同于
-     ```
+    ```js
     function foo(x) {
         var localVar；
         if(x > 100){
@@ -317,14 +317,14 @@
     }
     ``` 
     - 还例如：
-    ```
+    ```js
     for (var index = 0; index < array.length; index++) {
         var b;
         const element = array[index];
     }
     ``` 
     等同于
-    ```
+    ```js
     var index;
     var b;
     for (index = 0; index < array.length; index++) {
@@ -336,7 +336,7 @@
 ### 8.Object 对象:最重要的数据类型
 - `object`是一组无序数据组成的集合，表达一个复杂的数据类型   
    例如， 
-    ```
+    ```js
     var person = {
         firstName: 'Gary',
         lastName: 'Sun',
@@ -348,14 +348,14 @@
     console.log(person.firstName);
     ```  
     其中 `console.log(person.firstName);` 也可以写作
-     ```
+    ```js
     var name = 'firstName';
     console.log(person[name]);
     ``` 
     `function`本身也是一个value,一个复杂数据类型,在作为参数传递的时候，传递是指向该`function`的地址  
 - `this` 指向object本身   
     假如，添加以下代码：
-     ```
+    ```js
     var person = {
         firstName: 'Gary',
         lastName: 'Sun',
@@ -381,7 +381,7 @@
     - 如果是在node上运行，`this`指向document
 - `for...in`遍历对象
     - 例如
-    ```
+    ```js
     var person = {
         firstName: 'Gary',
         lastName: 'Sun',
@@ -425,7 +425,7 @@
 >想获得更多时间显示效果，可以使用moment.js
 https://momentjs.com
 - 第一步，先把element找出来；然后再更改element
-```
+```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -473,10 +473,10 @@ https://momentjs.com
 - 现在有`<script defer>`:则会在html parsing的同时，完成js下载，在html parsing结束后，再执行js，类似于把js放在`<body>`里，是比较安全的方式
 - 还有`<script async>`:则会在html parsing未完成时，执行已经下载好的js，因为html parsing未完成，也会产生问题
 - `defer` VS `async`
-```
+```html
  <script src = "http://...file1,js"></script>
  <script src = "http://...file2.js"></script>
- ```
+```
  以上代码如果前面是使用的`defer`，则文件会等待下载完成后，依次运行，先file1,再file2  
  以上代码如果前面是使用的`async`，则文件会不等待下载完成，而是根据谁先下载完，执行谁的顺序运行，因此有可能先运行file2，再运行file1  
 > 考虑到js的加载问题，用`<script defer>`就可以了
