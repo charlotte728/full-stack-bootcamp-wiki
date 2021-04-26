@@ -11,5 +11,5 @@
 [Web全栈第4节课 JavaScript初讲](Class-04-JS.md)  
 [Web全栈第5节课 Git](Class-05%20Git.md)  
 [Web全栈第6节课 JavaScript ES6 Part1](Class-06-JS.md)  
-[Web全栈第7节课 JavaScript ES6 Part2](Class-07-JS.md)
+[Web全栈第7节课 JavaScript ES6 Part2](Class-07-JS.md)   
 [Web全栈第8节课 Career CV & Linkedin](Class-08-Career.md)
