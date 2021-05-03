@@ -214,7 +214,7 @@ https://au.linkedin.com/in/long-zhao-32a96916a
 
     myFunction();
 
-    // 立即执行函数（IIEF），假设function只执行一次，没有任何复用性
+    // 立即执行函数（IIFE），假设function只执行一次，没有任何复用性
     // 效果等于上面五行代码
     (function() {
       console.log(a.b);
