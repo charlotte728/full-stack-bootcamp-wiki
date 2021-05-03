@@ -15,7 +15,7 @@
       - [event loop的详细流程](#event-loop的详细流程)
     - [node.js的使用场景](#nodejs的使用场景)
   - [6.Node.js使用版本的选择](#6nodejs使用版本的选择)
-  - [7.课上练习](#7课上练习)
+  - [7.Node.js的模块化应用](#7nodejs的模块化应用)
     - [IIFE，立即执行函数](#iife立即执行函数)
     - [模块的理解和应用](#模块的理解和应用)
     - [Singleton Pattern](#singleton-pattern)
@@ -23,8 +23,8 @@
   - [8.Node.js提供的模块](#8nodejs提供的模块)
     - [fs文件操作](#fs文件操作)
     - [event-emitter](#event-emitter)
-    - [HTTP](#http)
-      - [Localhost](#localhost)
+    - [http](#http)
+      - [localhost](#localhost)
      
 # 课堂笔记
 
@@ -59,14 +59,14 @@
 
 ### 浏览器敲入google.com，中间发生了什么  
 - 从地址栏敲入google.com, 至看到google的界面，中间发生了什么
-  - dns解析->通过解析出的ip地址，向服务器发送请求->服务器进行处理，返回数据
-  - dns(DOMAIN NAME SYSTEM)解析：涉及到各种缓存
-  - 解析出ip地址，进行tcp连接（三次握手）
+  - DNS解析->通过解析出的ip地址，向服务器发送请求->服务器进行处理，返回数据
+  - DNS(DOMAIN NAME SYSTEM)解析：涉及到各种缓存
+  - 解析出ip地址，进行TCP连接（三次握手）
   - 服务器收到请求：后端需要处理的内容，一般请求带有请求路径，如/search /api
   - 服务器处理请求并返回：后端需要处理的内容，发生在相应逻辑被触发时
     - CSR：客户端渲染，属于前后端分离
     - SSR：服务端渲染
-  - 请求方（浏览器）收到返回，
+  - 请求方（浏览器）收到返回
   - 尝试渲染，显示在前端页面
   - 访问google.com，也是有服务器的，只是这个服务器有可能是静态服务器
     - 静态服务器：我们在服务器上放的是静态文件，且文件不会发生变化 
@@ -84,13 +84,13 @@
     - 同步：我们执行代码，从上到下，就是一个同步，一次只能执行一行代码，需要等待
     - 异步：按照顺序执行代码，但是如果需要调用数据库，则可以设定跳过等待数据库返回的时间，直接触发下一行，等数据库有返回之后，再来处理相应的逻辑操作；等于同时在做多件事情
   - event driven（事件驱动）
-    - 解决了异步的一个问题，异步都会有一个call back（告知请求方事件已经完成），然后进行接下来的逻辑处理，我们收到客户端一个请求事件，然后将至处理，就叫event driven
+    - 解决了异步的一个问题，异步都会有一个call back（告知请求方事件已经完成），然后进行接下来的逻辑处理。我们收到客户端一个请求事件，然后将之处理，就叫event driven
   - Non-blocking
-    - blocking：阻塞，基本等同于说要等待，同步的一个操作
+    - blocking：阻塞，等同于说要等待同步的一个操作
     - Non-blocking：不阻塞，异步的一个操作，能够节省更多的资源
   - I/O
     - 最容易造成blocking的，例如对文件数据库的读取
-    - node.js中我们使用异步，和event driven把原本阻塞的事件变成非阻塞的事件
+    - node.js中我们使用异步，event driven把原本阻塞的事件变成非阻塞的事件
   - Fast and scalable
     - 体现在，non-blocking I/O，还体现在开发速度非常快
     - 相对来说，同样资源情况下，更scalable一些
@@ -163,11 +163,11 @@ Node.js就语言本身来讲是单线程，但是通过libuv这类直接跟操�
 - 结合call back 与 stack，分析下图的代码片段
  ![event loop](image/c09n02.png)
   - 首先看右下角，当最后执行抛出异常时，打印显示的function顺序即为，存在stack里的function顺序，这个我们也叫stack error trace
-  - 如果charlie()没有抛出异常，而是调用里setTimeout()，则它会被放入WebAPIs中开始进行倒数
+  - 如果charlie()没有抛出异常，而是调用setTimeout()，则它会被放入WebAPIs中开始进行倒数
   > eventloop在工作的初级阶段可能并不会被太多的使用到，但是在中后阶段，以及面试阶段会有大量的问题需要考核到 
   - 再看一段演示实例：
    ![el example](image/c09n03.png)
-  - 其中$代表Jquery，帮助开发者快速定位网页上的一个元素，
+  - 其中$代表Jquery中，帮助开发者快速定位网页上的一个元素，
     - `$.on('button', 'click', function onClick(){});`
       - 快速绑定button，绑定一个click事件，当用户点击时，执行onClick
   
@@ -183,7 +183,7 @@ Node.js就语言本身来讲是单线程，但是通过libuv这类直接跟操�
 
   ### node.js的使用场景 
   - 就网站开发的场景，server处理的多为io的请求，例如读取数据库，然后返回，node.js尤为擅长处理io heavy的场景，同时可以进行高并发；因为与前端是同一种语言，打通前后端也是node.js的巨大优势。
-  - 因为是single thread，所以在处理cpu intensive的请求是效率不高；因此要么将这类请求外包给其他服务器，要么使用其他语言完成
+  - 因为是single thread，所以在处理cpu intensive的请求时效率不高；因此要么将这类请求外包给其他服务器，要么使用其他语言完成
   - JavaScript为dynamic weakly type，对type的定义过于灵活，所以在大型项目中容易引发潜在问题。这类问题，目前通过typescript可以一定程度上解决这个问题。 
   - 项目中也可能用到 静态文件的扫描工具，比如eslint，来自动化检查代码写的规范与否。
   - 因此，node.js最大的劣势是不好处理cpu intensive的task，但是长于io heavy的场景。
@@ -198,9 +198,9 @@ Node.js就语言本身来讲是单线程，但是通过libuv这类直接跟操�
 - 现阶段，建议使用actvie LTS版本；该版本写成的代码，2～3年后变为Mantennance状态，在公司里，一般会保留历史版本，不做更新
 - 在工作中，如果出现同时使用多个版本的情况，在同一台机器上，我们可以使用node version manager来解决：https://github.com/nvm-sh/nvm
 
-## 7.课上练习
+## 7.Node.js的模块化应用
 ### IIFE，立即执行函数
-我们会创建很多个文件，每个文件即为一个模块；我们每一个js文件都被node包裹成了一个IIFE
+项目中，我们会创建很多个文件，每个文件即为一个模块；我们每一个js文件都被node包裹成了一个IIFE
 - IIFE:immediately invoked function expression
   - 如下代码：
    ```js
@@ -267,8 +267,7 @@ Node.js就语言本身来讲是单线程，但是通过libuv这类直接跟操�
   ```
 
   ### Singleton Pattern
-  该文件，同时使用了`singleton pattern` 
-  那最开始的代码，可以修改为：
+  最开始的代码，可以修改为：
   ```js
   const { increaseCount, getCount } = require('./count');
 
@@ -283,12 +282,12 @@ Node.js就语言本身来讲是单线程，但是通过libuv这类直接跟操�
   则实际count模块也只产生了一个instance，count.js内都代码也只会被执行一次
 
   ### 导入（require）和导出（exports）
-  注意导入（require）和导出（exports）
+  注意导入（require）和导出（exports）  
   这里需要注意的是，如果`count.js`中，没有做导出，即如果没有，或部分缺少  
   ```js
   module.exports = { increaseCount, getCount };
   ```
-  则，该模块在上面的代码中调用会报错
+  则，该模块在上面的代码中调用会报错  
   如果使用`__dirname`,和`__filename`，则能够直接输出完整的文件路径和文件名。如
   ```js
     console.log(__dirname);
@@ -321,9 +320,9 @@ Node.js就语言本身来讲是单线程，但是通过libuv这类直接跟操�
 
 ### event-emitter
 - event-emitter模块
-  - 逻辑核心为event driven，会发送一个事件，所有监听的对象都会收到一个更新/event，再对其进行处理
+  - 逻辑核心为event driven，会发送一个事件，所有监听的对象都会收到一个更新event，再对其进行处理
   - 这里用到了observer pattern，也可以叫pub sub(发布与订阅)
-  - 这里观察对对象为event-emitter，如果监听对象收到更新，则进行处理；web server会监听我们的端口，当端口收到相应的请求，当请求被触发时，进行相应的处理
+  - 这里观察对象为event-emitter，如果监听对象收到更新，则进行处理；web server会监听我们的端口，当端口收到相应的请求，当请求被触发时，进行相应的处理
   - event-emitter 很少被直接使用，常用别人写好的模块
   - 以下为我们自定义的emitter模块：event-emitter.js
   ```js
@@ -349,17 +348,17 @@ Node.js就语言本身来讲是单线程，但是通过libuv这类直接跟操�
   ```js
     const requestEvent = require('./4-event-emitter');
 
-    //on 和  addListener 性质上一样，基本等同于addEventListener，on为node.js提供
+    // on 和  addListener 性质上一样，基本等同于addEventListener，on为node.js提供
     // 如果下面 `Request`变为`Request1`则监听不到
     requestEvent.on('Request', (date) => {
     console.log(date);
     });
   ```
 
-### HTTP
-- HTTP模块
-  - 实际开发中并不会使用，因为太简陋了，我们会使用 express.js，相当于在http模块上进行了封装，更简介化
-  - 创建一个server，对端口进行监听，当端口收到请求时，我们进行相应当逻辑处理
+### http
+- http模块
+  - 实际开发中并不会使用，因为太简陋了，我们会使用 express.js，相当于在http模块上进行了封装，更简洁化
+  - 实行以下代码，创建一个server，对端口进行监听，当端口收到请求时，我们进行相应当逻辑处理
   ```js
     const http = require('http');
    
@@ -371,13 +370,13 @@ Node.js就语言本身来讲是单线程，但是通过libuv这类直接跟操�
         res.end();
     });
 
-    // 常见到端口（各大框架喜欢使用的）：80, 443, 8080, 3000, 4200
+    // 常见到的端口（各大框架喜欢使用的）：80, 443, 8080, 3000, 4200
     // 80，443根据协议来定：http->80 https->443，例如访问没有给出端口号的时候，http协议访问80端口，https访问443端口
     // 以下为 监听8080端口
     server.listen(8080);
     console.log('server listening on port 8080');
   ```
- #### Localhost
-  - localhost：本地启动的服务器，默认情况下可以通过local host进行访问，本质是 一个alias；在局域网中，如果直接输入对方的ip + :端口号，同样可以连接到对方
+ #### localhost
+  - localhost：本地启动的服务器，默认情况下可以通过local host进行访问，本质是一个alias；在局域网中，如果直接输入对方的ip + :端口号，同样可以连接到对方
   - Q：node.js和js的文件扩展名都是.js,区别只在代码内容是操作前端还是后端是么.有没有把js和nodejs写一个文件里的情况
     - A：虽然都是js文件，但是处在不同的项目里面，他们之间会不会出现互相引用对方文件的情况
