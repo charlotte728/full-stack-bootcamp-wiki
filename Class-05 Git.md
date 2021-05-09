@@ -100,7 +100,7 @@ Open Source 开发中，没人愿意去设置一个central repository, 于是就
 - 将文件从stage中移除的命令：   
 ```git rm --cached <file>```  
 例如，```git rm --cached .\file1.txt```  
-- 将文件暂存的命令：  
+- 将文件暂存的命令(一般该文件尚未被stage/git add，仅仅是完成了本地编辑并保存)：  
 ```git stash```  
 例如，```git stash -m "temp file"```
 - 查看stash里存在文件的命令：  
