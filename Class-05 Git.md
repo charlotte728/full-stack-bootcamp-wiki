@@ -174,6 +174,9 @@ Open Source 开发中，没人愿意去设置一个central repository, 于是就
    `git add file`
    与
    `git commit`来完成merge操作
+   - 建议在vs code里弹出的conflict 解决窗口中，选择`accept both changes`，即将两边的内容同时接受，再酌情更改
+   - 关于在conflict的显示内容，其中的符号含义，可参考下图
+   ![git conflict](image/c0501.png)  
 
 ### 7.使用Github进行团队写协作：多条线的历史
 现在工作中多用Github，有的公司里可能用到自建的Git Server
@@ -187,7 +190,7 @@ Open Source 开发中，没人愿意去设置一个central repository, 于是就
 ```git push```   
    - 在将本地一个新的branch`push`到remote repositor前，需要先确认是否已经使用命令，配置好了remote repository：
    ```git remote add <name> <url>```
-   - 然后对于本地新建的branch，更新到remote时，需要加入完整的参数，例如  
+   - 然后对于本地新建的branch，更新到remote时，需要加入完整的参数，告之云端原本的branch为origin，例如  
    ```git push --set-upstream origin feat1```
 - 在不使用命令的情况下，VS Code中完全可以使用图形化界面完成以上各种操作（stage, commit, push, pull...）  
    - 具体可看课程视频(13期web full stack: Lesson 05Git Introduction 2:55:48~2:58:22)
@@ -205,6 +208,7 @@ Open Source 开发中，没人愿意去设置一个central repository, 于是就
 
 ### 8.使用merge和rebase进行日常协作
 > 在merge过程后，因为一般都会把working branch删除，所以会丢失working branch中的记录，因此，很多公司避免使用`merge`，而转用`rebase`
+> 但是Sean老师建议，rebase locally使用就好，如果public使用，同样会出现问题：The golden rule of git rebase is to never use it on public branches.
 - rebase会在merge后，将working branch的记录一起带过来，所以开发的历史记录会一直保留，同时使master branch一直保持单线结构
 - 如果使用`merge`来合并操作，在不删除working branch的情况下，一般都会有很复杂的commit历史结构
 - 与`merge`相同，用`rebase`前需要先`check out`到on receiving branch
@@ -213,6 +217,8 @@ Open Source 开发中，没人愿意去设置一个central repository, 于是就
      ```git add/rm <conflicted_files>```
    - 然后继续使用命令，完成`rebase`   
      ```git rebase --continue```   
+- `rebase`同时还具有修改和调整commit历史记录的功能
+  - 具体命令为`git rebase -i <commit hash>`, 其中commit hash为git log中 commit的hash
 - 通过网站进行git练习：http://git-school.github.io/visualizing-git/
 > 一般没有人会去做force push, `git push -f`，因为会强行覆盖，很危险
 - Cherry Pick:从git的history中，拉取某一个commit,把它apply到哪里
