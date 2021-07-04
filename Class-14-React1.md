@@ -1,6 +1,6 @@
 # Class-14 React-1
 ## 主要知识点
-  - [1.解释性语言](#1解释性语言)
+  - [1.解释型语言](#1解释型语言)
   - [2.为什么学React](#2为什么学react)
     - [2.1 以史为镜，可以知得失，React的发展史](#21-以史为镜可以知得失react的发展史)
     - [2.2 React的好处，与Angular的对比](#22-react的好处与angular的对比)
@@ -23,34 +23,35 @@
   
 # 课堂笔记
 
-## 1.解释性语言
-解释性语言： 更humanbeing一些，分变量与常量。但是从实际角度出发，绝大多数存在的是常量。
-- 写let的时候要自己想，我真的需要let吗
+## 1.解释型语言
+解释型语言： 更humanbeing一些，分变量与常量。但是从实际角度出发，绝大多数存在的是常量。
+- 龙哥提醒，写let的时候要自己想，我真的需要let吗
 
-## 2.为什么学React
-首先写代码的时候，也要humanbeing的方式思考一下，出了什么问题，使用该技术解决了什么问题。  
+## 2.为什么学React  
 React让你尽量用少量的JS做更复杂的工作
+- 龙哥提醒，首先写代码的时候，要humanbeing的方式思考一下，出了什么问题，使用该技术解决了什么问题。
+  
 ### 2.1 以史为镜，可以知得失，React的发展史
-只有难受了，才能去想到学习React  
+只有（写HTML）难受了，才能去想到学习React  
 历史时间线： angularJS -> React -> Angular -> VUE
 - React的出现，倒逼angularJS重写回了Angular
 ### 2.2 React的好处，与Angular的对比
 - React到底好在哪里
-    - VS Angular：One framework Mobile & desktop
+    - VS Angular：One framework Mobile & Desktop
         - Angular可以做前端的所有事情
         - framework是架构是平台，是everything，学了Angular，从开发到部署到上线，前端，都会了。大而全，涵盖了前端所有东西。但是违反了solid中的单一职责
-    - A JavaScript Library for building user interface
+    - React: A JavaScript Library for building user interface
         - 只能做一件事情：UI
-        - JavaScript
+        - JavaScript Library
         - Only User interface, 只替代了Style相关的html，动态的html
 
 ## 3.React 三大特性
 ### 3.1 Declarative
-做UI时，React让我们只用声明式的去设计UI，再去控制内部状态的改变，UI就会根据状态的改变而改变。
+做UI时，React让我们只用声明式去设计UI，再去控制内部状态的改变，UI就会根据状态的改变而改变。
 #### 3.1.1 Imperative 命令式
 - Imperative 命令式
     - 现实世界中，我们⼤部分编码都是命令式的，例如
-    ```
+    ```js
     document.querySelector('#resume-page').classList.add('page--active');
     ```
     命令DOM更新，命令document去找东西，命令更新classlist
@@ -71,7 +72,8 @@ React让你尽量用少量的JS做更复杂的工作
     5. ⽼板上菜。
     ```
     5步里3步是命令，例如传统fish&chips。
-    老板作为发号施令的人，必不可少。必须有一个核心的(老板)存在 
+    老板作为发号施令的人，必不可少。必须有一个核心的(老板)存在   
+    以下为命令式代码： 
     ```jsx
     //切换到resume页面
     document.querySelector('#resumePage').classList.add('page--active');
@@ -87,6 +89,7 @@ React让你尽量用少量的JS做更复杂的工作
     5. 当服务员C看到 Pick Up 区有菜品时，根据单据上菜。
     ```
     没有一个人发号施令，却每个人都有条不紊的进行工作，例如麦当劳
+    以下为声明式代码： 
     ```jsx
     <button
         href="home"
@@ -126,6 +129,7 @@ React让你尽量用少量的JS做更复杂的工作
     - 宜家家具：家具被划分成⽆数个⼩零件（Component），不同家具的⼩零件（Component）因为规格相同可以互相使⽤，安装⽅便
     - 乐⾼：相同规格的积⽊（Component）通过不同的组合⽅式组成不同的产品。
     - ⼤型⼯程：京港澳跨海⼤桥。由⼤桥，引道组成。⼤桥由桥⾯，桥墩，...。整体桥⾯由多个⼩桥⾯组成。每个⼩桥⾯由...组成，每个...由...组成，这种每个⼩产品（Component）由分布在各地不同的⼯⼚⽣产，最⼤化效率。
+模块化代码举例：
 ```jsx
 <body>
   <Header />
@@ -148,37 +152,40 @@ React让你尽量用少量的JS做更复杂的工作
     - 就近维护，⾯向功能（责任）
 
 ### 3.3 Learn Once, Write Anywhere
-学会了React，你就什么都会了
-Server Side Rendering (SSR)
-React Native (RN)
-React DOM
-React VR
-React TV
-React IOT
+学会了React，你就什么都会了，比如  
+Server Side Rendering (SSR)  
+React Native (RN)  
+React DOM  
+React VR  
+React TV  
+React IOT  
 
 ### 3.4 课间问题解答
 - Q:如何发现问题
     - A:三省吾身，自我批判，自我否定。写完代码后，就是觉得它不好，基于不好的角度，想问题出在哪里。
 - Q:react 服务端渲染 是和那种引擎模板的功能差不多吗
-    - A:首先了解各种渲染模式的不同和优劣，以及工作原理，具体可以问小花去要龙哥的公开课视频
+    - A:首先要去了解各种渲染模式的不同和优劣，以及工作原理，具体可以问小花去要龙哥的公开课视频
 - Q:老师用过dreamwaver吗
     - A:基本不用。
 - Q:简历要求里3-5年经验一下子就把我吓着了
-    - A:（龙哥）仅用了4年爬到principle。作为JR毕业学生，很多都无视JD里的工作经验年限要求。从HR角度来看，加个工作年限就能降低风险。工作年限不重要，只是用来吓退混子的。保证自己水品到位就可以了。
+    - A:（龙哥）仅用了4年爬到principal。作为JR毕业学生，很多都无视JD里的工作经验年限要求。从HR角度来看，加个工作年限就能降低风险。工作年限不重要，只是用来吓退混子的。保证自己水品到位就可以了。
 
 ## 4.React实践
 ### 4.1 安装React
-- Node package manager
-我们通常用yarn或者npm来管理外部依赖模块
-在之前我们已经学习过js的模块化，分为 ESModule和CommonJS
+- Node package manager  
+我们通常用yarn或者npm来管理外部依赖模块  
+在之前我们已经学习过js的模块化，分为 ESModule和CommonJS  
+使用命令init项目：  
 `npm init`
-- 生成pacakage.json
-    - 其中version, description不要管，main不需要管，script可以先留空，repo如果有可以留着，author可以留着，license，homepage，bug可以删掉，可以加"private": true
+- 自动生成pacakage.json
+    - 其中version, description不要管，main不需要管，script可以先留空，repo如果有可以留着，author可以留着，license，homepage，bug可以删掉，可以加`"private": true`
     - script: 告诉项目怎么样去执行命令的
     - dependencies:中的lib可以是production需要的，也可以是development需要的
-    - devDependencies：中的lib是development需要的
+    - devDependencies：中的lib是development需要的   
+使用命令:  
 `npm i react`
-- 安装react， "dependencies"会自动加入react，同时生成版本锁
+- 安装react， "dependencies"会自动加入react，同时生成版本锁    
+使用命令:    
 `npm i react-dom`
 - 安装react-dom
 - Q: reactDOM 具体是干嘛的
@@ -189,12 +196,12 @@ React IOT
     - A: 严格要求自己，要区分
 
 ### 4.2 引入并配置webpack
-新建`index.js`
-`import React from 'react';`
+新建`index.js`,里面敲入代码:     
+`import React from 'react';`  
 调用react,我们的目标是把`<div> hello world </div>`渲染到html里去
-- 写import会把解释型代码变为编译型代码，浏览器将无法运行；需要通过webpack来解决  
-`npm i webpack`
-- 新建`webpack.config.js`，并更新`package.json`中的配置
+- 这里，写import会把解释型代码变为编译型代码，浏览器将无法运行；需要通过webpack来解决，使用命令    
+`npm i webpack`   
+- 新建`webpack.config.js`，并更新`package.json`中的配置  
 ```
  "scripts": {
     "build": "webpack"
@@ -224,7 +231,7 @@ module.exports = {
 - `npm run build`：打包
 
 ### 4.3 使用jsx
-我们发现上面index.js中，createElement并不宜读，因此我们改上面为JSX的写法,为实现jsx的编译，我们需要安装babel
+我们发现上面index.js中，createElement组成的代码块并不宜读，因此我们改上面为JSX的写法，为实现jsx的编译，我们需要安装babel
 ```js
 ReactDOM.render(
     (
@@ -236,13 +243,13 @@ ReactDOM.render(
 );
 ```
 - <div></div> 可以用JSX变合法
-    - Function Component 返回⼀个 React Component，这是⼀种对渲染内容的轻量级描述。⼤多数的 React 开发者使⽤了⼀种名为 “JSX” 的特殊语法。  
-    JSX 可以让你更轻松地书写这些结构。语法 <div /> 会被编译成 React.createElement('div')。  
-    JSX 给我们更⼤的便利维护代码，因为 HTML in JS。但是需要注意，⼀些 HTML 的 keywords 在 JSX 是不⼀样的，不如 class。
+    - Function Component 返回⼀个 React Component，这是⼀种对渲染内容的轻量级描述。⼤多数的 React 开发者使⽤了⼀种名为 “JSX” 的特殊语法。    
+    - JSX 可以让你更轻松地书写这些结构。语法 <div /> 会被编译成 React.createElement('div')。  
+    - JSX 给我们更⼤的便利维护代码，因为 HTML in JS。但是需要注意，⼀些 HTML 的 keywords 在 JSX 是不⼀样的，不如 class。   
     - 安装babel
         - `npm i -D babel`
         - D表示安装的是一个dev dependency
-        - 安装babel loader,babel core, reset-react
+        - 安装babel loader,babel core, reset-react：
         - `npm i -D babel-loader`
         - `npm i -D @babel/core`
         - `npm i -D @babel/preset-react`
