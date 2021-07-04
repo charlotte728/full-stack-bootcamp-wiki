@@ -181,9 +181,10 @@ React IOT
     - 其中version, description不要管，main不需要管，script可以先留空，repo如果有可以留着，author可以留着，license，homepage，bug可以删掉，可以加`"private": true`
     - script: 告诉项目怎么样去执行命令的
     - dependencies:中的lib可以是production需要的，也可以是development需要的
-    - devDependencies：中的lib是development需要的   
-使用命令:  
-`npm i react`
+    - devDependencies：中的lib是development需要的 
+  
+    使用命令:  
+    `npm i react`
 - 安装react， "dependencies"会自动加入react，同时生成版本锁    
 使用命令:    
 `npm i react-dom`
@@ -198,6 +199,24 @@ React IOT
 ### 4.2 引入并配置webpack
 新建`index.js`,里面敲入代码:     
 `import React from 'react';`  
+新建`index.html`,敲入标准html：
+```html
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Demo</title>
+  </head>
+
+  <body>
+    <div id="app"></div>
+    <script src="dist/main.js"></script>
+  </body>
+
+</html>
+```
 调用react,我们的目标是把`<div> hello world </div>`渲染到html里去
 - 这里，写import会把解释型代码变为编译型代码，浏览器将无法运行；需要通过webpack来解决，使用命令    
 `npm i webpack`   
@@ -218,15 +237,24 @@ module.exports = {
 ```
 `index.js`中来实现我们的渲染目标
 ```js
-    React.createElement( 'div', {
-        id: 'my-div',
-    }, [
-        React.createElement('p',{},'hello world'),
-        React.createElement('a',{href:'https://google.com'},'Google'),
-    ]),
+    import React from 'react';
+    import ReactDOM from 'react-dom';
+    import App from './App';
+
+    ReactDOM.render(
+
     //createElement: 第一个参数是tag name，第二个参数是attribute，第三个参数是children
     React.createElement('div',{},'Hello world'),
+    document.querySelector('#app'),
+    );
     
+```
+`index.html`中还需要更新
+```
+  <body>
+    <div id="app"></div>
+    <script src="dist/main.js"></script>
+  </body>
 ```
 - `npm run build`：打包
 
@@ -258,7 +286,7 @@ ReactDOM.render(
         module: {
         rules: [
           {
-            test: /\.m?js$/,
+            test: /\.js$/,
             use: {
               loader: 'babel-loader',
               options: {
@@ -279,8 +307,10 @@ ReactDOM.render(
     import React from 'react';
 
     const App = () => {
-        <div> hello world </div>
-    }
+        return (
+            <div> My App </div>
+        );
+    };
 
     export default App;
     ``` 
