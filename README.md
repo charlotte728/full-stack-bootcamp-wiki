@@ -12,7 +12,7 @@
 [Web全栈第5节课 Git](Class-05%20Git.md)  
 [Web全栈第6节课 JavaScript ES6 Part1](Class-06-JS.md)  
 [Web全栈第7节课 JavaScript ES6 Part2](Class-07-JS.md)   
-[Web全栈第8节课 Career CV & Linkedin](Class-08-Career.md)
+[Web全栈第8节课 Career CV & Linkedin](Class-08-Career.md)  
 [Web全栈第14节课 React哲学1](Class-14-React1.md)
 
 
