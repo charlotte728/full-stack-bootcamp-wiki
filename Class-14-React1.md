@@ -270,8 +270,9 @@ ReactDOM.render(
     document.querySelector('#app'),
 );
 ```
-- <div></div> 可以用JSX变合法
-    - Function Component 返回⼀个 React Component，这是⼀种对渲染内容的轻量级描述。⼤多数的 React 开发者使⽤了⼀种名为 “JSX” 的特殊语法。    
+- <div></div> 可以用JSX变合法  
+  
+  - Function Component 返回⼀个 React Component，这是⼀种对渲染内容的轻量级描述。⼤多数的 React 开发者使⽤了⼀种名为 “JSX” 的特殊语法    
     - JSX 可以让你更轻松地书写这些结构。语法 <div /> 会被编译成 React.createElement('div')。  
     - JSX 给我们更⼤的便利维护代码，因为 HTML in JS。但是需要注意，⼀些 HTML 的 keywords 在 JSX 是不⼀样的，不如 class。   
     - 安装babel
