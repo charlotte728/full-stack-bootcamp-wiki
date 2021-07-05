@@ -259,7 +259,7 @@ module.exports = {
 - `npm run build`：打包
 
 ### 4.3 使用jsx
-我们发现上面index.js中，createElement组成的代码块并不宜读，因此我们改上面为JSX的写法，为实现jsx的编译，我们需要安装babel
+我们发现上面index.js中，createElement组成的代码块并不宜读，因此我们改上面为JSX的写法
 ```js
 ReactDOM.render(
     (
@@ -270,10 +270,10 @@ ReactDOM.render(
     document.querySelector('#app'),
 );
 ```
-- <div></div> 可以用JSX变合法  
+- 为实现以上代码块，需要引入babel  
   
   - Function Component 返回⼀个 React Component，这是⼀种对渲染内容的轻量级描述。⼤多数的 React 开发者使⽤了⼀种名为 “JSX” 的特殊语法    
-    - JSX 可以让你更轻松地书写这些结构。语法 <div /> 会被编译成 React.createElement('div')。  
+    - JSX 可以让你更轻松地书写这些结构。语法` <div />` 会被编译成 React.createElement('div')。  
     - JSX 给我们更⼤的便利维护代码，因为 HTML in JS。但是需要注意，⼀些 HTML 的 keywords 在 JSX 是不⼀样的，不如 class。   
     - 安装babel
         - `npm i -D babel`
@@ -299,10 +299,11 @@ ReactDOM.render(
        }
         ```
 
-- 通过上面，我们看到运行React，我们需要的安装顺序
+- 通过上面，我们看到运行React，我们实际需要的安装顺序
     - React，ReactDOM, webpack, jsx, babel(core,preset-react)
 
 ### 4.4 使用component写法
+如何将上面的代码功能，改为模块化，我们需要
 - 更新`App.js`
     ```js
     import React from 'react';
