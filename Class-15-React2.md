@@ -26,27 +26,36 @@
 ### 1.1 React相关面试问题思路  
 关于React面试问题的思路,比如
 - 什么是好的代码，你为什么写React，通过React你学到了什么
-以上都可以通过下面
+ 
+以上都可以通过下面三点来答
 - Declarative
 - Component-based
 - Learn Once, Write Anywhere
+  
 什么是好的代码
 - RMR
+  
 如何写出一个好的代码
 - SOLID原则
+  
 什么是好的React代码
 - 足够的Declarative，Component-based
 - 针对以上两点，可以准备一下答案，比如从一个餐厅开始聊起
-技术型面试的话，大概率会问到React和Angular的区别
+  
+技术型面试的话，大概率会问到React和Angular的区别  
 问及什么是React的时候，答案出发点为 A JavaScript library for building user interfaces
 - Javascript library
 - user interfaces
+  
 为什么JS跟以前的Script Language不一样了？
 - 因为我们逐步加入了各种东西，比如Jsx，使js从解释型代码向编译型代码转变
+  
 面试中，如果能说到 解释型代码 vs 编译型代码的优缺点，也是非常好的
+
 Jsx是什么
 - 从RMR角度出发，一个让我们更容易书写的代码，例如在JS中直接写html，更加RMR
-我们在index.js中，知道我们为什么import ReactDOM，import App，因为我们在本文件下面都会调用ReactDOM和App，但是我们为什么在所有Jsx都需要import React呢？
+
+在index.js中，我们知道为什么import ReactDOM，import App，因为我们在本文件下面都会调用ReactDOM和App，但是我们为什么在所有Jsx文件都需要import React呢？
 - JSX需要编译，在编译的过程中JSX被编译成 React.createElement
 
 ### 1.2 React上节课知识点回顾
@@ -837,7 +846,6 @@ React的编译需要的两个重要工具：
 - 3. `App.js`中替换Header, 导入Header
   ```js
   import Header from './app/Header';
-   <Header />
   ``` 
 - 4. 在app中新建`Page.js`
   ```js
@@ -1082,7 +1090,6 @@ React的编译需要的两个重要工具：
 - 5. `App.js`中替换Page, 导入Page
   ```js
   import Page from './app/Page';
-   <Page />
   ``` 
 - 6. 在app中新建`Footer.js`
   ```js
@@ -1100,7 +1107,6 @@ React的编译需要的两个重要工具：
 - 7. `App.js`中替换Footer, 导入Footer
   ```js
   import Footer from './app/Footer';
-   <Footer />
   ```  
 - 8. 此时，模块化后的`App.js`已经变为
   ```js
@@ -1123,13 +1129,14 @@ React的编译需要的两个重要工具：
 
     export default App;
   ``` 
-- 以上我们将Header，Page，Footer组件化，最后在App.js中完成拼装
-- Q:CSS 可以放进component里吗（模块化）
+- 以上我们将Header，Page，Footer模块化，最后在App.js中完成拼装
+- Q:CSS 可以（模块化）放进component里吗
   - A: 可以用styled component。
 
 ### 2.3 模块化page，解决page过大问题
 - 1. 新建`HomePage.js`,将Page中对应的HomePage部分模块化
   ```js
+  //HomePage.js
     import React from 'react';
 
     const HomePage = () => (
@@ -1190,6 +1197,7 @@ React的编译需要的两个重要工具：
   ``` 
 - 2. 新建`ResumePage.js`，将Page中对应的ResumePage部分模块化
   ```js
+  //ResumePage.js
     import React from 'react';
 
     const ResumePage = () => (
@@ -1328,6 +1336,7 @@ React的编译需要的两个重要工具：
   ``` 
 - 3. 新建`Services.js`，将Page中对应的Services部分模块化
   ```js
+  //Service.js
     import React from 'react';
 
     const Services = () => (
@@ -1383,6 +1392,7 @@ React的编译需要的两个重要工具：
   ```  
 - 4. 更新`Page.js`
   ```js
+  //Page.js
     import React from 'react';
     import HomePage from './HomePage';
     import ResumePage from './ResumePage';
@@ -1457,8 +1467,7 @@ React的编译需要的两个重要工具：
       );
   }
   ```
-- Q:老师你这么划分是按照单一职责原则分的吗？
-  - A:
+
 
 ### 2.5 CSS的模块化
 为实现JS中直接写css
@@ -1536,24 +1545,26 @@ React的编译需要的两个重要工具：
    但是，html无法直接执行css，因此以上在使用webpack打包时会报错。为解决这个问题，我们将引入css loader与style loader
    - `npm i -D style-loader`
    - `npm i -D css-loader`
-   通过我们在chrome上inspect可以发现，webpack打包了我们的css，直接放到了header里 
+      
+  通过我们在chrome上inspect可以发现，webpack打包了我们写入jsx中的css，然后直接放到了header里 
 - Q:sass不可以吗
   - A:加个 sass loader就可以
 - Q:sass 可以直接用吗 还是要map成css才能用
   - A:可以，配个sass loader就可以
 
-以上这样的（标准）CSS引用方式产生两个痛点：
+以上这样的标准CSS模块化引用方式产生了三个痛点：
 - BEM
   - body-element-modifier：每个class都会很长
 - 维护两份文件
   - css和html文件都要维护
-- 维护class name 的一致性
-
+- 维护class name 的一致性 
+   
+因此我们会学习styled-components解决这个问题
 ## 3.使用styled-components
 - 1. 安装styled-components 
     `npm i styled-components`
-- 2. js文件中导入styled-components，同时更改html中标签的写法
-`Header.js`中，更新
+- 2. js文件中导入styled-components，同时更改html中标签的写法  
+更新`Header.js`
 ```js
 //Header.js
 import React from 'react';
@@ -1586,7 +1597,7 @@ const Navbar = styled.div`
     display: flex;
 `;
 
-const NavbarItem = styled.div`
+const NavbarItem = styled.a`
     padding: 16px;
     text-decoration: none;
     color: #49515d;
@@ -1660,11 +1671,12 @@ export default Header;
   - A: 并没有；但是可以按责任划分和按复用划分
 - Q: 如果多个component都要引用一个相同的style, 是import/export 对应的styled component 还是 重写一遍styled？
   - A: 可以创建一个新的js文件，作为可以复用的component，导入到其它使用他的地方
-- Q: 那除了flex还有其他style咋办、
+- Q: 那除了flex还有其他style咋办
   - A: 可以将flex作为参数，传入一个styled里
 - Q: bootstrap之类的架构怎么用styled components
   - A: 一个足够好的架构，天生支持styled components
 - Q: 所有component都是js结尾的文件我不知道在哪找stylecomponent怎么办
+  - A: vs code中使用 ctrl + p/cmd + p 来检索文件
 
 ### 4.课间Q&A
 - Q: styled都抽出来，会不会导致component文件过多
@@ -1695,8 +1707,8 @@ export default Header;
   - A: 学一个东西，官方文档一定是最正确的途径
 
 ## 5.项目文件结构化
-在我们把各种styled抽出去后，`Header.js`只有几十行了，非常易读。
-抽出的components都放到一个文件夹里，也会非常不易读。
+在我们把各种styled抽出去后，`Header.js`只有几十行了，非常易读。  
+抽出的components都放在一个文件夹里，非常不易读。
 
 这时候我们想到就近原则，把components划分为两类
 - 复用
@@ -1721,11 +1733,12 @@ export default Header;
   - 敲入文件名，来检索想要的文件
 
 ### 5.2 更新import, 引入index
-对于 NavbarItem文件下的NavbarItem.js, 如果我们不想看到像
-`import NavbarItem from './components/NavbarItem/NavbarItem';`
-这样的重复引用，而改为
-`import NavbarItem from './components/NavbarItem';`
-那其实我们导入的是NavbarItem下的index.js, 这样我们可以通过创建`index.js`来转发NavbarItem
+对于 NavbarItem文件下的NavbarItem.js, 如果我们不想看到像  
+`import NavbarItem from './components/NavbarItem/NavbarItem';`  
+这样的重复引用，想变成下面这样    
+`import NavbarItem from './components/NavbarItem';`  
+那其实上面的语句，我们导入的是NavbarItem下的index.js,  
+因此我们可以通过在NavbarItem文件夹下创建`index.js`来转发NavbarItem
 ```js
 //index.js
 export {default} from './NavbarItem';
@@ -1736,6 +1749,7 @@ import NavbarItem from './NavbarItem';
 export default NavbarItem;
 ```
 > 在计算机语言里面，当你去索引/指向 文件夹的时候，默认 索引/指向 index文件
+ 
 如果`NavbarItem.js`里又定义了其他export，例如
 ```js
 export const A = 'A';
@@ -1755,8 +1769,9 @@ export {default, A} from './NavbarItem';
       - `index.js`
       - `NavbarItem.js`
       - `Link.js`
-  - `Header.js`
-我们想将Link的export也加入到index里，那可以这么写
+  - `Header.js`  
+  
+我们想将Link的export也加入到index里，那么在NavbarItem里的index可以这么写
 ```js
 //index.js
 export { default } from './NavbarItem';
@@ -1768,8 +1783,7 @@ import NavbarItem, { Link } from './components/NavbarItem';
 ```
 
 ### 5.3 从maintainable角度看，为什么一定要引入index
-代码只写一次，但是会被调用n次，会被阅览n+1次
-- 虽然我们写了`index.js`，仅仅避免了少写一次NavbarItem，但是别人调用的时候也会少写一次NavbarItem。如果你的代码被调用10000次，就节省了别人少些10000个NavbarItem的时间
-- 面试官问你，rmr中，你认为什么是一段好的maintainable代码呢，你可以按照思路`代码只写一次，但是会被调用n次，会被阅览n+1次`,让后续调用和阅览的人舒服，虽然会cost我一点时间，但是可以节省别人n+1次时间
-
-大家可以把P1转成React版本
+> 代码只写一次，但是会被调用n次，会被阅览n+1次
+- 虽然我们写了`index.js`，  
+ `import NavbarItem from './components/NavbarItem';`中，仅仅避免了少写一次NavbarItem，但是别人调用的时候也会少写一次NavbarItem。如果你的代码被调用10000次，就节省了别人少些10000个NavbarItem的时间
+- 面试官问你，rmr中，你认为什么是一段好的maintainable代码呢，你可以按照思路`代码只写一次，但是会被调用n次，会被阅览n+1次`来答，为了让后续调用和阅览的人舒服，虽然会cost我一点时间，但是可以节省别人n+1次时间
