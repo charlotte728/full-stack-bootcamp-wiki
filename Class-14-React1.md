@@ -270,7 +270,7 @@ ReactDOM.render(
     document.querySelector('#app'),
 );
 ```
-- 为实现以上代码块，需要引入babel  
+- 为实现以上代码块，编译jsx to jx, 需要引入babel  
   
   - Function Component 返回⼀个 React Component，这是⼀种对渲染内容的轻量级描述。⼤多数的 React 开发者使⽤了⼀种名为 “JSX” 的特殊语法    
     - JSX 可以让你更轻松地书写这些结构。语法` <div />` 会被编译成 React.createElement('div')。  
