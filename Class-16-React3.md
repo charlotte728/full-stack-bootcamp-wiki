@@ -10,11 +10,11 @@
     - [1.6 解决jsx中的warning代码块](#16-解决jsx中的warning代码块)
     - [1.7 解决频繁 run build](#17-解决频繁-run-build)
   - [2.如何用JSX实现分页渲染：页面渲染的声明式写法](#2如何用jsx实现分页渲染页面渲染的声明式写法)
-  - [3. 改造以上写法中的if-else](#3-改造以上写法中的if-else)
+  - [3.改造以上写法中的if-else](#3-改造以上写法中的if-else)
     - [3.1 回顾js中的key-value map,改造if-else](#31-回顾js中的key-value-map改造if-else)
     - [3.2 改造if-else, jsx中我们更常见的写法](#32-改造if-else-jsx中我们更常见的写法)
     - [3.3 课间提问](#33-课间提问)
-  - [4. 引入变量page，使header active与当前页面渲染一致](#4-引入变量page使header-active与当前页面渲染一致)
+  - [4.引入变量page，使header active与当前页面渲染一致](#4-引入变量page使header-active与当前页面渲染一致)
     - [4.1 复习模板字符串](#41-复习模板字符串)
   - [5.props值传递](#5props值传递)
     - [5.1 map映射](#51-map映射)
@@ -28,15 +28,16 @@
 ## 1.课前答疑，及上节课回顾
 ### 1.1 什么是一个好的component
 - Q:什么是一个好的component，什么是一个好的component划分界限
-面试时，谈到react好处->declarative，component based->component based->什么是一个好的component
-谈到什么是一个好的component的时候，谈solid不一定是个好的答案，因为可能会把话题往solid转
-正确方向是
+  
+面试时，谈到react好处，可能会按照下面思路谈下去->declarative，component based->component based->什么是一个好的component  
+谈到什么是一个好的component的时候，谈solid不一定是个好的答案，因为可能会把话题往solid转  
+正确方向可以是
 - readable：以前一个300多行的html，被划分成了几个文件，原来的html仅变成了10几行非常易读，易维护
 - reusable
 - maintainable
 
 ### 1.2 两种程序员
-程序员分两种，码畜和码农。希望大家做码农，而不是码畜
+程序员分两种，码畜和码农。希望大家做码农，而不是码畜：  
 码畜 VS 码农
 - 码畜：机械重复的写代码，看到别人写就写
 - 码农：像农民一样，努力的呵护自己的庄稼，写完代码后，去反思，是否足够好，有没有可改进的空间，有没有可学习的空间
@@ -65,22 +66,24 @@ styled-components：
       - A:班上永远有比你学习好的同学，你会直接去抄他答案吗？
 
 ### 1.6 解决jsx中的warning代码块
-React在编译的同时会检查你的html错误，同时会对html中的`class`这一写法疯狂warning, 这是因为有些html attribute 与原生 html attribute不同，例如
+React在编译的同时会检查你的html错误，同时会对html中的`class`这一写法疯狂warning, 这是因为jsx有些html attribute 与原生 html attribute不同，例如
 - class -> className
-- for -> htmlFor
-为什么这两个会被改名，而`href`,`id`等没有，是因为`class`,`for`都是js关键字, 因此我们因极力避免以上情况。
+- for -> htmlFor  
+  
+为什么这两个会被改名，而`href`,`id`等没有，是因为`class`,`for`都是js关键字, 因此我们也极力避免以上情况。
 
-因为jsx里的html都是经过js编译的，html又是一个忍耐性非常强的语言，哪怕你在html里瞎写，他也会努力帮你实现；但是jsx是一个很picky的语言，遇到问题就会给你提出来
+jsx里的html都是经过js编译的，html又是一个忍耐性非常强的语言，哪怕你在html里瞎写，他也会努力帮你实现；但是jsx是一个很picky的语言，遇到问题就会给你提出来
 
 ### 1.7 解决频繁 run build
 每次修改完成，我们都要`npm run build`一下，才能跑
-- 程序语言发展到现在，应该不会有地方让你感觉不舒服，但是这里为什么每一次要这么麻烦
+- 程序语言发展到现在，应该不会有地方让你感觉不舒服，但是这里为什么每一次要这么麻烦，所以你要学会google
 - webpack-dev-server，或者装plugin
 
 ## 2.如何用JSX实现分页渲染：页面渲染的声明式写法
 实现切换页面，我们最常用到的是className，但是这个方法的弊端是没有被展现的page其实已经被渲染出来了。
 - 事出反常必有妖：但是这样会占用浏览器资源
->什么是一个好的网站，在不影响功能的情况下，渲染出来的elements越少越好
+>什么是一个好的网站，在不影响功能的情况下，渲染出来的elements越少越好  
+
 现在我们已经可以在jsx直接写html了
 - 1. 更新Page.js，加入if
   ```js
@@ -661,10 +664,12 @@ const myAge = student['age'];//29
 const key = 'age';
 const myAge = student[key];//29
 ```
-JS中直接写HTML->JSX
+JS中直接写HTML，就变成了JSX
+
 Q：jsx中可以插入JS片段吗
 - 可以，
 > 在JSX里，所有`<>`包起来的都被认为是html
+
 > 在JSX里，所有`{}`包起来的都被认为是js
   
 因此改掉page里的if-else：
@@ -857,6 +862,7 @@ export default Header;
 
 ```
 - 3.继续修改`Header.js`，引入page变量
+  
 反引号不能省略，是字符串，是在a中的jsx中的html字符中的js
 ```js
 //Header.js
@@ -1071,7 +1077,7 @@ export default Header;
 - Q: 老师 ·navbarItem ${false}· 这样输出的class会不会变成  narbarItem false
   - A: 是的
 - Q: 我觉得刚才用模版字符串一句话挺方便的，真实工作中有必要这么先搞两个函数么？
-  - A: 工作中代码是不需要两个const的,刚刚的两个const是教学需要
+  - A: 工作中代码是不需要两个const的,刚刚的两个const是教学需要，因此Header的最后优化版为
   ```js
     //Header.js
     import React from 'react';
@@ -1132,8 +1138,8 @@ export default Header;
                 ))}
                 </Flex>
             </Right>
-    </Nav>
-    );
+        </Nav>
+         );
     }
 
     export default Header;
@@ -1141,16 +1147,18 @@ export default Header;
 
 ## 5.props值传递
 ### 5.1 map映射
-  map 使一个array经过一个处理，获得一个新的array，即
-  array -> map(映射) -> 新array
-  例如
+  map 使一个array经过一个处理，获得一个新的array，即  
+  array -> map(映射) -> 新array  
+  例如  
+  ```js
   ['鸡肉','蘑菇'] -> map(切菜) -> ['切好的鸡肉','切好的蘑菇'] 
   const 切菜 = （菜） => '切好的${菜}'
+  ```
   map, reduce, filter是映射的三个高级用法
 
 ### 5.2 props值传递的实现原理
-  `Header.js`中 `page = 'HOME'`
-  `Page.js`中 `page = 'HOME'`
+  `Header.js`中 `page = 'HOME'`  
+  `Page.js`中 `page = 'HOME'`  
   两个组件中，对应的page应该是同一个值，这种情况类似于
   ```js
   const a = () => {
@@ -1166,7 +1174,7 @@ export default Header;
       const s = 'ABC';
   }
   ```
-  其中，b(),c()中的s永远是相等的
+  其中，b(),c()中的s永远是相等的  
   如果我们想让b(),c()中的s永远保持一致，原理上应该这么做
   ```js
   const a = () = {
@@ -1212,8 +1220,9 @@ const App = () => {
 export default App;
 ```
 
-html attribute是一个key，value的形式，在这里
-className = main，attrib中，key = arg， value = page，说到key，value，就容易让我们想到object{}，因此我们可以在Page.js中进行解构，这种在component中传参的方式叫做props
+html attribute是一个key，value的形式  
+在这里, className = main，attrib中，key = arg， value = page，  
+说到key，value，就容易让我们想到object{}，因此我们可以在Page.js中进行解构，这种在component中传参的方式叫做props
 
   - 2. 更改Page.js, 接收page
 ```js
@@ -1312,6 +1321,6 @@ export default Page;
 - Q:前端是不是不需要学习很多aws
   - A:作为Junior不需要太多
 - Q:怎么能变得跟老师一样厉害？
-  - A: 技术上理解还是比较浅的，但是很理解澳洲的文化，会把他跟中国文化做一个结合，结合中国文化的长处，比如执行力；理解了他的圈子后，发挥了中国文化的优点
-  - 澳洲为什么招一个2~3年经验的，因为懒；澳洲人认为一个星期可以完成的，中国人一天就能完成；所以2~3年的经验，你可能几个月就弥补过来，每天哪怕五小时，真的敲代码 也是作弊的
+  - A: (龙哥自谦)技术上理解还是比较浅的，但是很理解澳洲的文化，会把他跟中国文化做一个结合，结合中国文化的长处，比如执行力；理解了澳洲的圈子后，发挥了中国文化的优点
+  - 澳洲为什么招一个2~3年经验的，因为懒；澳洲人认为一个星期可以完成的，中国人一天就能完成；所以2~3年的经验，你可能几个月就弥补过来，每天哪怕五小时，真的敲代码，对澳洲人来讲 也是作弊的
   - 所以你做为一个Junior去面试，澳洲人会先入为主的代入你实际的代码工作总时长其实不长，从而非常反感你去聊技术；他更关心你，每天磨工8小时你得到了什么锻炼，学到了什么东西
