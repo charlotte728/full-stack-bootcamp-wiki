@@ -15,7 +15,8 @@
 [Web全栈第8节课  Career CV & Linkedin](Class-08-Career.md)  
 [Web全栈第9节课  React哲学1](Class-14-React1.md)  
 [Web全栈第10节课 React哲学2](Class-15-React2.md)  
-[Web全栈第11节课 React哲学3](Class-16-React3.md)  
+[Web全栈第11节课 React哲学3](Class-16-React3.md)   
+[Web全栈第12节课 React哲学4](Class-17-React4.md)   
 
 ## Web全栈班13期Java笔记： 
 [Web全栈Java班第1节课 Java后端基础](ClassJ-09.md)   
