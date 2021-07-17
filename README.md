@@ -13,12 +13,12 @@
 [Web全栈第6节课  JavaScript ES6 Part1](Class-06-JS.md)  
 [Web全栈第7节课  JavaScript ES6 Part2](Class-07-JS.md)   
 [Web全栈第8节课  Career CV & Linkedin](Class-08-Career.md)  
-[Web全栈第9节课  React哲学1](Class-14-React1.md)  
-[Web全栈第10节课 React哲学2](Class-15-React2.md)  
-[Web全栈第11节课 React哲学3](Class-16-React3.md)   
-[Web全栈第12节课 React哲学4](Class-17-React4.md)   
-[Web全栈第13节课 React哲学5](Class-18-React5.md)    
-[Web全栈第14节课 React哲学6](Class-27-React6.md)    
+[Web全栈第9节课  React哲学1:React三大特性，安装与配置](Class-14-React1.md)  
+[Web全栈第10节课 React哲学2:项目组件化，styled component](Class-15-React2.md)  
+[Web全栈第11节课 React哲学3:key-value map，props](Class-16-React3.md)   
+[Web全栈第12节课 React哲学4:DevServer，虚拟DOM，state](Class-17-React4.md)   
+[Web全栈第13节课 React哲学5:state lifting，call api，lifecycle](Class-18-React5.md)    
+[Web全栈第14节课 React哲学6:P2重构，fetch，axios](Class-27-React6.md)    
 
 ## Web全栈班13期Java笔记： 
 [Web全栈Java班第1节课 Java后端基础](ClassJ-09.md)   
