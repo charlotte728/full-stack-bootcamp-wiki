@@ -49,7 +49,7 @@
       - [3.1.1 External style:](#311-external-style)
       - [3.1.2 Inline style:](#312-inline-style)
       - [3.1.3 Internal style:](#313-internal-style)
-    - [3.2 Selectors（重点）:](#32-selectors重点)
+    - [3.2 Selectors:](#32-selectors)
       - [3.2.1	简单选择器](#321简单选择器)
       - [3.2.2	Element Selector](#322element-selector)
       - [3.2.3	其它 Selector](#323其它-selector)
@@ -71,10 +71,9 @@
       - [3.5.5 ```cursor```](#355-cursor)
       - [3.5.6 ```text-decoration```](#356-text-decoration)
     - [3.6 Normalize.css:](#36-normalizecss)
-    - [3.7 Position（重点）](#37-position重点)
+    - [3.7 Position](#37-position)
     - [3.8 CSS class命名法 bem](#38-css-class命名法-bem)
     - [3.9	作业：carddesign](#39作业carddesign)
-
 # 课堂笔记
 
 ## 1.个人介绍：Gary老师
