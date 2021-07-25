@@ -7,6 +7,8 @@
 
 [code review流程](code%20review流程.md)
 
+## Web全栈班通用笔记： 
+[Web全栈第2节课  HTML & CSS](Class-02-HTML.md)  
 ## Web全栈班13期通用笔记：   
 [Web全栈第4节课  JavaScript初讲](Class-04-JS.md)  
 [Web全栈第5节课  Git](Class-05%20Git.md)  
