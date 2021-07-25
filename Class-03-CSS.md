@@ -1,34 +1,35 @@
-本节知识点：
-1.	Web Sever的安装
-2.	作业反馈
-3.	了解常见的Card样式
-4.	CSS的读取顺序与覆盖机制
-5.	Modifier是什么
-6.	BEM的使用地方
-7.	怎样reset CSS
-8.	Specificity: CSS中的优先级机制
-9.	Responsive Web Design实现的原理
-10.	工作中如何实现 Responsive web design（重点）
-11.	各种CSS Library可以怎样划分
-12.	Grid system的一般用途
-13.	怎样引用Library
-14.	CSS preprocessor: 原理，优势，如何使用（重点）
-15.	小作业要求
-16.	flexbox的使用（重点）
-17.	UI Design的原则
-18.	可以添加的VS code extension 
-
-
-课堂笔记：
-1.	Web server安装（详情参考上节课笔记）
-2.	作业反馈
-
-
-##	1.Card样式：
+# Class-03 CSS
+## 主要知识点
+  - [1.Card样式：](#1card样式)
+  - [2.CSS: Styling from top to bottom](#2css-styling-from-top-to-bottom)
+  - [3.Specificity优先级](#3specificity优先级)
+  - [4.Responsive web design](#4responsive-web-design)
+    - [4.1 Responsive web design 朴素的（过去的）做法](#41-responsive-web-design-朴素的过去的做法)
+    - [4.2 Set the viewport:](#42-set-the-viewport)
+    - [4.3 Responsive web design 现代的实现方式](#43-responsive-web-design-现代的实现方式)
+  - [5.CSS library分两种](#5css-library分两种)
+  - [6.Library引用](#6library引用)
+  - [7.CSS preprocessor(CSS 处理器)：less，sass（scss）](#7css-preprocessorcss-处理器lesssassscss)
+    - [7.3 方法复用](#73-方法复用)
+    - [7.4 Nesting](#74-nesting)
+    - [7.5 其它功能](#75-其它功能)
+    - [7.6 作业](#76-作业)
+  - [8.flexbox](#8flexbox)
+    - [8.1 （常用）使block elements同在一行，](#81-常用使block-elements同在一行)
+    - [8.2 (不太常用)排序：调节同行block里element的顺序](#82-不太常用排序调节同行block里element的顺序)
+    - [8.3（常用）换行：换行同行显示宽度不够时，自动把element拖到下一行：](#83常用换行换行同行显示宽度不够时自动把element拖到下一行)
+    - [8.4 ```Flex-flow```](#84-flex-flow)
+    - [8.5 (常用)```justify-content```](#85-常用justify-content)
+    - [8.6 ```allign-itemst```](#86-allign-itemst)
+    - [8.7 Children 属性](#87-children-属性)
+  - [9.UI Design的principal：一致性](#9ui-design的principal一致性)
+  - [10.作业反馈(13期内容)](#10作业反馈13期内容)
+# 课堂笔记：
+## 1.Card样式：
 a.	常见形式：要熟悉它的常用元素，元素名字
 b.	经验：实际工作中，很多时候不是手画而是使用component library
 
-##	2.CSS: Styling from top to bottom
+## 2.CSS: Styling from top to bottom
 - 从上往下读，重复的地方，下面的会覆盖，而且不会报错 
 - 权重：写在不同地方的css的优先级
   - Least：Default Stylesheet, 浏览器加给他的
