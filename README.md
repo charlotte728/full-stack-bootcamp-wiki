@@ -1,12 +1,5 @@
 # full-stack-bootcamp-wiki
 课程链接： https://jiangren.com.au/web-development-bootcamp
-
-[Web全栈班12期Nodejs班笔记](匠人web全栈12期N笔记.md)
-
-[Web全栈班12期Java班笔记](JR_Web_FullStack12_Java_Note.md)
-
-[code review流程](code%20review流程.md)
-
 ## Web全栈班通用笔记： 
 [Web全栈第2节课  HTML & CSS](Class-02-HTML.md)    
 [Web全栈第3节课  CSS进阶](Class-03-CSS.md)    
@@ -28,3 +21,8 @@
 
 ## Web全栈班13期Node.js笔记：  
 [Web全栈Node.js班第1节课 Node.js基础](ClassN-09.md)  
+
+## Web全栈班往期笔记：
+[Web全栈班12期Nodejs班笔记](匠人web全栈12期N笔记.md)   
+[Web全栈班12期Java班笔记](JR_Web_FullStack12_Java_Note.md)   
+[code review流程](code%20review流程.md)   
