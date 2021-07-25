@@ -127,10 +127,10 @@ HTML基本结构： open + closing tag + content
   - frame 用的比较少现在：划出一段frame 运行独立的html，带来的主要问题会混乱你的history，浏览器捕捉不到你的记录；现在用backend来实现的较多
 #### 2.2.1 head总结
 ```<head>```主要功能为帮助加载，告诉搜索引擎检索内容，做一些配置
-e.	<body>：页面展示，给user看的所有内容
 > 小技巧：vs code里敲h1, 然后按tab，系统会自动补全代码 
 
 ### 2.3 HTML body
+页面展示，给user看的所有内容  
 标签的基本原理和效果要懂，然后可以去查  
 使用caniuse.com来查询标签的Browser Compatibility
 #### 2.3.1 live-server
@@ -226,7 +226,7 @@ html受众有三个：
 > 小经验：澳洲对页面accessibility比较看重（要求tag的使用要合乎语义）
 - seo：se会给你排分，滥用tag会降分
 - Wikipedia 是html文档做的很标准很规范很好的
-- 每一段是一个<p>,合乎语义
+- 每一段是一个```<p>```,合乎语义
 
 
 ### 2.7 File path
@@ -236,7 +236,7 @@ html受众有三个：
 - 通常情况下绝对路径用的比较多，相对引用在react里某些场景会更好用，绝对引用一般不容易出错
 
 ### 2.8	关于Comment
-- 你会把document写到哪里：真正写的好的comment都能self explained；
+- 你会把document写到哪里：真正写的好的代码，因为易读，都能self explained；
 - 用comment的原因，是解释为什么这么写
 
 ### 2.9 Dev tool（Chrome）：
@@ -278,15 +278,15 @@ https://www.youtube.com/watch?v=tSv2KIF7uE4
   - A:可能问到的问题，会混合css，js，react一起让你写，或者HTML5标签的浏览器兼容性如何
 
 ### 2.12 课后知识点：
-在react里, 
-for becomes htmlFor
+在react里,   
+for becomes htmlFor，
 class becomes className
 #### 2.12.1 学习资源
 也可日常查询：MDN, W3schools: 介绍html各种标签
 #### 2.12.2 Further Readings
 - A guide to flexbox：
 https://css-tricks.com/snippets/css/a-guide-to-flexbox/
-- Css布局：https://zh.learnlayout.com/
+- CSS布局：https://zh.learnlayout.com/
 
 
 ## 3.CSS
@@ -305,7 +305,7 @@ Inline style（最不推荐）: 省略了找node的过程，但是非常不推�
 #### 3.1.3 Internal style:
 Internal style: 也是不推荐，会让html显得很长
 
-### 3.2 Selectors（重点）:
+### 3.2 Selectors:
 写CSS的时候，表明他要附着在什么上面：
 #### 3.2.1	简单选择器
 - Class Selector：可复用，可叠加，一般最常用
@@ -377,8 +377,9 @@ text-decoration:作业可能用到
 ### 3.6 Normalize.css:
 初始化css设定，会在开发中导入，避免出现浏览器差异
 
-### 3.7 Position（重点）
-一定要 看链接（https://zh.learnlayout.com/），掌握，虽然现在工作中用的不是很多（flexbox用的更多）
+### 3.7 Position
+一定要 看链接（https://zh.learnlayout.com/）  
+并掌握，虽然现在工作中用的不是很多（flexbox用的更多）
 - 通过top/bottom, right/left, z-index(数值越高，层级越往上)的value来定位
 - absolute:
   - 会释放本身所占的空间
