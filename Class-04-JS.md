@@ -77,12 +77,12 @@
 - 动态类型(dynamic)：
   - JavaScript并不会绑定一个变量的类型，例如  
     ```
-    var name = 'Gary';
+    var name = 'Gary';
     console.log(typeof name);
     ```   
    - `output`结果应为`string`,但是如果`name`在中间赋值 `name = 32`,最终`output`结果应为`number`
    - 类型只会绑定在值上，而不会绑定在变量上
-   - `use strict`:在js文件的首行加入，会令js文件的编译进入strick模式，如，如果变量没有声明，则后面调用会报错
+   - `use strict`:在js文件的首行加入，会令js文件的编译进入strict模式，如果变量没有声明，则后面调用会报错
 - 命名规则：
   - UPPERCASE:全大写
   - camelCase(最常用):第一个单词小写，从第二个单词开始，首字母大写
@@ -362,6 +362,7 @@
     var name = 'firstName';
     console.log(person[name]);
     ``` 
+    这里```person.firstName```跟```person[firstName]```是等效的  
     `function`本身也是一个value,一个复杂数据类型,在作为参数传递的时候，传递是指向该`function`的地址  
 - `this` 指向object本身   
     假如，添加以下代码：
@@ -407,8 +408,7 @@
     }
     ```
     其中，key即为object里的`key`,person[key]为该key对应的value
-    上面如果写作person.key将没有输出，因为`.`后面直接跟的是变量名
-    这里```person.firstName```跟```person[firstName]```是等效的    
+    上面如果写作person.key将没有输出，因为`.`后面直接跟的是变量名  
     > 需要课下阅读更多`object`的方法：https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/assign  
     常用的如`assign()`, `entries()`,` keys()`, `values()`, `hasOwnProperty()`
 
@@ -483,10 +483,6 @@ https://momentjs.com
 </script>
 
 </html>
-```
-- 想引入外部js，可以在```<head>```里插入
-```html
-<script src="./script.js"></script>
 ```
 ### 11.JS异步加载
 - 上面的练习中，`<script>`放的位置是正确的；
