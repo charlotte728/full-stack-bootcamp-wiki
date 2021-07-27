@@ -15,10 +15,12 @@
 
 ## 课堂笔记
 
+
 ### 1.HTML + CSS + JS
 - HTML: 做content structure
 - CSS: 做layout design，styling
 - JS: 与user交互的桥梁，捕捉用户的操作，用户data（给backend）的传递
+  - 在澳洲找第一份工作不会考察太深的js内容
 
 ### 2.什么是JavaScript
 - 首先是编程性语言
@@ -80,19 +82,20 @@
     ```   
    - `output`结果应为`string`,但是如果`name`在中间赋值 `name = 32`,最终`output`结果应为`number`
    - 类型只会绑定在值上，而不会绑定在变量上
+   - `use strict`:在js文件的首行加入，会令js文件的编译进入strick模式，如，如果变量没有声明，则后面调用会报错
 - 命名规则：
   - UPPERCASE:全大写
   - camelCase(最常用):第一个单词小写，从第二个单词开始，首字母大写
   - PascalCase(不常用):所有单词首字母大写
   - under_score:单词间用单下划线
-  - hy-phen(不能用):单词中间加`-`
+  - hy-phen:单词中间加`-`
   - 命名中避免出现number,最好解释一下，除非做演示代码
   - 命名中避免出现乱七八糟的符号，除了`_`和`$`
   - 不能使用系统保留字符：`if`,`else`...
 
 ### 4.数据类型
 - 简单数据类型
-  - 数值（number）:整数和小数，包括`infinity`(无限大)
+  - 数值（number）:整数和小数，包括`infinity`(无限大)，`NaN`（not a number）
     - 因为JavaScript没有float类型，在小数计算的时候要特别注意，容易出问题，例如  
   `0.1 + 0.2`  
   结果为`0.30000000000000004`  
@@ -100,10 +103,11 @@
   >JavaScript很少用来做数据计算，数据计算基本被python垄断了
   - 字符串（string）:字符串
   - 布尔值（boolean）:`true`和`false`
-  - `undefined`:表示未定义或不存在
+  - `undefined`:表示未定义或不存在, 在GraphQL已经被严格限定
   - `null`：表示空值（即赋值为空）
   >简单数据类型记录的是一个确切的值
 - 复杂数据类型
+注意下`map`和`set`，后面用的比较多
   - object：有很多简单类型构成，各种值组的的集合，例如
     ```
     var person = {
@@ -128,13 +132,14 @@
     - 得到数组的长度：`ages.length`
     - 尾部添加新元素：`ages.push(4);`
     - 尾部删除元素：`ages.pop();`
+    - 选择部分值，创建一个新的数组：`ages.slice()`;
     - 头部添加新元素：`ages.unshift(4);`
     - 头部删除元素：`ages.unshift();`
     - `map()`:对原array中对每一个元算执行一个方法，然后返回一个新的array
    > 现在开始去阅读MDN了解更多array和object的常用方法：比如`forEach()`, `map()`,知道JavaScript能做什么
       https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/forEach#
       
-   > 文档中`Array.function()`为静态方法，例如`Array.from()`; `Array.prototype.function()`则使用时前面直接跟array名，例如`ages.pop()`
+   > 文档中`Array.function()`为静态方法，例如`Array.from()`（将对象强制转化为Array）; `Array.prototype.function()`则使用时前面直接跟array名，例如`ages.pop()`  
 
   >复杂数据类型记录的是一个/组值的reference  
 - 常见符号
@@ -144,6 +149,7 @@
     - `===`：会加入类型判断
     > 工作中常会判断是否object的值(内容)相等，会比较复杂，可以用到额外的库，比如`lodash`(https://lodash.com)
   - 逻辑非：`!`
+    - `!!`会将数据类型强制转化，比如`if(!!person.name)`这里`!!person.name`就被转化为boolean
   > JavaScript中哪些是false的(falsy value)  
     > `false`, 空string（""），0，负数，`null`，`undefined`
   - 特殊的数字练习： 
@@ -177,6 +183,8 @@
     } else {
     }
     ``` 
+  - 尽量不要加else，会增加nesting，推荐阅读
+> Refactoring: Martin Fowler
 - 三元运算符：`?`
     - `(conditon) ? expr1:expr2`  
     等同于  
@@ -285,7 +293,9 @@
     ```  
     >以上代码中引入了闭包（closure）的概念，建议课后去查  
     >是context传递和保留的概念  
-    比如以上代码，传统语言中，在运行outsideFunc后，一般其中的变量等都会被系统回收；但是在JavaScript中，当insideFunc再次被运行时，它还是可以拿到在context中的temp值；可以理解为一种内部访问外部data的机制。
+    比如以上代码，传统语言中，在运行outsideFunc后，一般其中的变量等都会被系统回收；但是在JavaScript中，当insideFunc再次被运行时，它还是可以拿到在context中的temp值；可以理解为一种内部访问外部data的机制。因为insideFunc对temp的调用，导致该变量其实并没有被内存回收
+    - 常常用在callback上
+    - 要了解，这种insideFunc可以访问outsideFunc里变量的机制
     - 闭包的扩展示例：
      ```js
     function delayPrint(data)) {
@@ -398,7 +408,7 @@
     ```
     其中，key即为object里的`key`,person[key]为该key对应的value
     上面如果写作person.key将没有输出，因为`.`后面直接跟的是变量名
-
+    这里```person.firstName```跟```person[firstName]```是等效的    
     > 需要课下阅读更多`object`的方法：https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/assign  
     常用的如`assign()`, `entries()`,` keys()`, `values()`, `hasOwnProperty()`
 
@@ -440,6 +450,11 @@ https://momentjs.com
             width: 180px;
             padding: 11px;
         }
+
+        .clock-reverse {
+            background-color: white;
+            color:black;    
+        }
         
     </style>
 </head>
@@ -447,6 +462,12 @@ https://momentjs.com
     <div class="clock"></div>
 </body>
 <script>
+    var element = document.querySelector('clock');
+
+    function eventHandler(){
+      element.add('clock-reverse');
+    }
+
     function handleClick() {
         window.alert(new Date().toLocaleString());
     }
@@ -457,12 +478,16 @@ https://momentjs.com
         clockElement.innerHTML = new Date().toLocaleString();
     }
 
+    document.addEventListener('click', eventHandler);
     setInterval(setTimeToDiv, 1000);
 </script>
 
 </html>
 ```
-
+- 想引入外部js，可以在```<head>```里插入
+```html
+<script src="./script.js"></script>
+```
 ### 11.JS异步加载
 - 上面的练习中，`<script>`放的位置是正确的；
 如果是放在`<head>`里，在执行的时候，因为网页没有完全生成，可能会有效果上的延迟；  
