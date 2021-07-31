@@ -89,6 +89,7 @@
   - PascalCase(不常用):所有单词首字母大写
   - under_score:单词间用单下划线
   - hy-phen:单词中间加`-`
+  - 命名不能以数字开头
   - 命名中避免出现number,最好解释一下，除非做演示代码
   - 命名中避免出现乱七八糟的符号，除了`_`和`$`
   - 不能使用系统保留字符：`if`,`else`...
@@ -149,6 +150,7 @@
     - `===`：会加入类型判断
     > 工作中常会判断是否object的值(内容)相等，会比较复杂，可以用到额外的库，比如`lodash`(https://lodash.com)
   - 逻辑非：`!`
+    - `!==`: 判断不等，返回boolean
     - `!!`会将数据类型强制转化，比如`if(!!person.name)`这里`!!person.name`就被转化为boolean
   > JavaScript中哪些是false的(falsy value)  
     > `false`, 空string（""），0，负数，`null`，`undefined`
@@ -277,6 +279,7 @@
     - 注意参数为引用型变量时，有可能更改该变量的内容
     > 写`function`时，尽量不要试图修改传进来的arguments
 - JavaScript中没有真正意义上的`class`
+- `return` 表示返回，JavaScript会直接返回`return`后的值，之后的语句不会被执行
 - 理解`function`的参数是怎么传的，`function`里面可以定义`function`,`function`也可以被传递出去，`function` 也可以指定给别的varibale, 该varible还可以被运行
 - `function`在JavaScript中是一等公民，可以传递，也可以嵌套
     - 例如：
@@ -501,3 +504,13 @@ https://momentjs.com
  以上代码如果前面是使用的`defer`，则文件会等待下载完成后，依次运行，先file1,再file2  
  以上代码如果前面是使用的`async`，则文件会不等待下载完成，而是根据谁先下载完，执行谁的顺序运行，因此有可能先运行file2，再运行file1  
 > 考虑到js的加载问题，用`<script defer>`就可以了
+
+### 面试及学习建议
+- 与国内不同，澳洲开发更需要横向广度的经验
+- 从旧版本ES6之前开始学，更基础易懂
+- overeacted.io 是一个JavaScript核心开发者的博客
+- 学习方式：
+  - Podcast(syntax, software daily), Front-end Master.
+  - Side project
+  - 参加Meet Up
+- 多练习，复习和充分理解闭包和this等相对hardcore的内容
