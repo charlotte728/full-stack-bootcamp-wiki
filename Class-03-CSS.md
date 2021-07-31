@@ -14,6 +14,7 @@
     - [7.4 Nesting](#74-nesting)
     - [7.5 其它功能](#75-其它功能)
     - [7.6 作业](#76-作业)
+      - [7.6.1 作业参考](#761-作业参考)
   - [8.flexbox](#8flexbox)
     - [8.1 （常用）使block elements同在一行，](#81-常用使block-elements同在一行)
     - [8.2 (不太常用)排序：调节同行block里element的顺序](#82-不太常用排序调节同行block里element的顺序)
@@ -214,6 +215,9 @@ Nesting: 可以更清晰的做出structure，更易读
 - 引入bootstrap（responsive ）/flexbox
 - variable, extend 能用就用，clean code
 - 能用flexbox可以用flexbox
+#### 7.6.1 作业参考
+饼哥在tutorial的现场演示：
+https://onyx-storm-af0.notion.site/03-Lesson-4-Flexbox-Card-48ff1b7cf17f4b53874ad26b1d65b844
 
 ## 8.flexbox
 用来解决block element 换行的layout  
