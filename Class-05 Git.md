@@ -119,7 +119,7 @@ Open Source 开发中，没人愿意去设置一个central repository, 于是就
 ```git checkout <file>```  
 或者还原整个目录  
 ```git checkout .```
-- 将没有被tracking（没有commit到repository）的文件全部删除的命令：   
+- 将没有被tracking（没有commit到repository）的文件全部删除的命令，有一定危险性：   
 ```git clean```  
    - 默认情况下需要加`-f`强制执行   
    ```git clean -f```  
@@ -134,7 +134,7 @@ Open Source 开发中，没人愿意去设置一个central repository, 于是就
 - 完全删掉tracking的操作：  
 ```git reset <id>```
    - 会删掉`commit id`之后的所有操作，并把删掉的放入`unstaged`里  
-> `git reset` 会直接delete掉`commit`，所以很危险，不推荐，工作中一般也不会用  
+> `git reset` 会直接delete掉`commit`，看不到操作记录，所以很危险，不推荐，工作中一般也不会用  
 - `Terminal`类软件的安装(mac)  
   - https://iterm2.com  
   - Fish or Zsh (see https://medium.com/macoclock/awesome-command-line-tools-for-the-mac-42d810dacf93)
@@ -186,9 +186,9 @@ Open Source 开发中，没人愿意去设置一个central repository, 于是就
    - 下面选项中```Add .gitignore```可以选上项目的类型，这样在后面的`git add`命令时，将exclude掉不属于该类型项目的文件  
 - 从remote中更新本地文件，将服务器上的新文件拉取到本地：  
 ```git pull```
-- 将本地文件一次性更新到remote中：   
+- 拉取远程分支更新到本地仓库。   
 ```git push```   
-   - 在将本地一个新的branch`push`到remote repositor前，需要先确认是否已经使用命令，配置好了remote repository：
+   - 在将本地一个新的branch`push`到remote repository前，需要先确认是否已经使用命令，配置好了remote repository：
    ```git remote add <name> <url>```
    - 然后对于本地新建的branch，更新到remote时，需要加入完整的参数，告之云端原本的branch为origin，例如  
    ```git push --set-upstream origin feat1```
@@ -202,7 +202,7 @@ Open Source 开发中，没人愿意去设置一个central repository, 于是就
    - `pull request`之前必须解决所有的conflicts,解决冲突，谁后提交谁解决冲突，一般在自己的代码上解决冲突，未经允许不要改别人的
    - 如果遇到没有权限的repo，可以使用Fork加到自己的repo，做完修改之后可以apply a pull request against the original one
    - 在经过审核后，developer可以将已经完成的branch通过发送pull request， 来将自己的branch合并到master branch里
-   - master branch owner端会看到pull request,并自动监测conflict情况，来最后批准merge
+   - master branch owner端会看到pull request,并自动监测conflict情况，在进行review后，来最后批准merge
    - 在完成merge操作后，一般会把working branch删除掉
 - Github中，通过`.gitignore`文件去exclude一些文件，可以自己写，也可以找模版  
 
@@ -211,6 +211,7 @@ Open Source 开发中，没人愿意去设置一个central repository, 于是就
 > 但是Sean老师建议，rebase locally使用就好，如果public使用，同样会出现问题：The golden rule of git rebase is to never use it on public branches.
 - rebase会在merge后，将working branch的记录一起带过来，所以开发的历史记录会一直保留，同时使master branch一直保持单线结构
 - 如果使用`merge`来合并操作，在不删除working branch的情况下，一般都会有很复杂的commit历史结构
+- ` squash merge` squash and merge，将很多对于同一个feature的commit整合后再进行merge，使这些commit更好理解。但可能引起一些问题，例如不方便revert
 - 与`merge`相同，用`rebase`前需要先`check out`到on receiving branch
 - 如果`rebase`过程中出现conflict  
    - 需要先解决conflict,然后使用  
@@ -245,3 +246,6 @@ git push // 推送新的master
      ```touch term-paper.txt```
 
 - 在`clone`一个branch后，往往要先进入这个branch，再进行操作
+
+### 作业
+- 完成git练习后把github的url发给tutor
