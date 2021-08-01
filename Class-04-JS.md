@@ -29,7 +29,7 @@
     - 高级语言（例如C#,JAVA）都跑在一个自己的运行环境里面，运行环境负责好了跟操作系统的交互，因此写起来很方便。
 - JavaScript也是一个高级语言
     - 曾经只作为跑在browser里的一门语言，现在多了一个运行环境（nodejs），只要能安装nodejs的地方，就能运行js；nodejs可以运行在多种设备上，从大设备到小芯片，都可以加载。
-    - Javascript可以从前到后一条线贯穿，frontend可以用，也可以做back-end service, 一样能做middlelayer（中间层）的back-end for frontend。
+    - Javascript可以从前到后一条线贯穿，frontend可以用，也可以做back-end service, 一样能做middle layer（中间层）的back-end for frontend。
     - 本身不是一门严谨的语言
        - weekly type, runtime时不会检查变量类型；写的时候可以动态的改变变量type
     - JavaScript跟Java并没有联系，只是蹭热度而已。
@@ -40,7 +40,7 @@
 - 怎么测试运行
    - Chrome里，右键select inspect element, 然后console里直接敲代码
 - 怎么写入网页
-   - 嵌入在broswer，HTML中直接加入`<script>`，例如  
+   - 嵌入在browser，HTML中直接加入`<script>`，例如  
      ```
      <script>
         console.log("Hello World!")
@@ -88,7 +88,7 @@
   - camelCase(最常用):第一个单词小写，从第二个单词开始，首字母大写
   - PascalCase(不常用):所有单词首字母大写
   - under_score:单词间用单下划线
-  - hy-phen:单词中间加`-`
+  - hyphen:单词中间加`-`
   - 命名不能以数字开头
   - 命名中避免出现number,最好解释一下，除非做演示代码
   - 命名中避免出现乱七八糟的符号，除了`_`和`$`
@@ -172,7 +172,7 @@
 > You Don't Know JS: Up & Going
 
 > REACT的官方document写的不错，你们学习的时候，强烈推荐阅读  
-> 同时推荐REACT作者博客：https://overreacted.io   
+> 同时推荐REACT作者Dan Abramov博客：https://overreacted.io   
 > 以及：https://kentcdodds.com  
 > 推荐的Podcast:搜索“web development treats"- Syntax Tasty Web Development Treats  
 > 也可以Learning by teaching
