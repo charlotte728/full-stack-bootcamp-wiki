@@ -211,7 +211,7 @@ html受众有三个：
 - 很少使用通过html做，播放音乐，视频
 #### 2.5.4 ```<input>```
 ![input](image/c0209.png)
-- required placeholder：功能为 必填，一定跟submt走才有效
+- required placeholder：功能为 必填，一定跟submit走才有效
 - Type = "email"：自带类型检查
 - Type = "date"：浏览器的一致性不一样，一般用component来写
 
@@ -262,8 +262,9 @@ document.querySelectorAll("h1")
 - 把作业当成技能来学习，用好tutorial，做好assignment
 课后看：
 https://www.youtube.com/watch?v=tSv2KIF7uE4  
+HTML-CSS-DOM 视频解释了html, css, DOM，给了个大致的idea
 
-### 2.11 课间答疑：
+### 2.11 课间答疑(面试中的code test和interview问题)：
 - Q：刚刚问了一个问题，面试的时候除了给code test去了解programming的能力以外，面试的时候当面是怎么去面这个programming skill的呢？
   - A: 现场发题，现场写代码
   - A: 或者针对code test的问题，继续问
@@ -283,7 +284,7 @@ class becomes className
 #### 2.12.1 学习资源
 也可日常查询：MDN, W3schools: 介绍html各种标签
 #### 2.12.2 Further Readings
-- A guide to flexbox：
+- A guide to flexbox：（assignment2 flexbox card 需参考这网址）
 https://css-tricks.com/snippets/css/a-guide-to-flexbox/
 - CSS布局：https://zh.learnlayout.com/
 
@@ -309,6 +310,7 @@ Internal style: 也是不推荐，会让html显得很长
 #### 3.2.1	简单选择器
 - Class Selector：可复用，可叠加，一般最常用
 - Id Selector：只能用在一个element里吗，用一次，所以不是很常用
+> 分清楚id, class的区别
 #### 3.2.2	Element Selector
 不常用
 #### 3.2.3	其它 Selector	
@@ -388,7 +390,7 @@ text-decoration:作业可能用到
 - relative：针对原来位置，进行偏移
 - float：现在用的比较少，原来常用来做图片，文字的漂浮
 
-### 3.8 CSS class命名法 bem
+### 3.8 CSS class命名法 bem（assignment1推荐使用BEM命名伐）
 getbem.com
 - block__element: e.g.card___title, card__description
 - modifier: 元素状态时，对应样式的改变
