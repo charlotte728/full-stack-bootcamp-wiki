@@ -41,7 +41,7 @@
 - BEM用于写css的class name
   - M指的是Modifier：在一定条件下element会变成什么样子
 - CSS reset: （可以直接贴过来用）https://meyerweb.com/eric/tools/css/reset/
-  - 面试问题：怎么解决不同浏览器之间的显示问题：
+  - 面试问题：怎么解决不同浏览器之间的显示问题：（cross browser）
     - 可以导入normalize css，reset css
 - 不用 universal selector 的好处在于，Reset CSS 能 explicitly reset 特定元素。这样开发能更精准的掌控被重置的元素。
 
@@ -94,7 +94,7 @@ https://getbootstrap.com/docs/4.0/layout/grid/, https://www.bitdegree.org/learn/
 在不指定large的情况下，md的指定将一直向上沿用
 ###	4.3.2 CSS grid
 与浏览器兼容性不是很好，现在没有大规模在用；现在的排版还是在用各个library的grid system
-- meterial-ui grid system：react里最pupoular的ui
+- meterial-ui grid system：react里最pupular的ui
 https://material-ui.com/components/grid/
   - 类似于 bootstrap 
   - 基于google的设计语言
@@ -104,14 +104,14 @@ https://material-ui.com/components/grid/
 - Ant design：结合react vue来用，不是pure css库
   - https://ant.design/components/overview/
   - component下面会告诉你，是什么，when to use, 什么时候用什么 E.g. Drawer, 
-- Zendesk：一家澳洲公司的设计语言
+- Zendesk：一家澳洲公司的设计语言 （Garden is the design system by Zendesk https://garden.zendesk.com/）
 - Material UI：https://material.io/design
   - 澳洲用的最多
 一种是没有自己很浓重的设计语言
 - Bootstrap: 也提供了很多常见的components来用
-> 注意：就学习阶段来说，bootstrap（一定要看）, AntD, Material UI, 的components 下面一个一个都要看一下 ，知道每个component都是什么，比如啥是breadcrumb, https://getbootstrap.com/docs/5.0/components/accordion/  
+> 注意：就学习阶段来说，bootstrap（一定要看）, AntD, Material UI, 的components 下面一个一个都要看一下 ，知道每个component都是什么，比如啥是breadcrumb(了解网页上的各种元素), https://getbootstrap.com/docs/5.0/components/accordion/  
 
-Grid 一般用于大布局，小组件里position等去定位
+Grid 一般用于大布局，小组件里position等去定位 (assignment2也可以这么去做)
 
 ## 6.Library引用
 可以放到自己的cdn去   
@@ -154,7 +154,7 @@ $primary-color: #333;
 }
 ```
 ![scss](image/c0305.png)
-  - 可以复用（引入varibales）：用的比较多（上图）
+  - 可以复用（引入variables）：用的比较多（上图）
 > 招聘上常写：Dry Code：dont repeat yourself
 - vs code里敲入```lorem```可以快速填充文字片段
 - SASS VS SCSS: sass进一步简化了代码（比如变量定义去掉括号），建议用 scss
