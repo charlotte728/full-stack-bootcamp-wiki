@@ -67,11 +67,6 @@
 
 ### Quiz <!-- omit in toc --> 
 
-- Quiz1打印0123
-- Quiz2打印0125
-- Quiz3打印四次undefined，异步
-    - 块级作用域一开始就形成了，所以let会在块级作用域中查找
-
 1. What's the output of the following code
 
 ```js
@@ -80,6 +75,7 @@ for (var i = 0; i < 3; i++) {
   console.log(i);
 }
 console.log(i);
+// 0 1 2 3
 ```
 
 2. What's the output of the following code
@@ -90,6 +86,7 @@ for (let i = 0; i < 3; i++) {
   console.log(i);
 }
 console.log(i);
+// 0 1 2 5
 ```
 
 3.
@@ -101,6 +98,9 @@ for (var i = 0; i < arr.length; i++) {
     console.log('Index: ' + i + ', element: ' + arr[i]);
   }, 1000);
 }
+// undefined undefined undefined undefined
+// 因为异步
+// 如果使用let则会正确打印四个数字
 ```
 
 #### Conclusion <!-- omit in toc --> 
