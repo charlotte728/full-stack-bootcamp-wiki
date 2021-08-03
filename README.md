@@ -1,10 +1,12 @@
 # full-stack-bootcamp-wiki
 课程链接： https://jiangren.com.au/web-development-bootcamp
-## Web全栈班通用笔记： 
+## Web全栈班第14期通用笔记： 
 [Web全栈第2节课  HTML & CSS](Class-02-HTML.md)    
 [Web全栈第3节课  CSS进阶](Class-03-CSS.md)    
 [Web全栈第4节课  JavaScript初讲](Class-04-JS.md)    
 [Web全栈第5节课  Git](Class-05%20Git.md)   
+[Web全栈第6节课  JavaScript ES6 Part1](Class-06-ES6-14.md)   
+
 ## Web全栈班13期通用笔记：   
 [Web全栈第6节课  JavaScript ES6 Part1](Class-06-JS.md)  
 [Web全栈第7节课  JavaScript ES6 Part2](Class-07-JS.md)   
