@@ -1,8 +1,6 @@
 # Class-07-ES6&NodeJS
 
 ## 主要知识点
-
-## 课堂笔记 JavaScript ES6
 - [Class-07-ES6&NodeJS](#class-07-es6nodejs)
   - [主要知识点](#主要知识点)
   - [课堂笔记 JavaScript ES6](#课堂笔记-javascript-es6)
@@ -20,6 +18,7 @@
     - [建议](#建议)
     - [作业](#作业)
   
+## 课堂笔记 JavaScript ES6
 ### Classes
 - JavaScript的类与其他语言不同，是一种语法糖[]，实际上只是function
 - JavaScript的继承也与其他语言不同（Delegate而非继承）
