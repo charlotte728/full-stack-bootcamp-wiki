@@ -24,17 +24,18 @@
 # 课堂笔记
 
 ## 1.解释型语言
-解释型语言： 更humanbeing一些，分变量与常量。但是从实际角度出发，绝大多数存在的是常量。
+解释型语言： 更human-being一些，分变量与常量。但是从实际角度出发，绝大多数存在的是常量。
 - 龙哥提醒，写let的时候要自己想，我真的需要let吗
 
 ## 2.为什么学React  
 React让你尽量用少量的JS做更复杂的工作
-- 龙哥提醒，首先写代码的时候，要humanbeing的方式思考一下，出了什么问题，使用该技术解决了什么问题。
+- 龙哥提醒，首先写代码的时候，要human-being的方式思考一下，出了什么问题，使用该技术解决了什么问题。
   
 ### 2.1 以史为镜，可以知得失，React的发展史
 只有（写HTML）难受了，才能去想到学习React  
-历史时间线： angularJS -> React -> Angular -> VUE
-- React的出现，倒逼angularJS重写回了Angular
+历史时间线： AngularJS -> React -> Angular -> VUE
+jQuery -> AngularJS -> React/ Angular -> VUE
+- React的出现，倒逼AngularJS重写回了Angular
 ### 2.2 React的好处，与Angular的对比
 - React到底好在哪里
     - VS Angular：One framework Mobile & Desktop
@@ -46,8 +47,15 @@ React让你尽量用少量的JS做更复杂的工作
         - Only User interface, 只替代了Style相关的html，动态的html
 
 ## 3.React 三大特性
-### 3.1 Declarative
+- Declarative
+- Component-Based
+- Learn Once, Write Anywhere
+### 3.1 Declarative 声明式
 做UI时，React让我们只用声明式去设计UI，再去控制内部状态的改变，UI就会根据状态的改变而改变。
+- painless
+- design
+- efficiently update and render when data change
+- more predictable and easier to debug
 #### 3.1.1 Imperative 命令式
 - Imperative 命令式
     - 现实世界中，我们⼤部分编码都是命令式的，例如
@@ -114,6 +122,8 @@ React让你尽量用少量的JS做更复杂的工作
     // ...
     </div>
     ```   
+    申明式，重结果，轻过程
+    命令式，重过程，轻结果
 #### 3.1.4 其他小问题
 - 为什么去写JS
     - 为了交互，为了操作页面（DOM，HTML）
@@ -155,10 +165,10 @@ React让你尽量用少量的JS做更复杂的工作
 学会了React，你就什么都会了，比如  
 Server Side Rendering (SSR)  
 React Native (RN)  
-React DOM  
-React VR  
-React TV  
-React IOT  
+React DOM  (HTML Web)  
+React VR  (VR)  
+React TV  (TV) 
+React IOT  (IOT)
 
 ### 3.4 课间问题解答
 - Q:如何发现问题
@@ -169,6 +179,9 @@ React IOT
     - A:基本不用。
 - Q:简历要求里3-5年经验一下子就把我吓着了
     - A:（龙哥）仅用了4年爬到principal。作为JR毕业学生，很多都无视JD里的工作经验年限要求。从HR角度来看，加个工作年限就能降低风险。工作年限不重要，只是用来吓退混子的。保证自己水品到位就可以了。
+- 融入公司文化比较难，culture有时候就是理解不了。很难到达管理层。
+
+尝试用create-react-app写P1，参考网站 https://reactjs.org/docs/getting-started.html
 
 ## 4.React实践
 ### 4.1 安装React
