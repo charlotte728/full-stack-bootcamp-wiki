@@ -34,10 +34,10 @@
 https://au.linkedin.com/in/long-zhao-32a96916a
 - 15年毕业起开始做freelancer
 - 17年程序员正式出道
-- 17-21 程序之路磨破滚打，从lead到Qantas Senior
+- 17-21 程序之路磨破滚打，从lead到Qantas Senior，又到EL管理层
 - Full Stack, 会Ruby, JAVA, python, 主要方向是前端，前端问题随便问
 - 选择匠人，明智的选择
-  - 课上讲的东西，会100%，work-related，会按照quantas代码标准
+  - 课上讲的东西，会100%，work-related，会按照Qantas代码标准
   - 课上没有ppt，但会总结归纳出两份markdown
   - js.md: 2400行要全看
   - Markdown Language:标记语言
@@ -53,9 +53,11 @@ https://au.linkedin.com/in/long-zhao-32a96916a
   - 希望带给大家的，并不是教会你React怎么写，而是教会你：好的东西是什么样的，对的东西是什么样的，工作中用到的东西是什么样的
   - <font color=red> `所以我们的课，是面向bug学习，第一遍教你的东西是不对的，第二遍教你的东西是不工作的，第三遍教你的东西是不好的，最后再总结，归纳，写出对的，优雅的代码(elegant code)`</font>
   - 因为知识更新太快，每天焦虑学不过来，是一种错的状态，教给大家面向bug学习，是希望大家学会感受痛点，理解痛点，解决痛点
+  - 弱类型 vs Java, C++, C#
+  - 脚本语言 vs Java, C++, C#
   - 龙哥不会给你看P1的代码，因为再完美，也不是一个production ready的代码，因为<font color=red> `代码的技术已经过时了，但是为什么还要让大家去写，就是为了让大家感受痛点，去体会html, css中的坑，才会体会到es6的改进之处，再学完react，然后一遍遍深究，一遍遍反思，通过第一遍很难受很难看的代码，来总结出原来新知识新技术是为解决这些问题存在的`</font>
   - 通过上面的方法，来汲取新技术，才能永远站在知识的前沿；新技术只是为了解决问题应运而生
-  > 总结就是，首先要学会面向bug的学习，代码写三遍，不断改进，然后学习新知识，知道新知识究竟改变和解决了原来代码的哪些问题，再应用，再复写，如此循环
+  > 总结就是，首先要学会面向bug的学习，代码写三遍，不断改进，然后学习新知识，知道新知识究竟改变和解决了原来代码的哪些问题，再应用，再复写，如此循环。
 
   ## 2.JS复习：JavaScript中必须要理解的几个概念
   JavaScript是弱类型脚本语言
@@ -70,13 +72,13 @@ https://au.linkedin.com/in/long-zhao-32a96916a
     - `break, continue, debugger, do...while, for, function, if...else, return, switch, try...catch, var`
   ### 2.4 Statements
     - JavaScript 程序的执行单位为行(line)，也就是一行一行地执行。一般情况下，每一行就是一个语句
-    - 语句以分号结尾，一个分号就表示一个语句结束。多个语句可以写在一行内
+    - 语句以分号结尾，一个分号就表示一个语句结束。多个语句可以写在一行内，如果他们加了分号。
     - 如果严格遵循以一行为一个单位，则`;`可以省略
   ### 2.5 Variable 
     - JavaScript 的变量名区分大小写， `Name` 和 `name` 是两个不同的变量
     - 简单数据类型：`number, string, boolean, undefined, null`
     - 复杂数据类型：`object`
-    > `function`,`array`在JavaScript 中的类型是`object`;在JavaScript 中有一句老话：everything is object, 你遇到的绝大多数东西都是作为`object`来处理的  
+    > `function`,`array`在JavaScript 中的类型是`object`;在JavaScript 中有一句老话：everything is object, 你遇到的绝大多数东西都是作为`object`来处理的，所有东西都是object
 
     > ANZ 网考原题： function是以下哪种类型：  
     a.Function b.Object c.No types D:undefined
@@ -104,7 +106,7 @@ https://au.linkedin.com/in/long-zhao-32a96916a
         result = a + b;
         var a, b, result;
       ```
-      看上去比Java 的先声明再调用高级了一些，虽然JavaScript 的变量提升 意味着变量和函数的声明会在物理层面移动到代码的最前面， 实际上变量和函数声明在代码里的位置是不会动的，而是在编译阶段被放入内存中。  
+      看上去比Java 的先声明再调用高级了一些，虽然JavaScript 的变量提升 意味着变量和函数的声明会在物理层面移动到代码的最前面， 实际上变量和函数声明在代码里的位置是不会动的，而是在编译阶段被放入内存中。只有声明是被提升的。
       正常代码只要运行一遍,逐行运行，就可以，比如
       ```js
         var a = 1; //写内存 a01
@@ -122,7 +124,7 @@ https://au.linkedin.com/in/long-zhao-32a96916a
 
   ### 2.8 条件语句
      -  if...else
-     -  `===` 和 `==`比较
+     -  `===` （严格相等判断的是内存地址）和 `==`比较
      -  switch...case
      -  三元表达式：`(条件) ? 表达式_左 : 表达式_右`
   ### 2.9 短路计算
@@ -337,7 +339,7 @@ function calculateTax(income)
 ### 3.2 作业讲解
 #### 3.2.1 RMR结合作业一详解
    首先记住三个单词：<font color=red> `Readable, Maintainable, Reusable`</font>（RMR）
-  -  可读性，可维护性，可复用性
+  -  可读性，可维护性，可复用性（好的代码是有RMR特性的）
   > Q: 什么是好的代码  
     A： Readable, Maintainable, Reusable
   - 对`课堂练习（作业一）第一遍`，从可读性的角度来看，B要好于A
@@ -532,10 +534,10 @@ function calculateTax(income)
   - I'm feeling a bad smell in your code
   - 不能把这种小问题，称为issue/bug
 - 把P1打回重写，有多少人，愿意去做（Refactor 重构），很难，因为大家自带舒适圈，永远觉得自己的代码写的挺好的。怎么打破这个舒适圈，就是SOLID原则。
-- 掌握SOLID, 黄金秘籍，外挂, 半本(SOD)武功秘籍 也能走天下
+- 掌握SOLID, 黄金秘籍，外挂, 半本(SOD)武功秘籍 也能走天下！
 ### 4.1 S:单一职责 Single Responsibility
   -  认为对象/功能/一段代码应该仅具有一种单一功能
-  -  例如`课堂练习（作业一）第一遍：`，functionB中，每一个case的职责是不是都一样的，一样的有没有抽出来处理？
+  -  例如`课堂练习（作业一）第一遍：`，functionB中，每一个case的职责是不是都一样的，一样的有没有抽出来处理？好的代码写三遍！
   ```js
      function B(flights){
       const stop = flights.length() - 1;
