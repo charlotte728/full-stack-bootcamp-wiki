@@ -248,4 +248,4 @@ git push // 推送新的master
 - 在`clone`一个branch后，往往要先进入这个branch，再进行操作
 
 ### 作业
-- 完成git练习后把github的url发给tutor
+- 完成git练习后把github的url发给tutor(Git要学会操作，P3会日常使用到)
