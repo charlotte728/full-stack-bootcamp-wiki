@@ -78,20 +78,20 @@
 
 ## 1.个人介绍：Gary老师
 - 个人经历：10年IT经验，front-end -> backend -> full stack, node -> java, 个人偏喜欢做front-end，更容易看到成品，有成就感；澳洲绝大多数工作都比较横向的（考验知识的广度）
-- 个人体会：偏front-end，node上手会快；早晚会学到一门完整的编译型语言，node偏容易上手，java扩展深度较大，大家可以去linkedin加老师
+- 个人体会：偏front-end，node上手会快；早晚会学到一门完整的编译型语言，node偏容易上手，java扩展深度较大，大家可以去Linkedin加老师
 
 ### 1.1 html, css, javascript
 Web 三巨头：html, css, javascript
 #### 1.1.1 web运行原理
 - app使用流程:下载->安装->运行，web application同样原理，点击url(服务器下载source code)->三巨头开始运行在你的browser上
 - 大家回去看视频:https://www.youtube.com/watch?v=z0HN-fG6oT4
-- 无论用什么样的框架，framwork，最后都会转换成html+css+javascript
+- 无论用什么样的框架，framework，最后都会转换成html+css+javascript
 #### 1.1.2 HTML
-页面上的文本内容 + 框架部分，html不是programing language，因为没有逻辑处理功能
+content structure: 页面上的文本内容 + 框架部分，html不是programing language，因为没有逻辑处理功能
 #### 1.1.3 CSS
-展示装饰（颜色，排版，布局…）
+content presentation: 展示装饰（颜色，排版，布局…）
 #### 1.1.4 Javascript
-equal to everything (初期的目的是处理与用户的交互)
+content behavior(交互): equal to everything (初期的目的是处理与用户的交互)
 #### 1.1.5 总结
 - 经验：各自的语言，做各自的事情，不要过多的混杂在一起
 - HTML，CSS有历史包袱（93年发明），版本多，兼容有挑战，所以你查属性要去
@@ -102,6 +102,7 @@ equal to everything (初期的目的是处理与用户的交互)
 HTML基本结构： open + closing tag + content
 > vs code里，敲html选择 html5会自动补全代码    
 结构性语言，由tag组成，文件格式固定   
+!加tab可以自动生成html
 ### 2.1 HTML 文件结构
 -	```<!DOCTYPE html>```: 给浏览器看，标识本身为html文件
 -	```<html lang = "en">```
@@ -111,7 +112,7 @@ HTML基本结构： open + closing tag + content
 - ```<title>```：网页标题
 ### 2.2 HTML head
 #### 2.2.1 ```<meta>```
-```<meta>``` 开头的一般都是做些配置
+```<meta>``` 开头的一般都是做些配置,做SEO
 - ```<meta charset = "UTF-8">```： 文字解码方式
 - ```<meta name = "viewport" …>```: 标志屏幕上，显示的像素与device之间的比例关系，以决定是否缩放等
 - ```<meta http-equiv = …>```:对不同浏览器的兼容支持
@@ -133,13 +134,13 @@ HTML基本结构： open + closing tag + content
 标签的基本原理和效果要懂，然后可以去查  
 使用caniuse.com来查询标签的Browser Compatibility
 #### 2.3.1 live-server
-运行html时，可以把文件拖到chrome，直接运行  
+运行html时，可以把文件拖到chrome，直接运行 (重要插件要安装)
 或者在目录下运行live-server：https://www.npmjs.com/package/live-server
-- Live-server install(mac):
+- Live-server install(mac): 
   - npm i live-server -g
   - 移动到当前文件夹: live-server
     - i: install
-    - g:global
+    - g: global
 
 #### 2.3.2 ```<a>```
 超链接
@@ -149,6 +150,7 @@ HTML基本结构： open + closing tag + content
 - 从大（h1）到小（h2..）, 本质是从最外层的title开始，层级递减
 - 有层级关系，需要依次使用，不能挑选使用，搜索引擎SEO会注重这一点
 - 不是针对ui appearance选择，而是根据结构选择
+- 每个网址只能有一个h1
 >	小经验：H1, H2, H3, H4, H5, H6只能依次使用，如果跳用，比如只用H1, H4, accessability test 可能fail
 #### 2.3.4 ```<p>```
 Paragraph 很常用, 
@@ -161,10 +163,10 @@ Paragraph 很常用,
 #### 2.3.7 ```<ul> <ol> <li>```
 list标签。ul (unsorted list) ol (ordered list)。会在navigation bar中使用
 ![li](image/c0208.png)
-- ul 非常常用，常被用来navagation bar
+- ul 非常常用，常被用来navigation bar
 #### 2.3.8 ```<table>```
 - ```<tr>``` table row 按照横行写
-- ```<th>```: table head 字体会加粗
+- ```<th>```: table header 字体会加粗
 - ```<td>```: table data
 - 虽然现在component用的较多，但是表格的书写形式还是按行书写
 #### 2.3.9 ```<div>```
@@ -173,8 +175,8 @@ default block element
 - 容易被滥用
 #### 2.3.10 ```<img>```
 标签包含以下参数
-- src：从哪来
-- alt: 图片描述，img加载不出来，告诉它这个图片是干嘛的, accessbility强调的一点
+- src：来源
+- alt: 图片描述，img加载不出来，告诉它这个图片是干嘛的, accessibility强调的一点
 #### 2.3.11 ```<form> <input> <select> <textarea>```
 不再在html中使用，通过JavaScript异步实现
 - Form 一般会跟input filed， input + type + name
@@ -227,16 +229,15 @@ html受众有三个：
 - Wikipedia 是html文档做的很标准很规范很好的
 - 每一段是一个```<p>```,合乎语义
 
-
 ### 2.7 File path
 - ```../```: (相对路径)退到上一层目录
 - ```./```: （相对路径）当前目录
 - ```/```：（绝对路径）从root目录开始走
-- 通常情况下绝对路径用的比较多，相对引用在react里某些场景会更好用，绝对引用一般不容易出错
+- 通常情况下绝对路径用的比较多，相对引用在react里某些场景会更好用，绝对引用一般不容易出错（路径要分清，特别是src里面写对的路径）
 
 ### 2.8	关于Comment
 - 你会把document写到哪里：真正写的好的代码，因为易读，都能self explained；
-- 用comment的原因，是解释为什么这么写
+- 用comment的原因，是解释为什么这么写（可以写业务逻辑）
 
 ### 2.9 Dev tool（Chrome）：
 快捷键：cmd+shif+i/ctrl+shift+i
@@ -310,7 +311,7 @@ Internal style: 也是不推荐，会让html显得很长
 #### 3.2.1	简单选择器
 - Class Selector：可复用，可叠加，一般最常用
 - Id Selector：只能用在一个element里吗，用一次，所以不是很常用
-> 分清楚id, class的区别
+> 分清楚id, class的区别（面试题）
 #### 3.2.2	Element Selector
 不常用
 #### 3.2.3	其它 Selector	
@@ -323,7 +324,7 @@ Internal style: 也是不推荐，会让html显得很长
 ![Attribute Selector](image/c0204.png)
 - Psuedo Selector : 某个node在某种状态情况下的style
 ![Psuedo Selector](image/c0205.png)
-- 伪元素Psudeo-elements Selectors：试图用css添加一些html
+- 伪元素Psudeo-elements Selectors：试图用css添加一些html（比如用before, after）
 - 组合selector：一般用的比较少，因为要识别很多层级关系，容易出问题
 ### 3.3 Box modal:
 block元素均有box modal;  inline element也可用
@@ -367,13 +368,13 @@ display：可以让页面不再显示该元素，同时释放所占空间
 - display: none
 - visibility
 #### 3.5.3 ```opacity```
-opacity：作业会用，可实现渐变效果
+opacity：作业会用，可实现渐变效果(透明度)
 #### 3.5.4 ```Text-shadow```
 Text-shadow,box-shadow: 负责给字体和box加阴影
 #### 3.5.5 ```cursor```
 cursor：鼠标指针相关，可以跟伪类搭配使用
 #### 3.5.6 ```text-decoration```
-text-decoration:作业可能用到
+text-decoration:作业可能用到。用于设置文本的修饰线外观的（下划线、上划线、贯穿线/删除线 或闪烁）
 
 ### 3.6 Normalize.css:
 初始化css设定，会在开发中导入，避免出现浏览器差异
@@ -395,12 +396,12 @@ getbem.com
 - block__element: e.g.card___title, card__description
 - modifier: 元素状态时，对应样式的改变
 
-### 3.9	作业：carddesign
+### 3.9	作业：card design
 - Card 圆角
-- card阴影
+- card 阴影
 - 遮罩 渐变
 - Svg icon用法
-- 只用basic styling
+- 只用 basic styling
 - 只写一两个就好，固定宽度就好
-- 建议全部都写class
+- 建议全部都写 class
 

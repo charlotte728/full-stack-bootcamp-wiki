@@ -21,7 +21,7 @@
 - CSS: 做layout design，styling
 - JS: 与user交互的桥梁，捕捉用户的操作，用户data（给backend）的传递
   - 在澳洲找第一份工作不会考察太深的js内容
-
+- 推荐书籍： Refactoring
 ### 2.什么是JavaScript
 - 首先是编程性语言
     - CSS, HTML, 都不是编程性语言，无法做逻辑性运算不是图灵完备的。
@@ -38,7 +38,7 @@
     - 2009～2015（ES6）:没有更新过，因此积累了大量的更新(语言特性)
     - ES6(2015)年带来了很多语言的新特性，之后就是慢慢在更新了
 - 怎么测试运行
-   - Chrome里，右键select inspect element, 然后console里直接敲代码
+   - Chrome里，右键select inspect element, 然后console里直接敲代码(日常coding必备)
 - 怎么写入网页
    - 嵌入在browser，HTML中直接加入`<script>`，例如  
      ```
@@ -178,17 +178,17 @@
 > 也可以Learning by teaching
 
 ### 5.条件语句 Condition
-- `if` conditon:
+- `if` condition:
    ```js
     if(<condition>) {
        
     } else {
     }
     ``` 
-  - 尽量不要加else，会增加nesting，推荐阅读
+  - 尽量不要加else，会增加nesting，推荐阅读（尽量不要写if...else...）
 > Refactoring: Martin Fowler
 - 三元运算符：`?`
-    - `(conditon) ? expr1:expr2`  
+    - `(condition) ? expr1:expr2`  
     等同于  
      ```js
     if(<condition>) {
@@ -280,8 +280,8 @@
     > 写`function`时，尽量不要试图修改传进来的arguments
 - JavaScript中没有真正意义上的`class`
 - `return` 表示返回，JavaScript会直接返回`return`后的值，之后的语句不会被执行
-- 理解`function`的参数是怎么传的，`function`里面可以定义`function`,`function`也可以被传递出去，`function` 也可以指定给别的varibale, 该varible还可以被运行
-- `function`在JavaScript中是一等公民，可以传递，也可以嵌套
+- 理解`function`的参数是怎么传的，`function`里面可以定义`function`,`function`也可以被传递出去，`function` 也可以指定给别的variable, 该variable还可以被运行
+- `function`在JavaScript中是一等公民(平头老百姓)，可以传递，也可以嵌套
     - 例如：
     ```js
     function outsideFunc()) {
@@ -495,7 +495,7 @@ https://momentjs.com
 因为原理上如下图，Html parsing完会等待scripti下载与执行，再做渲染
 ![script defer async](https://i0.wp.com/www.sertmedia.com/wp-content/uploads/2018/08/95ba8eb4-aa59-4dab-992e-adcb38cf9d8c.jpg)
 - 现在有`<script defer>`:则会在html parsing的同时，完成js下载，在html parsing结束后，再执行js，类似于把js放在`<body>`里，是比较安全的方式
-- 还有`<script async>`:则会在html parsing未完成时，执行已经下载好的js，因为html parsing未完成，也会产生问题
+- 还有`<script async>`:则会在html parsing未完成时，执行已经下载好的js，因为html parsing未完成，也会产生问题(可以参考tutorial的内容学习)
 - `defer` VS `async`
 ```html
  <script src = "http://...file1,js"></script>

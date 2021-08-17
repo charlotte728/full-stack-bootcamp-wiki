@@ -94,7 +94,7 @@ https://getbootstrap.com/docs/4.0/layout/grid/, https://www.bitdegree.org/learn/
 在不指定large的情况下，md的指定将一直向上沿用
 ###	4.3.2 CSS grid
 与浏览器兼容性不是很好，现在没有大规模在用；现在的排版还是在用各个library的grid system
-- meterial-ui grid system：react里最pupular的ui
+- meterial-ui grid system：react里最popular的ui
 https://material-ui.com/components/grid/
   - 类似于 bootstrap 
   - 基于google的设计语言
@@ -188,7 +188,7 @@ Nesting: 可以更清晰的做出structure，更易读
   background-color: $primary-color;
 }
 ```
-现在scss里要这么写
+现在scss里要这么写(参考https://css-tricks.com/the-sass-ampersand/)
 ```css
 .container {
   width: 800px
@@ -212,11 +212,11 @@ Nesting: 可以更清晰的做出structure，更易读
 
 ### 7.6 作业
 增加写3-5个card
-- 引入bootstrap（responsive ）/flexbox
+- 引入bootstrap（responsive）/flexbox
 - variable, extend 能用就用，clean code
 - 能用flexbox可以用flexbox
 #### 7.6.1 作业参考
-饼哥在tutorial的现场演示：
+饼哥在tutorial的现场演示如何用flexbox一步步做card design作业：
 https://onyx-storm-af0.notion.site/03-Lesson-4-Flexbox-Card-48ff1b7cf17f4b53874ad26b1d65b844
 
 ## 8.flexbox
@@ -237,7 +237,7 @@ https://css-tricks.com/snippets/css/a-guide-to-flexbox/
 调整每行样式
 - (常用)```justtify-content:space-between```: 将行内剩余空间平分到elements中间，但是edge边最近的item，距离edge空间几乎为0
 - 可以用作导航栏样式，效果如上
-![justtify-content](image/c0309.png)	
+![justify-content](image/c0309.png)	
 - ```space-around``` ：每个items两边有相同的空间，但是视觉上item间的距离可能不相同
 - ```space-even```：所有的间距（包括item到edge）都相同 
 - (常用）```center```：水平居中； css里为 margin: 0 auto
