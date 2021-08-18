@@ -69,6 +69,11 @@ React的编译需要的两个重要工具：
 
 一个React的项目，除了index.js作为入口为html，就不应该再出现其它的html了
 
+- 重要的语法
+  - 在JSX中，如果statement，以<开头，那么在相应的>之前的内容会被当做markup来处理，以{开头，那么在相应的}之前的内容会被当做js来处理
+  
+- 申明式写出来的的代码，大家写出来的代码应该是相同的。这是规范化的好处
+
 - Q:`((App /)`中，第二层括号能不能省略
   - A: `()`在JS中是不做任何作用的，可以省略。但是加了更readable一些。 
 
@@ -812,7 +817,7 @@ React的编译需要的两个重要工具：
   <a class="navbar__item navbar__item--active" href="HOME">Home</a>
   <div id="HOME" class="page page--active">
   ``` 
-以上为不在index.html中写html的情况下，怎么通过jsx来实现一个html页面
+以上为不在index.html中写html的情况下，怎么通过jsx来实现一个html页面(快速找到Home page active)
 
 ### 2.2 将以上的React模块化
 - 1. 新建app文件夹
@@ -1787,3 +1792,18 @@ import NavbarItem, { Link } from './components/NavbarItem';
 - 虽然我们写了`index.js`，  
  `import NavbarItem from './components/NavbarItem';`中，仅仅避免了少写一次NavbarItem，但是别人调用的时候也会少写一次NavbarItem。如果你的代码被调用10000次，就节省了别人少些10000个NavbarItem的时间
 - 面试官问你，rmr中，你认为什么是一段好的maintainable代码呢，你可以按照思路`代码只写一次，但是会被调用n次，会被阅览n+1次`来答，为了让后续调用和阅览的人舒服，虽然会cost我一点时间，但是可以节省别人n+1次时间
+- ES6中有更好的写法
+```js
+export { default } from './Logo';
+```
+代替了
+```js
+import Logo from './Logo';
+export default Logo;
+```
+
+### 5.4 命名学！！！很重要
+
+### 5.5 文件结构
+- /src/components 里面放components
+- /src/components/Header 下还可以放components和helpers文件夹。更加readable，维护原则
