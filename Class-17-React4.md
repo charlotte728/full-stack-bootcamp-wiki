@@ -1137,3 +1137,46 @@ const Header = ({
 export default Header;
 ```
 综合以上，我们即通过state来实现点击button，更改页面渲染
+
+```
+const ITEMS = [{
+href: 'HOME',
+name: 'Home Page',
+}, {
+href: 'RESUME',
+name: 'Resume',
+}];
+
+
+let activeItem;
+
+const renderNavigation = () => {
+const elements = ITEMS.map((item) => {
+const text = document.createTextNode(item.name);
+const a = document.createElement('a');
+
+a.setAttribute('href', item.href);
+a.appendChild(text);
+
+a.classList.add('navbar__item');
+
+if (item.href === activeItem) {
+a.classList.add('navbar__item--active');
+}
+
+a.onclick = (event) => {
+event.preventDefault();
+
+activeItem = item.href;
+
+renderNavigation();
+}
+
+return a;
+});
+
+document.querySelector('#root').innerHTML = '';
+elements.forEach((element) => document.querySelector('#root').appendChild(element));
+}
+```
+以上代码，要理解React背后的核心工作原理（申明式编程）
