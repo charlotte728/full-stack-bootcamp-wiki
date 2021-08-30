@@ -12,7 +12,8 @@
 [Web全栈第7节课  JavaScript ES6 Part2 & Node.js](s14/Class-07-ES6&NodeJS-14.md)  
 [Web全栈第8节课  Node.js part2 & RESTful API](s14/Class-08-NodeJS&RESTfulAPI-14.md)  
 [Web全栈第9节课  Agile](s14/Class-09-Agile-14.md)  
-[Web全栈第10节课  Agile](s14/Class-09-Agile-14.md)  
+[Web全栈第10节课  RESTfulAPI & Express](s14/Class-10-RESTfulAPI&Express-14.md)  
+[Web全栈第11节课  Middleware](s14/Class-11-Middleware-14.md)  
 
 
 ## Web全栈班13期通用笔记：   
