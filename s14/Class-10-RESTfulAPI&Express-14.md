@@ -1,9 +1,9 @@
-# Class-10-NodeJS & RESTful API
+# Class-10-RESTful API & Express.js
 
 ## 主要知识点
 
 ## 课堂笔记 RESTful API
-- [Class-10-NodeJS & RESTful API](#class-10-nodejs--restful-api)
+- [Class-10-RESTful API & Express.js](#class-10-restful-api--expressjs)
   - [主要知识点](#主要知识点)
   - [课堂笔记 RESTful API](#课堂笔记-restful-api)
     - [Postman](#postman)
