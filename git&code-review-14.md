@@ -30,8 +30,10 @@
 - squash rebase
 
 ## Rebase流程
-- 第一步:切换到正在开发的branch
-- 第二步:pull最新代码到本地分支
-- 第三步:从master rebase本地
-- 第四部:push到远程
+- 第一步:切换checkout到正在开发的currnet feature branch，把没有提交的代码commit & push到remote feature branch
+- 第二步:切换checkout到master，pull最新的master代码到本地master branch
+- 第三步:checkout到你需要rebase的feature branch，进行git rebase。git rebase onto master。也就是对该branch基于master进行rebase。
+- 第四步:在Rebase中，会出现code conflicts，去fix code conflicts；rebase中可以进行squash，减少commit数量
+- 第五步:Rebase结束后，Push 你的feature branch rebase完的代码到远程feature branch
+- 第六步:打开bitbucket或者github，检查一下diff，查看rebase完后的代码是不是对的，如果是有问题的，继续commit 新的change到你的branch
 - [tutorial: atlassian git rebase vs merge](https://www.atlassian.com/git/tutorials/merging-vs-rebasing)
