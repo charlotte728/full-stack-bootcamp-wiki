@@ -7,6 +7,9 @@
 [Web全栈第5节课  Git](Class-05%20Git.md)   
 [Web全栈第9节课  Agile](Class-09-Agile-14.md)  
 
+## Web全栈班14期Java笔记： 
+[Web全栈班14期Java班笔记](JR_Web_FullStack14_Java_Note.md)   
+
 ## Web全栈班第14期Node.js笔记： 
 [Web全栈第6节课  JavaScript ES6 Part1](s14/Class-06-ES6-14.md)   
 [Web全栈第7节课  JavaScript ES6 Part2 & Node.js](s14/Class-07-ES6&NodeJS-14.md)  
