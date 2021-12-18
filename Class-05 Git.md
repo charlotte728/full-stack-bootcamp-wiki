@@ -60,8 +60,9 @@ Open Source 开发中，没人愿意去设置一个central repository, 于是就
     ```git config --global color.ui auto```  
     ```git config --global merge.conflictstyle diff3```  
     ```git config --global core.editor "code --wait"```  
-    - 如果`code`没有设置，需要先添加VS code，具体参考（mac版本）  
-        https://code.visualstudio.com/docs/setup/mac  
+    - 如果`code`没有设置，需要先添加VS code，具体参考 
+        Mac版本 :https://code.visualstudio.com/docs/setup/mac  
+        Windows(需要添加enviroment variable):https://www.architectryan.com/2018/03/17/add-to-the-path-on-windows-10/
     - 配置完成`code`后，可以直接通过命令  
     ```code .```  
     来在IDE中打开当前目录
@@ -244,8 +245,7 @@ git push // 推送新的master
 - 基本Terminal命令：
    - 创建文件：  
      ```touch term-paper.txt```
-
 - 在`clone`一个branch后，往往要先进入这个branch，再进行操作
-
 ### 作业
 - 完成git练习后把github的url发给tutor(Git要学会操作，P3会日常使用到)
+~
