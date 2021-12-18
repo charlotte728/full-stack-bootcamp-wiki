@@ -176,7 +176,7 @@ default block element
 #### 2.3.10 ```<img>```
 标签包含以下参数
 - src：来源
-- alt: 图片描述，img加载不出来，告诉它这个图片是干嘛的, accessibility强调的一点
+- alt: 图片描述，img加载不出来，告诉它这个图片是干嘛的, accessibility强调的一点, 对SEO也有好处.
 #### 2.3.11 ```<form> <input> <select> <textarea>```
 不再在html中使用，通过JavaScript异步实现
 - Form 一般会跟input filed， input + type + name
@@ -190,6 +190,7 @@ html受众有三个：
 - User: 对代码编译后展示的页面，有直接感受 e.g. h tag给用户最直接的感受就是title字体的大小变化
 - 浏览器：对代码的解析，e.g. h tag给浏览器的是不同层级title的设定
 - 搜索引擎，根据Semantic给你排名
+- 排名影响因素还有loading time,优化可以考虑压缩网页里引用的图片大小,或者减少request(请求)的次数(eg:利用Sprite sheet packer把图片排成一张)
 
 ### 2.5 Html 5 
 感受下html5的语义化
@@ -234,6 +235,7 @@ html受众有三个：
 - ```./```: （相对路径）当前目录
 - ```/```：（绝对路径）从root目录开始走
 - 通常情况下绝对路径用的比较多，相对引用在react里某些场景会更好用，绝对引用一般不容易出错（路径要分清，特别是src里面写对的路径）
+- 代码中引用到的文件夹名和文件名不要使用中文,编译转换有时会有问题
 
 ### 2.8	关于Comment
 - 你会把document写到哪里：真正写的好的代码，因为易读，都能self explained；
