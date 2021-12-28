@@ -34,7 +34,7 @@
 https://au.linkedin.com/in/long-zhao-32a96916a
 - 15年毕业起开始做freelancer
 - 17年程序员正式出道
-- 17-21 程序之路磨破滚打，从lead到Qantas Senior，又到EL管理层
+- 17-21 程序之路磨爬滚打，从lead到Qantas Senior，又到EL管理层
 - Full Stack, 会Ruby, JAVA, python, 主要方向是前端，前端问题随便问
 - 选择匠人，明智的选择
   - 课上讲的东西，会100%，work-related，会按照Qantas代码标准
